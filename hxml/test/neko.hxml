@@ -1,0 +1,7 @@
+-cp src/main/haxe
+-cp src/test/haxe
+
+-lib tink_core
+
+-neko test/neko_test.n
+-main Test
