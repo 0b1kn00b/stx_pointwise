@@ -1,7 +1,1 @@
-{
-  "name": "stx_pointwise",
-  "url" : "https://github.com/0b1kn00b/stx_pointwise",
-  "license": "MIT",
-  "tags": ["cross", "functional"],
-  "description": "Functional composition tools",
-}
+{"name":"pointwise","license":"MIT","tags":["cross","functional"],"description":"Functional composition tools","contributors":["0b1kn00b"],"releasenote":"prerelease","version":"0.6.0","url":"https://github.com/0b1kn00b/stx_pointwise","dependencies":{"tink_core":"1.0.0"}}
