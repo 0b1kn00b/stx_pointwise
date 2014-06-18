@@ -11,7 +11,9 @@ using stx.Compose;
 using stx.Functions;
 
 class ComposeDo{
-  @doc("Produces a function that calls `f1` and `f2` in left to right order.")
+  /**
+    Produces a function that calls `f1` and `f2` in left to right order.
+  **/
   @returns("The composite function.")
   public static function then(f1:Void->Void, f2:Void->Void):Void->Void {
     return function() {
@@ -21,7 +23,9 @@ class ComposeDo{
   }
 }
 class ComposeDo1{
-  @doc("Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.")
+  /**
+    Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.
+  **/
   @returns("The composite function.")
   public static function then<P1>(f1:P1->Void, f2:P1->Void):P1->Void {     
     return function(p1) {       
@@ -31,7 +35,9 @@ class ComposeDo1{
   }   
 }
 class ComposeDo2{
-  @doc("Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.")
+  /**
+    Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.
+  **/
   public static function then<P1, P2>(f1:P1->P2->Void, f2:P1->P2->Void):P1->P2->Void {
     return function(p1, p2) {
       f1(p1, p2);
@@ -40,7 +46,9 @@ class ComposeDo2{
   }
 }
 class ComposeDo3{
-  @doc("Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.")
+  /**
+    Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.
+  **/
   public static function then<P1, P2, P3>(f1:P1->P2->P3->Void, f2:P1->P2->P3->Void):P1->P2->P3->Void {
     return function(p1, p2, p3) {
       f1(p1, p2, p3);
@@ -49,7 +57,9 @@ class ComposeDo3{
   }
 }
 class ComposeDo4{
-  @doc("Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.")
+  /**
+    Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.
+  **/
   public static function then<P1, P2, P3, P4>(f1:P1->P2->P3->P4->Void, f2:P1->P2->P3->P4->Void):P1->P2->P3->P4->Void {
     return function(p1, p2, p3, p4) {
       f1(p1, p2, p3, p4);
@@ -58,7 +68,9 @@ class ComposeDo4{
   }
 }
 class ComposeDo5{
-  @doc("Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.")
+  /**
+    Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.
+  **/
   public static function then<P1, P2, P3, P4, P5>(f1:P1->P2->P3->P4->P5->Void, f2:P1->P2->P3->P4->P5->Void):P1->P2->P3->P4->P5->Void {
     return function(p1, p2, p3, p4, p5) {
       f1(p1, p2, p3, p4, p5);
@@ -69,30 +81,38 @@ class ComposeDo5{
 class Compose0{
   static public function then<A, B>(fn0:Thunk<A>,fn1:A->B):Thunk<B>{
     return function():B{
-        return fn1(fn0());
-      }
+      return fn1(fn0());
+    }
   }
 }
-@doc("Arrowlet class for Functions.")
+/**
+  Arrowlet class for Functions.
+**/
 class Compose{
   @:noUsing static public function apply<I,O>(fn:I->O,v:I):O{
     return fn(v);
   }
-  @doc("Returns a function that applies `fn1` then `fn2` on the input")
+  /**
+    Returns a function that applies `fn1` then `fn2` on the input
+  **/
   static public function then<A,B,C>(fn1:A->B,fn2:B->C):A->C{
     return 
       function(a:A):C{
         return fn2(fn1(a));
       }
   }
-  @doc("Returns a function that applies `fn1` to the left hand side of a Tuple")
+  /**
+    Returns a function that applies `fn1` to the left hand side of a Tuple
+  **/
   static public function first<A,B,C,D>(fn1:A->C):Pair<A,B>->Pair<C,B>{
     return 
       function(t:Pair<A,B>){
         return new Pair(fn1(t.a),t.b);
       }
   }
-  @doc("Returns a function that applies `fn1` to the right hand side of a Tuple")
+  /**
+    Returns a function that applies `fn1` to the right hand side of a Tuple
+  **/
   static public function second<A,B,C,D>(fn1:B->D):Pair<A,B>->Pair<A,D>{
     return 
       function(t:Pair<A,B>){
@@ -105,7 +125,9 @@ class Compose{
         return new Pair(fn1(t.a),fn2(t.b));
       }
   }
-  @doc("Returns a function that applies a function on the lhs of a tuple to the value on the rhs.")
+  /**
+    Returns a function that applies a function on the lhs of a tuple to the value on the rhs.
+  **/
   static public function application<A,I,O>(fn:A->Pair<I->O,I>):A->O{
     return 
       function(v:A):O{
@@ -113,7 +135,9 @@ class Compose{
         return t.a(t.b);
       }
   }
-  @doc("Returns a function that applies a function to the Left value of an Either.")
+  /**
+    Returns a function that applies a function to the Left value of an Either.
+  **/
   static public function left<A,B,C>(fn:A->C):Either<A,B>->Either<C,B>{
     return 
       function(e:Either<A,B>):Either<C,B>{
@@ -124,7 +148,9 @@ class Compose{
           }
       }
   }
-  @doc("Returns a function that applies a function to the Right value of an Either.")
+  /**
+    Returns a function that applies a function to the Right value of an Either.
+  **/
   static public function right<A,B,D>(fn:B->D):Either<A,B>->Either<A,D>{
     return 
       function(e:Either<A,B>):Either<A,D>{
@@ -143,14 +169,16 @@ class Compose{
       }
     }
   }
-  @doc("
+  /**
     Unit function.
         [[1,2],[3,4]].flatMap( Compose.unit() );//[1,2,3,4]
-  ")
+  **/
   @:noUsing static public function unit<A,B>():A->A{
     return cast function(x) return x;
   }
-  @doc("Returns a function that produces a `Pair` from a value.")
+  /**
+    Returns a function that produces a `Pair` from a value.
+  **/
   static public function fan<I,O>(a:I->O):I->Pair<O,O>{
     return a.then(
         function(x){
@@ -158,7 +186,9 @@ class Compose{
         }
       );
   }
-  @doc("Returns a function that produces `v`.")
+  /**
+    Returns a function that produces `v`.
+  **/
   @:noUsing static public function pure<A,B>(v:B):A->B{
     return function(x:A){ return v; }
   }
@@ -180,7 +210,9 @@ class Compose{
         return new Pair(fn(t.a),fn(t.b));
       }
   }
-  @doc("Returns a function that calls `f1` with the output of `f2`.")
+  /**
+    Returns a function that calls `f1` with the output of `f2`.
+  **/
   public static function compose<U, V, W>(f1: V->W, f2: U->V): U->W {
     return function(u: U): W {
       return f1(f2(u));
@@ -223,7 +255,9 @@ class Compose{
   }
 }
 class Compose2{
-  @doc("Returns a function that calls `f2` with the output of `f1`.")
+  /**
+    Returns a function that calls `f2` with the output of `f1`.
+  **/
   public static function then<U, V, W, X>(f1: U->V->W, f2: W->X): U->V->X {
     return 
       function(u:U,v:V):X{
