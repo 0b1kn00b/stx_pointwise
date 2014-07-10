@@ -40,11 +40,11 @@ class Functions0 {
     return function(){
         var o = null;
           try{
-            o = Success(c());
+            o = Outcome.Success(c());
           }catch(e:Error){
-            o = Failure(e);
+            o = Outcome.Failure(e);
           }catch(e:Dynamic){
-            o = Failure(new Error(e));
+            o = Outcome.Failure(new Error(InternalError,e));
           }
         return o;
       }
@@ -153,11 +153,11 @@ class Functions1 {
     return function(a){
         var o = null;
           try{
-            o = Success(fn(a));
+            o = Outcome.Success(fn(a));
           }catch(e:Error){
-            o = Failure(e);
+            o = Outcome.Failure(e);
           }catch(e:Dynamic){
-            o = Failure(new Error(e));
+            o = Outcome.Failure(new Error(InternalError,e));
           }
         return o;
       }
