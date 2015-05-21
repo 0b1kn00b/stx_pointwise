@@ -1,7 +1,7 @@
 package stx;
 
 import stx.types.Thunk;
-import stx.types.Codeblock;
+import stx.types.Block;
 import tink.core.Outcome; 
 import tink.core.Error; 
 import tink.core.Callback; 
@@ -15,18 +15,18 @@ class Functions{
     }
   }
 }
-class Codeblocks {
-  
+class Blocks {
+  public static var NIL(default,never) : Block = function(){}  
   /**
 		Compare function identity.
 	**/
-  public static function equals(a:Codeblock,b:Codeblock){
+  public static function equals(a:Block,b:Block){
     return Reflect.compareMethods(a,b);
   }
   /**
 		Produces a function that takes a parameter, ignores it, and calls `f`.
 	**/
-  public static function promote<A>(f: Codeblock): A->Void {
+  public static function promote<A>(f: Block): A->Void {
     return function(a: A): Void {
       f();
     }
@@ -80,7 +80,7 @@ class Functions0 {
   /**
 		Takes a function that returns a result, and produces one that ignores that result.
 	**/
-  public static function enclose<R>(f:Thunk<R>):Codeblock{
+  public static function enclose<R>(f:Thunk<R>):Block{
     return function():Void{
         f();
       }
@@ -88,7 +88,7 @@ class Functions0 {
   /**
 		Takes a function `f` and produces one that ignores any error the occurs whilst calling `f`.
 	**/
-  public static function swallow(f: Codeblock): Codeblock {
+  public static function swallow(f: Block): Block {
     return function() {
       try {
         f();

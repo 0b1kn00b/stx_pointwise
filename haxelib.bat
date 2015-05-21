@@ -1,0 +1,1 @@
+zip -r haxelib.zip src/main/haxe/stx haxelib.json
