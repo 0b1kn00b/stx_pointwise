@@ -2,9 +2,9 @@ package stx;
 
 import stx.types.Thunk;
 import stx.types.Block;
-import tink.core.Outcome; 
-import tink.core.Error; 
-import tink.core.Callback; 
+import tink.core.Outcome;
+import tink.core.Error;
+import tink.core.Callback;
 
 using stx.Functions;
 
@@ -16,7 +16,7 @@ class Functions{
   }
 }
 class Blocks {
-  public static var NIL(default,never) : Block = function(){}  
+  public static var NIL(default,never) : Block = function(){}
   /**
 		Compare function identity.
 	**/
@@ -31,8 +31,11 @@ class Blocks {
       f();
     }
   }
-} 
+}
 class Functions0 {
+  static public function reply<A>(a:Thunk<A>):A{
+    return a();
+  }
   /**
 		Applies a `Thunk` and returns an `Outcome`
 	**/
@@ -62,7 +65,7 @@ class Functions0 {
     }
   }
   /**
-    Returns a Thunk that applies a Thunk one time only and stores the result, 
+    Returns a Thunk that applies a Thunk one time only and stores the result,
     after which each successive call returns the stored value.
   **/
   @params("The Thunk to call once")
@@ -70,10 +73,10 @@ class Functions0 {
   static public function memoize<T>(t: Thunk<T>): Thunk<T> {
     var evaled = false;
     var result = null;
-    
+
     return function() {
       if (!evaled) { evaled = true; result = t(); }
-      
+
       return result;
     }
   }
@@ -102,7 +105,7 @@ class Functions0 {
   public static function returning<R1, R2>(f: Void->R1, thunk: Thunk<R2>): Thunk<R2> {
     return function() {
       f();
-      
+
       return thunk();
     }
   }
@@ -115,25 +118,25 @@ class Functions0 {
     }
   }
   /**
-    Produces a function that calls and stores the result of 'before', then `f`, then calls `after` with the result of 
+    Produces a function that calls and stores the result of 'before', then `f`, then calls `after` with the result of
     `before` and finally returns the result of `f`.
   **/
   public static function stage<Z, T>(f: Thunk<Z>, before: Void->T, after: T->Void): Z {
     var state = before();
-    
+
     var result = f();
-    
+
     after(state);
-    
-    return result;   
-  } 
+
+    return result;
+  }
   /**
 		Compares function identity.
 	**/
-  public static function equals<  A>(a:Thunk<A>,b:Thunk<A>){     
-    return Reflect.compareMethods(a,b);   
-  } 
-} 
+  public static function equals<  A>(a:Thunk<A>,b:Thunk<A>){
+    return Reflect.compareMethods(a,b);
+  }
+}
 class Callbacks{
   static public function action<T>(fn:Callback<T>):T->T{
     return function(x:T):T{
@@ -143,7 +146,7 @@ class Callbacks{
   }
 }
 class Endos{
-  
+
 }
 class Functions1 {
   /**
@@ -167,41 +170,41 @@ class Functions1 {
     parameter in the originating function. When these
     functions have been called, the result of the original function is produced.
   **/
-  public static function curry<P1, R>(f: P1->R) {     
-    return function() { 
-      return function(p1: P1) { 
-        return f(p1);       
+  public static function curry<P1, R>(f: P1->R) {
+    return function() {
+      return function(p1: P1) {
+        return f(p1);
       }
-    }   
-  }   
+    }
+  }
   /**
     Produces a function that ignores any error the occurs whilst
     calling the input function.
   **/
-  public static function swallow<A>(f: A->Void): A->Void {     
-    return enclose(swallowWith(f, null));   
-  }   
+  public static function swallow<A>(f: A->Void): A->Void {
+    return enclose(swallowWith(f, null));
+  }
   /**
     Produces a function that ignores
     any error the occurs whilst calling the input function, and produces `d` if
-    error occurs.     
+    error occurs.
   **/
-  public static function swallowWith<P1, R>(f: P1->R, d: R): P1->R {     
+  public static function swallowWith<P1, R>(f: P1->R, d: R): P1->R {
     return
       function(a) {
         try {
-          return f(a);       
+          return f(a);
         }catch (e:Dynamic) {
-        }return d;     
-      }   
-  }   
+        }return d;
+      }
+  }
   /**
     Produces a function that calls `f`, ignores its result, and returns the result
     produced by thunk.
   **/
-  public static function returning<P1, R1, R2>(f: P1->R1, thunk: Thunk<R2>) : P1->R2 {     
-    return function(p1) {       
-      f(p1);  
+  public static function returning<P1, R1, R2>(f: P1->R1, thunk: Thunk<R2>) : P1->R2 {
+    return function(p1) {
+      f(p1);
       return thunk();
     }
   }
@@ -212,14 +215,19 @@ class Functions1 {
   @:note("those brackets are there to fox the Java compiler")
   static public inline function lazy<P1, R>(f: P1->R, p1: P1): Thunk<R> {
     var r : R   = null;
-    
+
     return function() {
-      return if (r == null) { 
+      return if (r == null) {
         r = untyped (false);//<---
-        r = f(p1); r; 
+        r = f(p1); r;
       }else{
         r;
       }
+    }
+  }
+  static public inline function defer<P1, R>(f: P1->R, p1: P1): Thunk<R> {
+    return function(){
+      return f(p1);
     }
   }
   /**
@@ -237,7 +245,7 @@ class Functions1 {
     return Reflect.compareMethods(a,b);
   }
 }
-class Functions2 {  
+class Functions2 {
   /**
 		Places parameter 1 at the back.
 	**/
@@ -270,7 +278,7 @@ class Functions2 {
   public static function returning<P1, P2, R1, R2>(f: P1->P2->R1, thunk: Thunk<R2>): P1->P2->R2 {
     return function(p1, p2) {
       f(p1, p2);
-      
+
       return thunk();
     }
   }
@@ -307,7 +315,7 @@ class Functions2 {
 	**/
   public static function lazy<P1, P2, R>(f: P1->P2->R, p1: P1, p2: P2): Thunk<R> {
     var r : R = null;
-    
+
     return function() {
       return r == null ? r = f(p1, p2) : r;
     }
@@ -368,7 +376,7 @@ class Functions3 {
   public static function returning<P1, P2, P3, R1, R2>(f: P1->P2->P3->R1, thunk: Thunk<R2>): P1->P2->P3->R2 {
     return function(p1, p2, p3) {
       f(p1, p2, p3);
-      
+
       return thunk();
     }
   }
@@ -406,7 +414,7 @@ class Functions3 {
 	**/
   public static function lazy<P1, P2, P3, R>(f: P1->P2->P3->R, p1: P1, p2: P2, p3: P3): Thunk<R> {
     var r : R = null;
-    
+
     return function() {
       return if (r == null) { r = f(p1, p2, p3); r; } else r;
     }
@@ -426,7 +434,7 @@ class Functions3 {
     return Reflect.compareMethods(a,b);
   }
 }
-class Functions4 {  
+class Functions4 {
   /**
 		Pushes first parameter to the last
 	**/
@@ -459,7 +467,7 @@ class Functions4 {
   public static function returning<P1, P2, P3, P4, R1, R2>(f: P1->P2->P3->P4->R1, thunk: Thunk<R2>): P1->P2->P3->P4->R2 {
     return function(p1, p2, p3, p4) {
       f(p1, p2, p3, p4);
-      
+
       return thunk();
     }
   }
@@ -492,7 +500,7 @@ class Functions4 {
 	**/
   public static function lazy<P1, P2, P3, P4, R>(f: P1->P2->P3->P4->R, p1: P1, p2: P2, p3: P3, p4: P4): Thunk<R> {
     var r : R = null;
-    
+
     return function() {
       return if (r == null) { r = f(p1, p2, p3, p4); r; } else r;
     }
@@ -512,7 +520,7 @@ class Functions4 {
     return Reflect.compareMethods(a,b);
   }
 }
-class Functions5 {  
+class Functions5 {
   static public function ccw<P1, P2, P3, P4, P5, R>(f: P1->P2->P3->P4->P5->R):P2->P3->P4->P5->P1->R{
     return function(p2:P2, p3:P3, p4:P4, p5:P5, p1:P1){
       return f(p1, p2, p3, p4, p5);
@@ -542,7 +550,7 @@ class Functions5 {
   public static function returning<P1, P2, P3, P4, P5, R1, R2>(f: P1->P2->P3->P4->P5->R1,thunk: Thunk<R2>): P1->P2->P3->P4->P5->R2 {
     return function(p1, p2, p3, p4, p5) {
       f(p1, p2, p3, p4, p5);
-      
+
       return thunk();
     }
   }
@@ -566,7 +574,7 @@ class Functions5 {
   /**
     Takes a function with one parameter that returns a function of one parameter, and produces
     a function that takes two parameters that calls the two functions sequentially,
-  
+
   **/
   public static function uncurry<P1, P2, P3, P4, P5, R>(f:(P1->(P2->(P3->(P4->(P5-> R)))))): P1->P2->P3->P4->P5->R {
     return function(p1: P1, p2: P2, p3: P3, p4: P4, p5: P5) {
@@ -578,7 +586,7 @@ class Functions5 {
 	**/
   public static function lazy<P1, P2, P3, P4, P5, R>(f: P1->P2->P3->P4->P5->R, p1: P1, p2: P2, p3: P3, p4: P4, p5: P5): Thunk<R> {
     var r : R = null;
-    
+
     return function() {
       return if (r == null) { r = f(p1, p2, p3, p4, p5); r; } else r;
     }

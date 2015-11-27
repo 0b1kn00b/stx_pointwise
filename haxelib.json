@@ -9,11 +9,12 @@
     "contributors": [
         "0b1kn00b"
     ],
-    "releasenote": "updated for tink_core rc.7",
-    "version": "0.6.5",
+    "releasenote": "removed Pairs, reinstated Tuple2",
+    "version": "0.7.0",
     "url": "https://github.com/0b1kn00b/stx_pointwise",
     "dependencies": {
-        "tink_core": "1.0.0-rc.7"
+        "tink_core": "1.0.0-rc.7",
+        "tuple": ""
     },
     "classPath": "src/main/haxe"
 }

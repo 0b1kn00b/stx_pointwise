@@ -1,0 +1,7 @@
+-lib compiletime
+-lib stx_tuple
+-lib tink_core
+-cp .
+-cp src/main/haxe
+-xml docs.xml
+-main Imports

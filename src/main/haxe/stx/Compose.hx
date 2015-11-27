@@ -1,6 +1,7 @@
 package stx;
 
-import tink.core.Pair;
+using stx.Tuple;
+
 import tink.core.Either;
 
 import stx.types.*;
@@ -27,12 +28,12 @@ class ComposeDo1{
     Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.
   **/
   @returns("The composite function.")
-  public static function then<P1>(f1:P1->Void, f2:P1->Void):P1->Void {     
-    return function(p1) {       
-      f1(p1);       
+  public static function then<P1>(f1:P1->Void, f2:P1->Void):P1->Void {
+    return function(p1) {
+      f1(p1);
       f2(p1);
-    }   
-  }   
+    }
+  }
 }
 class ComposeDo2{
   /**
@@ -85,6 +86,7 @@ class Compose0{
     }
   }
 }
+
 /**
   Arrowlet class for Functions.
 **/
@@ -96,7 +98,7 @@ class Compose{
     Returns a function that applies `fn1` then `fn2` on the input
   **/
   static public function then<A,B,C>(fn1:A->B,fn2:B->C):A->C{
-    return 
+    return
       function(a:A):C{
         return fn2(fn1(a));
       }
@@ -104,44 +106,44 @@ class Compose{
   /**
     Returns a function that applies `fn1` to the left hand side of a Tuple
   **/
-  static public function first<A,B,C,D>(fn1:A->C):Pair<A,B>->Pair<C,B>{
-    return 
-      function(t:Pair<A,B>){
-        return new Pair(fn1(t.a),t.b);
+  static public function first<A,B,C,D>(fn1:A->C):Tuple2<A,B>->Tuple2<C,B>{
+    return
+      function(t:Tuple2<A,B>){
+        return new Tup2(fn1(t.fst()),t.snd());
       }
   }
   /**
     Returns a function that applies `fn1` to the right hand side of a Tuple
   **/
-  static public function second<A,B,C,D>(fn1:B->D):Pair<A,B>->Pair<A,D>{
-    return 
-      function(t:Pair<A,B>){
-        return new Pair(t.a,fn1(t.b));
-      } 
+  static public function second<A,B,C,D>(fn1:B->D):Tuple2<A,B>->Tuple2<A,D>{
+    return
+      function(t:Tuple2<A,B>){
+        return new Tup2(t.fst(),fn1(t.snd()));
+      }
   }
-  static public function pair<A,B,C,D>(fn1:A->C,fn2:B->D):Pair<A,B>->Pair<C,D>{
-    return 
+  static public function pair<A,B,C,D>(fn1:A->C,fn2:B->D):Tuple2<A,B>->Tuple2<C,D>{
+    return
       function(t){
-        return new Pair(fn1(t.a),fn2(t.b));
+        return new Tup2(fn1(t.fst()),fn2(t.snd()));
       }
   }
   /**
     Returns a function that applies a function on the lhs of a tuple to the value on the rhs.
   **/
-  static public function application<A,I,O>(fn:A->Pair<I->O,I>):A->O{
-    return 
+  static public function application<A,I,O>(fn:A->Tuple2<I->O,I>):A->O{
+    return
       function(v:A):O{
         var t = fn(v);
-        return t.a(t.b);
+        return t.fst()(t.snd());
       }
   }
   /**
     Returns a function that applies a function to the Left value of an Either.
   **/
   static public function left<A,B,C>(fn:A->C):Either<A,B>->Either<C,B>{
-    return 
+    return
       function(e:Either<A,B>):Either<C,B>{
-        return 
+        return
           switch (e) {
             case Left(v)  : Left(fn(v));
             case Right(v) : Right(v);
@@ -152,9 +154,9 @@ class Compose{
     Returns a function that applies a function to the Right value of an Either.
   **/
   static public function right<A,B,D>(fn:B->D):Either<A,B>->Either<A,D>{
-    return 
+    return
       function(e:Either<A,B>):Either<A,D>{
-        return 
+        return
           switch (e) {
             case Left(v)  : Left(v);
             case Right(v) : Right(fn(v));
@@ -177,12 +179,12 @@ class Compose{
     return cast function(x) return x;
   }
   /**
-    Returns a function that produces a `Pair` from a value.
+    Returns a function that produces a `Tuple2` from a value.
   **/
-  static public function fan<I,O>(a:I->O):I->Pair<O,O>{
+  static public function fan<I,O>(a:I->O):I->Tuple2<O,O>{
     return a.then(
         function(x){
-          return new Pair(x,x);
+          return new Tup2(x,x);
         }
       );
   }
@@ -192,22 +194,22 @@ class Compose{
   @:noUsing static public function pure<A,B>(v:B):A->B{
     return function(x:A){ return v; }
   }
-  static public function split<A,B,C>(split_:A->B,_split:A->C):A->Pair<B,C>{ 
+  static public function split<A,B,C>(split_:A->B,_split:A->C):A->Tuple2<B,C>{
     return function(x){
-        return new Pair( split_(x), _split(x) );
+        return new Tup2( split_(x), _split(x) );
       }
   }
-  static public function tie<A,B,C>(bindl:A->C,bindr:Pair<A,C>->B):A->B{
+  static public function tie<A,B,C>(bindl:A->C,bindr:Tuple2<A,C>->B):A->B{
     return unit().split(bindl).then( bindr );
   }
-  static public function pinch<A,B,C>(fn0:Pair<A,A>->Pair<B,C>):A->Pair<B,C>{
+  static public function pinch<A,B,C>(fn0:Tuple2<A,A>->Tuple2<B,C>):A->Tuple2<B,C>{
     return function(x:A){
-        return fn0(new Pair(x,x));
+        return fn0(new Tup2(x,x));
       }
   }
-  static public function both<A,B>(fn:A->B):Pair<A,A>->Pair<B,B>{
+  static public function both<A,B>(fn:A->B):Tuple2<A,A>->Tuple2<B,B>{
     return function(t){
-        return new Pair(fn(t.a),fn(t.b));
+        return new Tup2(fn(t.fst()),fn(t.snd()));
       }
   }
   /**
@@ -229,7 +231,7 @@ class Compose{
   static public function fromOption<A,B>(fn:A->Option<B>):Option<A>->Option<B>{
     return function(opt:Option<A>):Option<B>{
       return switch (opt) {
-        case Some(v) : 
+        case Some(v) :
           var o = fn(v);
           if(o == null){
             None;
@@ -259,7 +261,7 @@ class Compose2{
     Returns a function that calls `f2` with the output of `f1`.
   **/
   public static function then<U, V, W, X>(f1: U->V->W, f2: W->X): U->V->X {
-    return 
+    return
       function(u:U,v:V):X{
         return f2(f1(u,v));
       }
