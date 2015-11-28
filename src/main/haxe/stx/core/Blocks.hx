@@ -1,5 +1,6 @@
 package stx.core;
 
+import stx.data.Block;
 /**
   Helpers for working with Blocks.
 **/

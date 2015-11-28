@@ -99,4 +99,20 @@ class Binary {
   public static function equals<P1,P2,R>(a:P1->P2->R,b:P1->P2->R) {
     return Reflect.compareMethods(a,b);
   }
+
+  /**
+    Calls only first, returning Unary function
+  **/
+  static public function c0<P0,P1,R>(m:P0->P1->R,p0:P0):P1->R{
+    var fn : P0 -> P1 -> R = m;
+    return fn.bind(p0);
+  }
+  /**
+    Calls only second parameter, returning Unary function
+  **/
+  static public function c1<P0,P1,R>(m:P0->P1->R,p1:P1):P0->R{
+    var fn : P0 -> P1 -> R = m;
+    return fn.bind(_,p1);
+  }
+
 }
