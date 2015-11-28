@@ -1,44 +1,33 @@
 function createCookie(name, value, days) {
-	if (days) {
-		var date = new Date();
-		date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-		var expires = "; expires=" + date.toGMTString();
-	} else var expires = "";
-	document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
+	localStorage.setItem(name, value);
 }
 
 function readCookie(name) {
-	var nameEQ = escape(name) + "=";
-	var ca = document.cookie.split(';');
-	for (var i = 0; i < ca.length; i++) {
-		var c = ca[i];
-		while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-		if (c.indexOf(nameEQ) == 0) return unescape(c.substring(nameEQ.length, c.length));
-	}
-	return null;
+	return localStorage.getItem(name);
 }
 
 function toggleInherited(el) {
 	var toggle = $(el).closest(".toggle");
 	toggle.toggleClass("toggle-on");
 	if (toggle.hasClass("toggle-on")) {
-		$("img", toggle).attr("src", dox.rootPath + "/triangle-opened.png");
+		$("i", toggle).removeClass("fa-arrow-circle-o-right").addClass("fa-arrow-circle-o-down");
 	} else {
-		$("img", toggle).attr("src", dox.rootPath + "/triangle-closed.png");
+		$("i", toggle).addClass("fa-arrow-circle-o-right").removeClass("fa-arrow-circle-o-down");
 	}
+    return false;
 }
 
 function toggleCollapsed(el) {
 	var toggle = $(el).closest(".expando");
-	// console.log(toggle);
 	toggle.toggleClass("expanded");
 
 	if (toggle.hasClass("expanded")) {
-		$("img", toggle).first().attr("src", dox.rootPath + "/triangle-opened.png");
+		$(toggle).find("i").first().removeClass("fa-arrow-circle-o-right").addClass("fa-arrow-circle-o-down");
 	} else {
-		$("img", toggle).first().attr("src", dox.rootPath + "/triangle-closed.png");
+		$(toggle).find("i").first().addClass("fa-arrow-circle-o-right").removeClass("fa-arrow-circle-o-down");
 	}
 	updateTreeState();
+    return false;
 }
 
 function updateTreeState(){
@@ -52,86 +41,90 @@ function updateTreeState(){
 
 var filters = {};
 
-function selectPlatform(e) {
-	setPlatform($(e.target).parent().attr("data"));
-}
-
 function selectVersion(e) {
 	setVersion($(e.target).parent().attr("data"));
 }
 
 function setPlatform(platform) {
-	selectItem("platform", platform);
-	
+	createCookie("platform", platform);
+	$("#select-platform").val(platform);
+
 	var styles = ".platform { display:none }";
 	var platforms = dox.platforms;
-
-	for (var i = 0; i < platforms.length; i++)
-	{
+	if (platform == "flash" || platform == "js") {
+		styles += ".package-sys { display:none; } ";
+	}
+	for (var i = 0; i < platforms.length; i++) {
 		var p = platforms[i];
-		
-		if (platform == "sys")
-		{
-			if (p != "flash" && p != "flash8" && p != "js")
-			{
+		if (platform == "sys") {
+			if (p != "flash" && p != "js")	{
 				styles += ".platform-" + p + " { display:inherit } ";
 			}
 		}
 		else
 		{
-			if (platform == "all" || p == platform)
-			{
+			if (platform == "all" || p == platform)	{
 				styles += ".platform-" + p + " { display:inherit } ";
 			}
 		}
 	}
-	
-	if (platform != "flash" && platform != "flash8" && platform != "js")
-	{
+
+	if (platform != "flash" && platform != "js") {
 		styles += ".platform-sys { display:inherit } ";
 	}
 
 	$("#dynamicStylesheet").text(styles);
 }
-
+/*
 function setVersion(version) {
-	selectItem("version", version);
+	createCookie("version", version);
 }
-
-function selectItem(filter, value)
-{
-	var dropdown = $("#select-" + filter);
-	var item = $("li[data='"+value+"']", dropdown);
-	var label = $("a", item).text();
-	$(".dropdown-toggle", dropdown).html(label + '<b class="caret">');
-	$("li.active", dropdown).removeClass("active");
-	item.addClass("active");
-	createCookie(filter, value);
-}
+*/
 
 $(document).ready(function(){
 	$("#nav").html(navContent);
 	var treeState = readCookie("treeState");
+
+	$("#nav .expando").each(function(i, e){
+		$("i", e).first().addClass("fa-arrow-circle-o-right").removeClass("fa-arrow-circle-o-down");
+	});
+
+	$(".treeLink").each(function() {
+		this.href = this.href.replace("::rootPath::", dox.rootPath);
+	});
+
 	if (treeState != null)
 	{
 		var states = JSON.parse(treeState);
 		$("#nav .expando").each(function(i, e){
 			if (states[i]) {
 				$(e).addClass("expanded");
-				$("img", e).first().attr("src", dox.rootPath + "/triangle-opened.png");
+				$("i", e).first().removeClass("fa-arrow-circle-o-right").addClass("fa-arrow-circle-o-down");
 			}
 		});
 	}
-	$("#select-platform li a").on("click", selectPlatform);
-	$("#select-version li a").on("click", selectVersion);
 	$("head").append("<style id='dynamicStylesheet'></style>");
 
 	setPlatform(readCookie("platform") == null ? "all" : readCookie("platform"));
-	setVersion(readCookie("version") == null ? "3_0" : readCookie("version"));
+	//setVersion(readCookie("version") == null ? "3_0" : readCookie("version"));
 
-	$("#search").on("keyup", function(e){
+	$("#search").on("input", function(e){
 		searchQuery(e.target.value);
 	});
+
+	$("#select-platform").selectpicker().on("change", function(e){
+		var value = $(":selected", this).val();
+		setPlatform(value);
+	});
+
+	$("#nav a").each(function () {
+		if (this.href == location.href) {
+			$(this.parentElement).addClass("active");
+		}
+	});
+
+    // Because there is no CSS parent selector
+    $("code.prettyprint").parents("pre").addClass("example");
 });
 
 function searchQuery(query) {
@@ -145,11 +138,11 @@ function searchQuery(query) {
 		});
 		return;
 	}
-	
+
 	console.log("Searching: "+query);
 
 	var searchSet = false;
-	
+
 	$("#nav").addClass("searching");
 	$("#nav li").each(function(index, element){
 		var e = $(element);
@@ -157,17 +150,29 @@ function searchQuery(query) {
 			var content = e.attr("data_path").toLowerCase();
 			var match = searchMatch(content, query);
 			if (match && !searchSet) {
-				var url = dox.rootPath + "/" + e.attr("data_path").split(".").join("/") + ".html";
+				var url = dox.rootPath + e.attr("data_path").split(".").join("/") + ".html";
 				$("#searchForm").attr("action", url);
 				searchSet = true;
 			}
 			e.css("display", match ? "" : "none");
 		}
 	});
-	
+
 }
 
 function searchMatch(text, query) {
-	// I should be working at Google.
-	return text.indexOf(query) > -1;
+	var textParts = text.split(".");
+	var queryParts = query.split(".");
+	if (queryParts.length > textParts.length) {
+		return false;
+	}
+	if (queryParts.length == 1) {
+		return text.indexOf(query) > -1;
+	}
+	for (i = 0; i < queryParts.length; ++i) {
+		if (textParts[i].indexOf(queryParts[i]) != 0) { // starts with
+			return false;
+		}
+	}
+	return true;
 }
