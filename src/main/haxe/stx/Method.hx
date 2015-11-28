@@ -35,6 +35,9 @@ class Methods1{
   public function new(self){
     this = self;
   }
+  /**
+    Curry the
+  **/
   public function c0(p0){
     return Methods2.c0(this,p0);
   }

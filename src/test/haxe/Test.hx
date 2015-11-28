@@ -1,9 +1,17 @@
-import stx.Compose;
+using stx.Pointwise;
 
-using stx.Method;
 
 class Test{
   static function main(){
-    var fn : M2<Int,Int,Int> = function(a,b){ return a + b; }
+      var fn = function(x:Int) {return x+1; };
+
+      var fn0 = fn.then(fn);
+
+      trace(fn0(0));
+
+      var a = true;
+
+      var b = a.toThunk();
+
   }
 }

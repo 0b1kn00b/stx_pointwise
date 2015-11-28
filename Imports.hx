@@ -1,8 +1,9 @@
 package;
 
 import tink.CoreApi;
-import stx.Functions;
-import stx.Compose;
+
+import stx.Pointwise;
+
 
 class Imports{
   static function main(){

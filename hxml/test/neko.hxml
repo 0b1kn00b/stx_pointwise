@@ -5,3 +5,4 @@
 
 -neko test/neko_test.n
 -main Test
+-cmd neko test/neko_test.n

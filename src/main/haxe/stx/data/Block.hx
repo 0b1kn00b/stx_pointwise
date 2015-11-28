@@ -1,3 +1,3 @@
-package stx.types;
+package stx.data;
 
 typedef Block = Void->Void;
