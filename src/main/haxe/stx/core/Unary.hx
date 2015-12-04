@@ -25,17 +25,6 @@ class Unary {
       }
   }
   /**
-    Produces a function that produces a function for each parameter in the originating function. When these
-    functions have been called, the result of the original function is produced.
-  **/
-  public static function curry<P1, R>(f: P1->R) {
-    return function() {
-      return function(p1: P1) {
-        return f(p1);
-      }
-    }
-  }
-  /**
     Produces a function that ignores any error the occurs whilst
     calling the input function.
   **/

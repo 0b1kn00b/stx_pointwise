@@ -3,19 +3,159 @@ stx_pointwise
 
 Haxe function composition library.
 
-Documentation:
+Full Documentation:
 
 http://0b1kn00b.github.io/stx_pointwise/
 
-#Function Composition Library for Haxe
+# Function Composition Library for Haxe
 
-This library contains two modules: `stx.Functions` and `stx.Compose`.
 
-`stx.Function` contains utilities for chopping and changing the form of a function. Currying, manipulating argument order, performing effects, memoization, catching errors and so forth.
+`using stx.Pointwise` pulls in all the necessary mixin functions. Currying, manipulating argument order, performing effects, memoization, catching errors, composition and so forth.
 
-`stx.Compose` provides the `Arrow` of synchronous functions and provides tools for composition.
+`stx.data.*` contains type definitions
 
-##stx.Compose
+`stx.core.*` contains static implementations
+
+Function arities are named.
+
+###### Block
+* 0 inputs, 0 outputs.
+
+###### Thunk
+* 0 input, 1 output
+
+##### `stx.data.Unary`
+* 1 input, 1 output
+
+
+    public static function catching<A,B>(fn:A->B):A->Outcome<B,Error>
+
+Applies a Thunk and returns Either an error or it's result
+
+
+    public static function swallow<A>(f: A->Void): A->Void
+
+Produces a function that ignores any error the occurs whilst
+calling the input function.
+
+
+    public static function swallowWith<P1, R>(f: P1->R, d: R): P1->R
+
+Produces a function that ignores
+any error the occurs whilst calling the input function, and produces `d` if
+error occurs.
+
+
+    public static function returning<P1, R1, R2>(f: P1->R1, thunk: Thunk<R2>) : P1->R2
+
+Produces a function that calls `f`, ignores its result, and returns the result produced by thunk.
+
+
+    static public inline function lazy<P1, R>(f: P1->R, p1: P1): Thunk<R>
+
+Produces a function that calls `f` with the given parameters `p1....pn`,
+calls this function only once and memoizes the result.
+
+    static public inline function defer<P1, R>(f: P1->R, p1: P1)
+
+As with lazy, but calls the wrapped function every time it is called.
+
+    public static function enclose<P1, R>(f: P1->R): P1->Void
+
+Produces a function that calls `f`, ignoring the result.
+
+    equals<P1,R>(a:P1->R,b:P1->R):Bool
+
+Compares function identity.
+
+##### `stx.data.Binary`
+* 2 inputs, 1 output
+
+
+    static public function rotate<P1, P2, R>(f:P1->P2->R): P2->P1->R
+
+Places parameter 1 at the back.
+
+    public static function swallow<P1, P2>(f: P1->P2->Void): P1->P2->Void
+
+Produces a function that ignores any error the occurs whilst calling the input function.
+
+    public static function swallowWith<P1, P2, R>(f: P1->P2->R, d: R): P1->P2->R
+
+Produces a function that ignores any error the occurs whilst calling the input function, and produces `d` if error occurs.
+
+
+    public static function returning<P1, P2, R1, R2>(f: P1->P2->R1, thunk: Thunk<R2>): P1->P2->R2 {
+
+Produces a function that calls `f`, ignores its result, and returns the result produced by thunk.
+
+
+    public static function flip<P1, P2, R>(f: P1->P2->R): P2->P1->R{
+
+Produces a function which takes the parameters of `f` in a flipped order.
+
+
+    public static function curry<P1, P2, R>(f: P1->P2->R): (P1->(P2->R))
+
+Produces a function that produces a function for each parameter in the originating function. When these
+functions have been called, the result of the original function is returned.
+
+
+    public static function uncurry<P1, P2, R>(f: (P1->(P2->R))): P1->P2->R
+
+Takes a function with one parameter that returns a function of one parameter, and produces
+a function that takes two parameters that calls the two functions sequentially,
+
+
+    public static function lazy<P1, P2, R>(f: P1->P2->R, p1: P1, p2: P2): Thunk<R>;
+
+Produces a function that calls `f` with the given parameters `p1....pn`, and memoizes the result.
+
+    static public function defer<P1, P2, R>(f: P1->P2->R, p1 : P1, p2 : P2): Thunk<R>;
+
+As with lazy, but calls the wrapped function every time it is called.  
+
+
+    public static function enclose<P1, P2, R>(f: P1->P2->R): P1->P2->Void
+
+Produces a function that calls `f`, ignoring the result.
+
+
+    public static function equals<P1,P2,R>(a:P1->P2->R,b:P1->P2->R)
+
+Compares function identity.
+
+static public function c0<P0,P1,R>(m:P0->P1->R,p0:P0):P1->R
+
+  Calls only first parameter, returning Unary function
+
+static public function c1<P0,P1,R>(m:P0->P1->R,p1:P1):P0->R
+
+  Calls only second parameter, returning Unary function
+
+##### Ternary
+* 3 inputs, 1 output
+
+##### Quaternary
+* 4 inputs, 1 output
+
+##### Quaternary
+* 4 inputs, 1 output
+
+##### Quinary
+* 5 inputs, 1 output
+
+##### Senary
+* 6 inputs, 1 output
+
+###Swallow
+###Enclose
+###Curry
+###Uncurry
+###Lazy
+###Memoize
+###Catching
+
 
 In functional languages, functions are first class citizens: meaning a function can be accepted as a  function argument, and functions can be returned from functions.
 
@@ -82,16 +222,3 @@ This is most useful where the functions are asynchronous, see arrowlets for deta
    Takes functions `A->B` and `A->C` and produces a function `A->Tuple2<B,C>`. The input `A` is passed to the first function, then the second.
 ###Repeat
   Takes a function `A->Either<A,B>` and runs it while the output is `Left(a:A)` until it produces `Right(b:B)`, returning that result.
-
-##stx.Functions
-
-`stx.Functions` has a class for each function arity 0 to 5.  
-
-###Swallow
-###Enclose
-###Curry
-###Uncurry
-###Ccw
-###Lazy
-###Memoize
-###Catching

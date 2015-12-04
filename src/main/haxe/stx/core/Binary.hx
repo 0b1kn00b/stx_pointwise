@@ -6,7 +6,7 @@ class Binary {
   /**
 		Places parameter 1 at the back.
 	**/
-  static public function ccw<P1, P2, R>(f:P1->P2->R): P2->P1->R {
+  static public function rotate<P1, P2, R>(f:P1->P2->R): P2->P1->R {
     return function(p2:P2, p1:P1){
         return f(p1,p2);
       }
@@ -68,7 +68,7 @@ class Binary {
     }
   }
   /**
-		Produdes a function that calls `f` with the given parameters `p1....pn`, and caches the result
+		Procudes a function that calls `f` with the given parameters `p1....pn`, and caches the result
 	**/
   public static function lazy<P1, P2, R>(f: P1->P2->R, p1: P1, p2: P2): Thunk<R> {
     var r : R = null;
@@ -101,7 +101,7 @@ class Binary {
   }
 
   /**
-    Calls only first, returning Unary function
+    Calls only first parameter, returning Unary function
   **/
   static public function c0<P0,P1,R>(m:P0->P1->R,p0:P0):P1->R{
     var fn : P0 -> P1 -> R = m;

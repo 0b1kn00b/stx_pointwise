@@ -52,7 +52,7 @@ class Thunks {
   **/
   @params("The Thunk to call once")
   @returns("A Thunk which will call the input Thunk once.")
-  static public function memoize<T>(t: Thunk<T>): Thunk<T> {
+  static public function lazy<T>(t: Thunk<T>): Thunk<T> {
     var evaled = false;
     var result = null;
 
