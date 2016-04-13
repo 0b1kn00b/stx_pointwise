@@ -1,0 +1,9 @@
+package ah.figah;
+
+typedef Field<T> = {
+  @:optional var indexed : Bool;
+  @:optional var auto : T;
+  @:optional var required : Bool;
+  var name : String;
+  var type : Type;
+}

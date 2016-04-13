@@ -1,0 +1,20 @@
+{
+    "name": "pointwise",
+    "license": "MIT",
+    "tags": [
+        "cross",
+        "functional"
+    ],
+    "description": "Functional composition tools. Haxe 3.1.* required.",
+    "contributors": [
+        "0b1kn00b"
+    ],
+    "releasenote": "Compose.link, to keep keys and values together in processing chains",
+    "version": "0.8.5",
+    "url": "https://github.com/0b1kn00b/stx_pointwise",
+    "dependencies": {
+        "tink_core": "1.0.0-rc.11",
+        "stx_tuple": ""
+    },
+    "classPath": "src/main/haxe"
+}

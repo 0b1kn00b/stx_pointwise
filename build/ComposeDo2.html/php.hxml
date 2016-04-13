@@ -1,0 +1,7 @@
+-cp src/main/haxe
+-cp src/test/haxe
+
+-lib tink_core
+
+-php test/php
+-main Test

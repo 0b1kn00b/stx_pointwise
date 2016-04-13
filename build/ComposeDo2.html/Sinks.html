@@ -1,0 +1,11 @@
+package ah.figah.schema;
+
+/**
+  Represents the possible types representable as a Schema.
+**/
+enum Type{
+  TValue(v:Value);
+  TArray(arr:Array);
+  TObject(obj:TObject);
+  TLink;
+}

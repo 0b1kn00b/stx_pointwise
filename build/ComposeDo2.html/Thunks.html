@@ -1,0 +1,13 @@
+package ah.figah.schema.flat;
+
+/**
+  Represents the possible types of simple values available to Schema, along
+  with a default value;
+**/
+enum FValue{
+  FInt(?auto:Int);
+  FFloat(?auto:Float);
+  FString(?auto:String);
+  FBool(?auto:Bool);
+  FDate(?auto:Bool);
+}

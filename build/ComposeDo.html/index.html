@@ -1,0 +1,86 @@
+package ah.figah.schema.flat;
+
+using stx.Strings;
+using stx.Pointwise;
+import stx.core.Thunks.reply;
+using stx.Tuple;
+using stx.Arrays;
+
+import ah.figah.Signature in ASignature;
+import ah.figah.data.Signature;
+
+import ah.figah.schema.flat.Unique;
+import ah.figah.schema.flat.Type;
+import ah.figah.schema.flat.Value;
+import ah.figah.schema.flat.data.Type in TType;
+
+class Stamps{
+  static public function schema(path:ObjectPath,type:Type,?opt:{ ?many : Bool, ?owned : Bool, ?doc : String, ?indexed : Bool, ?unique : Unique } ):Schema{
+    if (opt == null){
+      opt = {};
+    }
+    var many        = opt.many        == null ? false     : opt.many;
+    var owned       = opt.owned       == null ? false     : opt.owned;
+    var doc         = opt.doc         == null ? ""        : opt.doc;
+    var indexed     = opt.indexed     == null ? false     : opt.indexed;
+    var unique      = opt.unique      == null ? NotUnique : opt.unique;
+
+    var s : Schema = {
+      ident        : {
+        name : path.leaf(),
+        pack : path.branches().join(".")
+      },
+      type         : type,
+      many         : many,
+      owned        : owned,
+      doc          : doc,
+      indexed      : indexed,
+      unique       : unique
+    };
+    return s;
+  }
+  static public function fromSignature(sig:ASignature):Array<Schema>{
+    var out = [];
+    function handler(ns:String,sig:ASignature):Array<Schema>{
+      return switch(sig){
+        case SigRecord(arr) :
+          arr.flatMap(
+              reply.second()
+              .then(
+                function(str){
+                  return if(ns == null || ns == ""){
+                    str;
+                  }else{
+                    '$ns.$str';
+                  }
+                }.first()
+              ).then(handler.tupled())
+          );
+        //Array<Tuple2<String,Thunk<ASignature>>>
+        case SigScalar(s)   :
+          var t = switch(s){
+            case TInt     : VInt();
+            case TFloat   : VFloat();
+            case TBool    : VBool();
+            case TString  : VString();
+          }
+          [
+            Stamps.schema(ns,TType.TValue(t))
+          ];
+        case SigArray(fn)   :
+          //How do I reference a sub object?
+          var t    = fn();
+
+          return switch(t){
+            case SigScalar(_) :
+              [Stamps.schema(ns,TType.TLink(ns),{ many : true })];
+            default :
+              [Stamps.schema(ns,TType.TLink(ns),{ many : true })].concat(handler(ns,t));
+          }
+        case SigUnknown     : [];
+      }
+    }
+    var o = handler("",sig);
+    return o;
+  }
+}

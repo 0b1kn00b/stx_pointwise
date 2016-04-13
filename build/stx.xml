@@ -1,0 +1,3769 @@
+<haxe>
+	<class path="Array" params="T" file="/cygdrive/c/world/prj/haxe/haxe/std/Array.hx" extern="1">
+		<length public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The length of `this` Array.</haxe_doc>
+		</length>
+		<concat public="1" set="method">
+			<f a="a">
+				<c path="Array"><c path="Array.T"/></c>
+				<c path="Array"><c path="Array.T"/></c>
+			</f>
+			<haxe_doc>Returns a new Array by appending the elements of `a` to the elements of
+		`this` Array.
+
+		This operation does not modify `this` Array.
+
+		If `a` is the empty Array `[]`, a copy of `this` Array is returned.
+
+		The length of the returned Array is equal to the sum of `this.length`
+		and `a.length`.
+
+		If `a` is `null`, the result is unspecified.</haxe_doc>
+		</concat>
+		<join public="1" set="method">
+			<f a="sep">
+				<c path="String"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns a string representation of `this` Array, with `sep` separating
+		each element.
+
+		The result of this operation is equal to `Std.string(this[0]) + sep +
+		Std.string(this[1]) + sep + ... + sep + Std.string(this[this.length-1])`
+
+		If `this` is the empty Array `[]`, the result is the empty String `""`.
+		If `this` has exactly one element, the result is equal to a call to
+		`Std.string(this[0])`.
+
+		If `sep` is null, the result is unspecified.</haxe_doc>
+		</join>
+		<pop public="1" set="method">
+			<f a=""><t path="Null"><c path="Array.T"/></t></f>
+			<haxe_doc>Removes the last element of `this` Array and returns it.
+
+		This operation modifies `this` Array in place.
+
+		If `this` has at least one element, `this.length` will decrease by 1.
+
+		If `this` is the empty Array `[]`, null is returned and the length
+		remains 0.</haxe_doc>
+		</pop>
+		<push public="1" set="method">
+			<f a="x">
+				<c path="Array.T"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Adds the element `x` at the end of `this` Array and returns the new
+		length of `this` Array.
+
+		This operation modifies `this` Array in place.
+
+		`this.length` increases by 1.</haxe_doc>
+		</push>
+		<reverse public="1" set="method">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc><![CDATA[Reverse the order of elements of `this` Array.
+
+		This operation modifies `this` Array in place.
+
+		If `this.length < 2`, `this` remains unchanged.]]></haxe_doc>
+		</reverse>
+		<shift public="1" set="method">
+			<f a=""><t path="Null"><c path="Array.T"/></t></f>
+			<haxe_doc>Removes the first element of `this` Array and returns it.
+
+		This operation modifies `this` Array in place.
+
+		If `this` has at least one element, `this`.length and the index of each
+		remaining element is decreased by 1.
+
+		If `this` is the empty Array `[]`, `null` is returned and the length
+		remains 0.</haxe_doc>
+		</shift>
+		<slice public="1" set="method">
+			<f a="pos:?end">
+				<x path="Int"/>
+				<x path="Int"/>
+				<c path="Array"><c path="Array.T"/></c>
+			</f>
+			<haxe_doc>Creates a shallow copy of the range of `this` Array, starting at and
+		including `pos`, up to but not including `end`.
+
+		This operation does not modify `this` Array.
+
+		The elements are not copied and retain their identity.
+
+		If `end` is omitted or exceeds `this.length`, it defaults to the end of
+		`this` Array.
+
+		If `pos` or `end` are negative, their offsets are calculated from the
+		end	of `this` Array by `this.length + pos` and `this.length + end`
+		respectively. If this yields a negative value, 0 is used instead.
+
+		If `pos` exceeds `this.length` or if `end` exceeds or equals `pos`,
+		the result is `[]`.</haxe_doc>
+		</slice>
+		<sort public="1" set="method">
+			<f a="f">
+				<f a=":">
+					<c path="Array.T"/>
+					<c path="Array.T"/>
+					<x path="Int"/>
+				</f>
+				<x path="Void"/>
+			</f>
+			<haxe_doc><![CDATA[Sorts `this` Array according to the comparison function `f`, where
+		`f(x,y)` returns 0 if x == y, a positive Int if x > y and a
+		negative Int if x < y.
+
+		This operation modifies `this` Array in place.
+
+		The sort operation is not guaranteed to be stable, which means that the
+		order of equal elements may not be retained. For a stable Array sorting
+		algorithm, `haxe.ds.sort.MergeSort.sort()` can be used instead.
+
+		If `f` is null, the result is unspecified.]]></haxe_doc>
+		</sort>
+		<splice public="1" set="method">
+			<f a="pos:len">
+				<x path="Int"/>
+				<x path="Int"/>
+				<c path="Array"><c path="Array.T"/></c>
+			</f>
+			<haxe_doc><![CDATA[Removes `len` elements from `this` Array, starting at and including
+		`pos`, an returns them.
+
+		This operation modifies `this` Array in place.
+
+		If `len` is < 0 or `pos` exceeds `this`.length, the result is the empty
+		Array [].
+
+		If `pos` is negative, its value is calculated from the end	of `this`
+		Array by `this.length + pos`. If this yields a negative value, 0 is
+		used instead.
+
+		If the sum of the resulting values for `len` and `pos` exceed
+		`this.length`, this operation will affect the elements from `pos` to the
+		end of `this` Array.
+
+		The length of the returned Array is equal to the new length of `this`
+		Array subtracted from the original length of `this` Array. In other
+		words, each element of the original `this` Array either remains in
+		`this` Array or becomes an element of the returned Array.]]></haxe_doc>
+		</splice>
+		<toString public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Returns a string representation of `this` Array.
+
+		The result will include the individual elements' String representations
+		separated by comma. The enclosing [ ] may be missing on some platforms,
+		use Std.string() to get a String representation that is consistent
+		across platforms.</haxe_doc>
+		</toString>
+		<unshift public="1" set="method">
+			<f a="x">
+				<c path="Array.T"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Adds the element `x` at the start of `this` Array.
+
+		This operation modifies `this` Array in place.
+
+		`this.length` and the index of each Array element increases by 1.</haxe_doc>
+		</unshift>
+		<insert public="1" set="method">
+			<f a="pos:x">
+				<x path="Int"/>
+				<c path="Array.T"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Inserts the element `x` at the position `pos`.
+
+		This operation modifies `this` Array in place.
+
+		The offset is calculated like so:
+
+		- If `pos` exceeds `this.length`, the offset is `this.length`.
+		- If `pos` is negative, the offset is calculated from the end of `this`
+		  Array, i.e. `this.length + pos`. If this yields a negative value, the
+		  offset is 0.
+		- Otherwise, the offset is `pos`.
+
+		If the resulting offset does not exceed `this.length`, all elements from
+		and including that offset to the end of `this` Array are moved one index
+		ahead.</haxe_doc>
+		</insert>
+		<remove public="1" set="method">
+			<f a="x">
+				<c path="Array.T"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Removes the first occurence of `x` in `this` Array.
+
+		This operation modifies `this` Array in place.
+
+		If `x` is found by checking standard equality, it is removed from `this`
+		Array and all following elements are reindexed acoordingly. The function
+		then returns true.
+
+		If `x` is not found, `this` Array is not changed and the function
+		returns false.</haxe_doc>
+		</remove>
+		<indexOf public="1" set="method">
+			<f a="x:?fromIndex">
+				<c path="Array.T"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns position of the first occurense of `x` in `this` Array, searching front to back.
+
+		If `x` is found by checking standard equality, the function returns its index.
+
+		If `x` is not found, the function returns -1.
+
+		If `fromIndex` is specified, it will be used as the starting index to search from,
+		otherwise search starts with zero index. If it is negative, it will be taken as the
+		offset from the end of `this` Array to compute the starting index. If given or computed
+		starting index is less than 0, the whole array will be searched, if it is greater than
+		or equal to the length of `this` Array, the function returns -1.</haxe_doc>
+		</indexOf>
+		<lastIndexOf public="1" set="method">
+			<f a="x:?fromIndex">
+				<c path="Array.T"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns position of the last occurense of `x` in `this` Array, searching back to front.
+
+		If `x` is found by checking standard equality, the function returns its index.
+
+		If `x` is not found, the function returns -1.
+
+		If `fromIndex` is specified, it will be used as the starting index to search from,
+		otherwise search starts with the last element index. If it is negative, it will be
+		taken as the offset from the end of `this` Array to compute the starting index. If
+		given or computed starting index is greater than or equal to the length of `this` Array,
+		the whole array will be searched, if it is less than 0, the function returns -1.</haxe_doc>
+		</lastIndexOf>
+		<copy public="1" set="method">
+			<f a=""><c path="Array"><c path="Array.T"/></c></f>
+			<haxe_doc>Returns a shallow copy of `this` Array.
+
+		The elements are not copied and retain their identity, so
+		`a[i] == a.copy()[i]` is true for any valid `i`. However,
+		`a == a.copy()` is always false.</haxe_doc>
+		</copy>
+		<iterator public="1" set="method">
+			<f a=""><t path="Iterator"><c path="Array.T"/></t></f>
+			<haxe_doc>Returns an iterator of the Array values.</haxe_doc>
+		</iterator>
+		<map public="1" params="S" set="method">
+			<f a="f">
+				<f a="">
+					<c path="Array.T"/>
+					<c path="map.S"/>
+				</f>
+				<c path="Array"><c path="map.S"/></c>
+			</f>
+			<haxe_doc>Creates a new Array by applying function `f` to all elements of `this`.
+
+		The order of elements is preserved.
+
+		If `f` is null, the result is unspecified.</haxe_doc>
+		</map>
+		<filter public="1" set="method">
+			<f a="f">
+				<f a="">
+					<c path="Array.T"/>
+					<x path="Bool"/>
+				</f>
+				<c path="Array"><c path="Array.T"/></c>
+			</f>
+			<haxe_doc>Returns an Array containing those elements of `this` for which `f`
+		returned true.
+
+		The individual elements are not duplicated and retain their identity.
+
+		If `f` is null, the result is unspecified.</haxe_doc>
+		</filter>
+		<new public="1" set="method">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>Creates a new Array.</haxe_doc>
+		</new>
+		<haxe_doc>An Array is a storage for values. You can access it using indexes or
+	with its API.</haxe_doc>
+	</class>
+	<abstract path="Class" params="T" file="/cygdrive/c/world/prj/haxe/haxe/std/Class.hx">
+		<this><x path="Class"><c path="Class.T"/></x></this>
+		<haxe_doc>An abstract type that represents a Class.
+
+	See `Type` for the Haxe Reflection API.</haxe_doc>
+		<meta>
+			<m n=":coreType"/>
+			<m n=":runtimeValue"/>
+		</meta>
+	</abstract>
+	<abstract path="Enum" params="T" file="/cygdrive/c/world/prj/haxe/haxe/std/Enum.hx">
+		<this><x path="Enum"><c path="Enum.T"/></x></this>
+		<haxe_doc>An abstract type that represents an Enum type.
+
+	The corresponding enum instance type is `EnumValue`.
+
+	See `Type` for the Haxe Reflection API.</haxe_doc>
+		<meta>
+			<m n=":coreType"/>
+			<m n=":runtimeValue"/>
+		</meta>
+	</abstract>
+	<abstract path="EnumValue" params="" file="/cygdrive/c/world/prj/haxe/haxe/std/EnumValue.hx">
+		<this><x path="EnumValue"/></this>
+		<haxe_doc>An abstract type that represents any enum value.
+	See `Type` for the Haxe Reflection API.</haxe_doc>
+		<meta><m n=":coreType"/></meta>
+	</abstract>
+	<class path="Reflect" params="" file="/cygdrive/c/world/prj/haxe/haxe/std/Reflect.hx" extern="1">
+		<hasField public="1" set="method" static="1">
+			<f a="o:field">
+				<d/>
+				<c path="String"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Tells if structure `o` has a field named `field`.
+
+		This is only guaranteed to work for anonymous structures. Refer to
+		`Type.getInstanceFields` for a function supporting class instances.
+
+		If `o` or `field` are null, the result is unspecified.</haxe_doc>
+		</hasField>
+		<field public="1" set="method" static="1">
+			<f a="o:field">
+				<d/>
+				<c path="String"/>
+				<d/>
+			</f>
+			<haxe_doc>Returns the value of the field named `field` on object `o`.
+
+		If `o` is not an object or has no field named `field`, the result is
+		null.
+
+		If the field is defined as a property, its accessors are ignored. Refer
+		to `Reflect.getProperty` for a function supporting property accessors.
+
+		If `field` is null, the result is unspecified.
+
+		(As3) If used on a property field, the getter will be invoked. It is
+		not possible to obtain the value directly.</haxe_doc>
+		</field>
+		<setField public="1" set="method" static="1">
+			<f a="o:field:value">
+				<d/>
+				<c path="String"/>
+				<d/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Sets the field named `field` of object `o` to value `value`.
+
+		If `o` has no field named `field`, this function is only guaranteed to
+		work for anonymous structures.
+
+		If `o` or `field` are null, the result is unspecified.
+
+		(As3) If used on a property field, the setter will be invoked. It is
+		not possible to set the value directly.</haxe_doc>
+		</setField>
+		<getProperty public="1" set="method" static="1">
+			<f a="o:field">
+				<d/>
+				<c path="String"/>
+				<d/>
+			</f>
+			<haxe_doc>Returns the value of the field named `field` on object `o`, taking
+		property getter functions into account.
+
+		If the field is not a property, this function behaves like
+		`Reflect.field`, but might be slower.
+
+		If `o` or `field` are null, the result is unspecified.</haxe_doc>
+		</getProperty>
+		<setProperty public="1" set="method" static="1">
+			<f a="o:field:value">
+				<d/>
+				<c path="String"/>
+				<d/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Sets the field named `field` of object `o` to value `value`, taking
+		property setter functions into account.
+
+		If the field is not a property, this function behaves like
+		`Reflect.setField`, but might be slower.
+
+		If `field` is null, the result is unspecified.</haxe_doc>
+		</setProperty>
+		<callMethod public="1" set="method" static="1">
+			<f a="o:func:args">
+				<d/>
+				<d/>
+				<c path="Array"><d/></c>
+				<d/>
+			</f>
+			<haxe_doc>Call a method with the given object and arguments.</haxe_doc>
+		</callMethod>
+		<fields public="1" set="method" static="1">
+			<f a="o">
+				<d/>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>Returns the fields of structure `o`.
+
+		This method is only guaranteed to work on anonymous structures. Refer to
+		`Type.getInstanceFields` for a function supporting class instances.
+
+		If `o` is null, the result is unspecified.</haxe_doc>
+		</fields>
+		<isFunction public="1" set="method" static="1">
+			<f a="f">
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Returns true if `f` is a function, false otherwise.
+
+		If `f` is null, the result is false.</haxe_doc>
+		</isFunction>
+		<compare public="1" params="T" set="method" static="1">
+			<f a="a:b">
+				<c path="compare.T"/>
+				<c path="compare.T"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Compares `a` and `b`.
+
+		If `a` is less than `b`, the result is negative. If `b` is less than
+		`a`, the result is positive. If `a` and `b` are equal, the result is 0.
+
+		This function is only defined if `a` and `b` are of the same type.
+
+		If that type is a function, the result is unspecified and
+		`Reflect.compareMethods` should be used instead.
+
+		For all other types, the result is 0 if `a` and `b` are equal. If they
+		are not equal, the result depends on the type and is negative if:
+
+		- Numeric types: a is less than b
+		- String: a is lexicographically less than b
+		- Other: unspecified
+
+		If `a` and `b` are null, the result is 0. If only one of them is null,
+		the result is unspecified.</haxe_doc>
+		</compare>
+		<compareMethods public="1" set="method" static="1">
+			<f a="f1:f2">
+				<d/>
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Compares the functions `f1` and `f2`.
+
+		If `f1` or `f2` are not functions, the result is unspecified.
+
+		Otherwise the result is true if `f1` and the `f2` are physically equal,
+		false otherwise.</haxe_doc>
+		</compareMethods>
+		<isObject public="1" set="method" static="1">
+			<f a="v">
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc><![CDATA[Tells if `v` is an object.
+
+		The result is true if `v` is one of the following:
+
+		- class instance
+		- structure
+		- Class<T>
+		- Enum<T>
+
+		Otherwise, including if `v` is null, the result is false.]]></haxe_doc>
+		</isObject>
+		<isEnumValue public="1" set="method" static="1">
+			<f a="v">
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Tells if `v` is an enum value.
+
+		The result is true if `v` is of type EnumValue, i.e. an enum
+		constructor.
+
+		Otherwise, including if `v` is null, the result is false.</haxe_doc>
+		</isEnumValue>
+		<deleteField public="1" set="method" static="1">
+			<f a="o:field">
+				<d/>
+				<c path="String"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Removes the field named `field` from structure `o`.
+
+		This method is only guaranteed to work on anonymous structures.
+
+		If `o` or `field` are null, the result is unspecified.</haxe_doc>
+		</deleteField>
+		<copy public="1" params="T" set="method" static="1">
+			<f a="o">
+				<c path="copy.T"/>
+				<c path="copy.T"/>
+			</f>
+			<haxe_doc>Copies the fields of structure `o`.
+
+		This is only guaranteed to work on anonymous structures.
+
+		If `o` is null, the result is unspecified.</haxe_doc>
+		</copy>
+		<makeVarArgs public="1" set="method" static="1">
+			<f a="f">
+				<f a="">
+					<c path="Array"><d/></c>
+					<d/>
+				</f>
+				<d/>
+			</f>
+			<haxe_doc>Transform a function taking an array of arguments into a function that can
+		be called with any number of arguments.</haxe_doc>
+			<overloads><makeVarArgs public="1" set="method">
+	<f a="f">
+		<f a="">
+			<c path="Array"><d/></c>
+			<x path="Void"/>
+		</f>
+		<d/>
+	</f>
+	<haxe_doc>Transform a function taking an array of arguments into a function that can
+		be called with any number of arguments.</haxe_doc>
+</makeVarArgs></overloads>
+		</makeVarArgs>
+		<haxe_doc>The Reflect API is a way to manipulate values dynamicly through an
+	abstract interface in an untyped manner. Use with care.</haxe_doc>
+	</class>
+	<class path="Std" params="" file="/cygdrive/c/world/prj/haxe/haxe/std/Std.hx" extern="1">
+		<is public="1" set="method" static="1">
+			<f a="v:t">
+				<d/>
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Tells if a value v is of the type t. Returns false if v or t are null.</haxe_doc>
+		</is>
+		<instance public="1" params="T:S" set="method" static="1">
+			<f a="value:c">
+				<c path="instance.T"/>
+				<x path="Class"><c path="instance.S"/></x>
+				<c path="instance.S"/>
+			</f>
+			<haxe_doc>Checks if object `value` is an instance of class `c`.
+
+		Compiles only if the class specified by `c` can be assigned to the type
+		of `value`.
+
+		This method checks if a downcast is possible. That is, if the runtime
+		type of `value` is assignable to the class specified by `c`, `value` is
+		returned. Otherwise null is returned.
+
+		This method is not guaranteed to work with interfaces or core types such
+		as String, Array and Date.
+
+		If `value` is null, the result is null. If `c` is null, the result is
+		unspecified.</haxe_doc>
+		</instance>
+		<string public="1" set="method" static="1">
+			<f a="s">
+				<d/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Converts any value to a String.
+
+		If `s` is of `String`, `Int`, `Float` or `Bool`, its value is returned.
+
+		If `s` is an instance of a class and that class or one of its parent classes has
+		a `toString` method, that method is called. If no such method is present, the result
+		is unspecified.
+
+		If `s` is an enum constructor without argument, the constructor's name is returned. If
+		arguments exists, the constructor's name followed by the String representations of
+		the arguments is returned.
+
+		If `s` is a structure, the field names along with their values are returned. The field order
+		and the operator separating field names and values are unspecified.
+
+		If s is null, "null" is returned.</haxe_doc>
+		</string>
+		<int public="1" set="method" static="1">
+			<f a="x">
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Converts a `Float` to an `Int`, rounded towards 0.
+
+		If `x` is outside of the signed Int32 range, or is NaN, NEGATIVE_INFINITY or POSITIVE_INFINITY, the result is unspecified.</haxe_doc>
+		</int>
+		<parseInt public="1" set="method" static="1">
+			<f a="x">
+				<c path="String"/>
+				<t path="Null"><x path="Int"/></t>
+			</f>
+			<haxe_doc>Converts a `String` to an `Int`.
+
+		Leading whitespaces are ignored.
+
+		If `x` starts with 0x or 0X, hexadecimal notation is recognized where the following digits may
+		contain 0-9 and A-F.
+
+		Otherwise `x` is read as decimal number with 0-9 being allowed characters. `x` may also start with
+		a - to denote a negative value.
+
+		In decimal mode, parsing continues until an invalid character is detected, in which case the
+		result up to that point is returned. For hexadecimal notation, the effect of invalid characters
+		is unspecified.
+
+		Leading 0s that are not part of the 0x/0X hexadecimal notation are ignored, which means octal
+		notation is not supported.
+
+		If the input cannot be recognized, the result is null.</haxe_doc>
+		</parseInt>
+		<parseFloat public="1" set="method" static="1">
+			<f a="x">
+				<c path="String"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Converts a `String` to a `Float`.
+
+		The parsing rules for `parseInt` apply here as well, with the exception of invalid input
+		resulting in a NaN value instead of null.
+
+		Additionally, decimal notation may contain a single `.` to denote the start of the fractions.</haxe_doc>
+		</parseFloat>
+		<random public="1" set="method" static="1">
+			<f a="x">
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc><![CDATA[Return a random integer between 0 included and `x` excluded.
+
+		If `x <= 1`, the result is always 0.]]></haxe_doc>
+		</random>
+		<haxe_doc>The Std class provides standard methods for manipulating basic types.</haxe_doc>
+	</class>
+	<abstract path="Void" params="" file="/cygdrive/c/world/prj/haxe/haxe/std/StdTypes.hx" module="StdTypes">
+		<this><x path="Void"/></this>
+		<haxe_doc>The standard Void type. Only `null` values can be of the type `Void`.</haxe_doc>
+		<meta><m n=":coreType"/></meta>
+	</abstract>
+	<abstract path="Float" params="" file="/cygdrive/c/world/prj/haxe/haxe/std/StdTypes.hx" module="StdTypes">
+		<this><x path="Float"/></this>
+		<haxe_doc><![CDATA[The standard Float type, this is a double-precision IEEE 64bit float.
+
+	On static targets, null cannot be assigned to Float. If this is necessary,
+	`Null<Float>` can be used instead.]]></haxe_doc>
+		<meta>
+			<m n=":coreType"/>
+			<m n=":notNull"/>
+			<m n=":runtimeValue"/>
+		</meta>
+	</abstract>
+	<abstract path="Int" params="" file="/cygdrive/c/world/prj/haxe/haxe/std/StdTypes.hx" module="StdTypes">
+		<this><x path="Int"/></this>
+		<to><icast><x path="Float"/></icast></to>
+		<haxe_doc><![CDATA[The standard Int type. Its precision depends on the platform.
+
+	On static targets, null cannot be assigned to Int. If this is necessary,
+	`Null<Int>` can be used instead.]]></haxe_doc>
+		<meta>
+			<m n=":coreType"/>
+			<m n=":notNull"/>
+			<m n=":runtimeValue"/>
+		</meta>
+	</abstract>
+	<typedef path="Null" params="T" file="/cygdrive/c/world/prj/haxe/haxe/std/StdTypes.hx" module="StdTypes">
+		<c path="Null.T"/>
+		<haxe_doc>`Null` can be useful in two cases. In order to document some methods
+	that accepts or can return a `null` value, or for the Flash9 compiler and AS3
+	generator to distinguish between base values that can be null and others that
+	can't.</haxe_doc>
+	</typedef>
+	<abstract path="Bool" params="" file="/cygdrive/c/world/prj/haxe/haxe/std/StdTypes.hx" module="StdTypes">
+		<this><x path="Bool"/></this>
+		<haxe_doc><![CDATA[The standard Boolean type, which can either be true or false.
+
+	On static targets, null cannot be assigned to Bool. If this is necessary,
+	`Null<Bool>` can be used instead.]]></haxe_doc>
+		<meta>
+			<m n=":coreType"/>
+			<m n=":notNull"/>
+			<m n=":runtimeValue"/>
+		</meta>
+	</abstract>
+	<abstract path="Dynamic" params="T" file="/cygdrive/c/world/prj/haxe/haxe/std/StdTypes.hx" module="StdTypes">
+		<this><x path="Dynamic"><c path="Dynamic.T"/></x></this>
+		<haxe_doc>Dynamic is a special type which is compatible with all other types.
+
+	Use of Dynamic should be minimized as it prevents several compiler
+	checks and optimizations.</haxe_doc>
+		<meta>
+			<m n=":coreType"/>
+			<m n=":runtimeValue"/>
+		</meta>
+	</abstract>
+	<typedef path="Iterator" params="T" file="/cygdrive/c/world/prj/haxe/haxe/std/StdTypes.hx" module="StdTypes">
+		<a>
+			<next set="method">
+				<f a=""><c path="Iterator.T"/></f>
+				<haxe_doc>Returns the current item of the Iterator and advances to the next one.
+
+		This method is not required to check hasNext() first. A call to this
+		method while hasNext() is false yields unspecified behavior.</haxe_doc>
+			</next>
+			<hasNext set="method">
+				<f a=""><x path="Bool"/></f>
+				<haxe_doc>Returns false if the iteration is complete, true otherwise.
+
+		Usually iteration is considered to be complete if all elements of the
+		underlying data structure were handled through calls to next(). However,
+		in custom iterators any logic may be used to determine the completion
+		state.</haxe_doc>
+			</hasNext>
+		</a>
+		<haxe_doc>An Iterator is a structure that permits iteration over elements of type T.
+
+	Any class with matching hasNext and next fields is considered an Iterator
+	and can then be used e.g. in for-loops. This makes it easy to implement
+	custom iterators.</haxe_doc>
+	</typedef>
+	<typedef path="Iterable" params="T" file="/cygdrive/c/world/prj/haxe/haxe/std/StdTypes.hx" module="StdTypes">
+		<a><iterator set="method"><f a=""><t path="Iterator"><c path="Iterable.T"/></t></f></iterator></a>
+		<haxe_doc>An Iterable is a data structure which has an iterator() method.
+	See `Lambda` for generic functions on iterable structures.</haxe_doc>
+	</typedef>
+	<class path="ArrayAccess" params="T" file="/cygdrive/c/world/prj/haxe/haxe/std/StdTypes.hx" module="StdTypes" extern="1" interface="1"><haxe_doc>ArrayAccess is used to indicate a class that can be accessed using brackets.
+	The type parameter represent the type of the elements stored.</haxe_doc></class>
+	<class path="String" params="" file="/cygdrive/c/world/prj/haxe/haxe/std/String.hx" extern="1">
+		<fromCharCode public="1" set="method" static="1">
+			<f a="code">
+				<x path="Int"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the String corresponding to the character code `code`.
+
+		If `code` is negative or has another invalid value, the result is
+		unspecified.</haxe_doc>
+		</fromCharCode>
+		<length public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The number of characters in `this` String.</haxe_doc>
+		</length>
+		<toUpperCase public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Returns a String where all characters of `this` String are upper case.
+
+		Affects the characters `a-z`. Other characters remain unchanged.</haxe_doc>
+		</toUpperCase>
+		<toLowerCase public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Returns a String where all characters of `this` String are lower case.
+
+		Affects the characters `A-Z`. Other characters remain unchanged.</haxe_doc>
+		</toLowerCase>
+		<charAt public="1" set="method">
+			<f a="index">
+				<x path="Int"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the character at position `index` of `this` String.
+
+		If `index` is negative or exceeds `this.length`, the empty String ""
+		is returned.</haxe_doc>
+		</charAt>
+		<charCodeAt public="1" set="method">
+			<f a="index">
+				<x path="Int"/>
+				<t path="Null"><x path="Int"/></t>
+			</f>
+			<haxe_doc>Returns the character code at position `index` of `this` String.
+
+		If `index` is negative or exceeds `this.length`, null is returned.
+
+		To obtain the character code of a single character, "x".code can be used
+		instead to inline the character code at compile time. Note that this
+		only works on String literals of length 1.</haxe_doc>
+		</charCodeAt>
+		<indexOf public="1" set="method">
+			<f a="str:?startIndex">
+				<c path="String"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns the position of the leftmost occurence of `str` within `this`
+		String.
+
+		If `startIndex` is given, the search is performed within the substring
+		of `this` String starting from `startIndex`. Otherwise the search is
+		performed within `this` String. In either case, the returned position
+		is relative to the beginning of `this` String.
+
+		If `str` cannot be found, -1 is returned.</haxe_doc>
+		</indexOf>
+		<lastIndexOf public="1" set="method">
+			<f a="str:?startIndex">
+				<c path="String"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns the position of the rightmost occurence of `str` within `this`
+		String.
+
+		If `startIndex` is given, the search is performed within the substring
+		of `this` String from 0 to `startIndex`. Otherwise the search is
+		performed within `this` String. In either case, the returned position
+		is relative to the beginning of `this` String.
+
+		If `str` cannot be found, -1 is returned.</haxe_doc>
+		</lastIndexOf>
+		<split public="1" set="method">
+			<f a="delimiter">
+				<c path="String"/>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>Splits `this` String at each occurence of `delimiter`.
+
+		If `this` String is the empty String "", the result is not consistent
+		across targets and may either be `[]` (on Js, Cpp) or `[""]`.
+
+		If `delimiter` is the empty String "", `this` String is split into an
+		Array of `this.length` elements, where the elements correspond to the
+		characters of `this` String.
+
+		If `delimiter` is not found within `this` String, the result is an Array
+		with one element, which equals `this` String.
+
+		If `delimiter` is null, the result is unspecified.
+
+		Otherwise, `this` String is split into parts at each occurence of
+		`delimiter`. If `this` String starts (or ends) with [delimiter}, the
+		result Array contains a leading (or trailing) empty String "" element.
+		Two subsequent delimiters also result in an empty String "" element.</haxe_doc>
+		</split>
+		<substr public="1" set="method">
+			<f a="pos:?len">
+				<x path="Int"/>
+				<x path="Int"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns `len` characters of `this` String, starting at position `pos`.
+
+		If `len` is omitted, all characters from position `pos` to the end of
+		`this` String are included.
+
+		If `pos` is negative, its value is calculated from the end of `this`
+		String by `this.length + pos`. If this yields a negative value, 0 is
+		used instead.
+
+		If the calculated position + `len` exceeds `this.length`, the characters
+		from that position to the end of `this` String are returned.
+
+		If `len` is negative, the result is unspecified.</haxe_doc>
+		</substr>
+		<substring public="1" set="method">
+			<f a="startIndex:?endIndex">
+				<x path="Int"/>
+				<x path="Int"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the part of `this` String from `startIndex` to `endIndex`.
+
+		If `startIndex` or `endIndex` are negative, 0 is used instead.
+
+		If `startIndex` exceeds `endIndex`, they are swapped.
+
+		If the (possibly swapped) `endIndex` is omitted or exceeds
+		`this.length`, `this.length` is used instead.
+
+		If the (possibly swapped) `startIndex` exceeds `this.length`, the empty
+		String "" is returned.</haxe_doc>
+		</substring>
+		<toString public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Returns the String itself.</haxe_doc>
+		</toString>
+		<new public="1" set="method">
+			<f a="string">
+				<c path="String"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Creates a copy from a given String.</haxe_doc>
+		</new>
+		<haxe_doc>The basic String class.
+
+	A haxe String is immutable, it is not possible to modify individual
+	characters. No method of this class changes the state of `this` String.
+
+	Strings can be constructed using the string literal syntax "string value".
+
+	String can be concatenated by using the + operator. If an operand is not a
+	String, it is passed through Std.string() first.</haxe_doc>
+	</class>
+	<class path="Test" params="" file="src/test/haxe/Test.hx"><main set="method" line="5" static="1">
+	<f a=""><x path="Void"/></f>
+	<meta><m n=":keep"/></meta>
+</main></class>
+	<class path="Type" params="" file="/cygdrive/c/world/prj/haxe/haxe/std/Type.hx" extern="1">
+		<getClass public="1" params="T" set="method" static="1">
+			<f a="o">
+				<c path="getClass.T"/>
+				<x path="Class"><c path="getClass.T"/></x>
+			</f>
+			<haxe_doc>Returns the class of `o`, if `o` is a class instance.
+
+		If `o` is null or of a different type, null is returned.
+
+		In general, type parameter information cannot be obtained at runtime.</haxe_doc>
+		</getClass>
+		<getEnum public="1" set="method" static="1">
+			<f a="o">
+				<x path="EnumValue"/>
+				<x path="Enum"><d/></x>
+			</f>
+			<haxe_doc><![CDATA[Returns the enum of enum instance `o`.
+
+		An enum instance is the result of using an enum constructor. Given an
+		`enum Color { Red; }`, `getEnum(Red)` returns `Enum<Color>`.
+
+		If `o` is null, null is returned.
+
+		In general, type parameter information cannot be obtained at runtime.]]></haxe_doc>
+		</getEnum>
+		<getSuperClass public="1" set="method" static="1">
+			<f a="c">
+				<x path="Class"><d/></x>
+				<x path="Class"><d/></x>
+			</f>
+			<haxe_doc>Returns the super-class of class `c`.
+
+		If `c` has no super class, null is returned.
+
+		If `c` is null, the result is unspecified.
+
+		In general, type parameter information cannot be obtained at runtime.</haxe_doc>
+		</getSuperClass>
+		<getClassName public="1" set="method" static="1">
+			<f a="c">
+				<x path="Class"><d/></x>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the name of class `c`, including its path.
+
+		If `c` is inside a package, the package structure is returned dot-
+		separated, with another dot separating the class name:
+		`pack1.pack2.(...).packN.ClassName`
+		If `c` is a sub-type of a haxe module, that module is not part of the
+		package structure.
+
+		If `c` has no package, the class name is returned.
+
+		If `c` is null, the result is unspecified.
+
+		The class name does not include any type parameters.</haxe_doc>
+		</getClassName>
+		<getEnumName public="1" set="method" static="1">
+			<f a="e">
+				<x path="Enum"><d/></x>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the name of enum `e`, including its path.
+
+		If `e` is inside a package, the package structure is returned dot-
+		separated, with another dot separating the enum name:
+		`pack1.pack2.(...).packN.EnumName`
+		If `e` is a sub-type of a haxe module, that module is not part of the
+		package structure.
+
+		If `e` has no package, the enum name is returned.
+
+		If `e` is null, the result is unspecified.
+
+		The enum name does not include any type parameters.</haxe_doc>
+		</getEnumName>
+		<resolveClass public="1" set="method" static="1">
+			<f a="name">
+				<c path="String"/>
+				<x path="Class"><d/></x>
+			</f>
+			<haxe_doc>Resolves a class by name.
+
+		If `name` is the path of an existing class, that class is returned.
+
+		Otherwise null is returned.
+
+		If `name` is null or the path to a different type, the result is
+		unspecified.
+
+		The class name must not include any type parameters.</haxe_doc>
+		</resolveClass>
+		<resolveEnum public="1" set="method" static="1">
+			<f a="name">
+				<c path="String"/>
+				<x path="Enum"><d/></x>
+			</f>
+			<haxe_doc>Resolves an enum by name.
+
+		If `name` is the path of an existing enum, that enum is returned.
+
+		Otherwise null is returned.
+
+		If `name` is null the result is unspecified.
+
+		If `name` is the path to a different type, null is returned.
+
+		The enum name must not include any type parameters.</haxe_doc>
+		</resolveEnum>
+		<createInstance public="1" params="T" set="method" static="1">
+			<f a="cl:args">
+				<x path="Class"><c path="createInstance.T"/></x>
+				<c path="Array"><d/></c>
+				<c path="createInstance.T"/>
+			</f>
+			<haxe_doc>Creates an instance of class `cl`, using `args` as arguments to the
+		class constructor.
+
+		This function guarantees that the class constructor is called.
+
+		Default values of constructors arguments are not guaranteed to be
+		taken into account.
+
+		If `cl` or `args` are null, or if the number of elements in `args` does
+		not match the expected number of constructor arguments, or if any
+		argument has an invalid type,  or if `cl` has no own constructor, the
+		result is unspecified.
+
+		In particular, default values of constructor arguments are not
+		guaranteed to be taken into account.</haxe_doc>
+		</createInstance>
+		<createEmptyInstance public="1" params="T" set="method" static="1">
+			<f a="cl">
+				<x path="Class"><c path="createEmptyInstance.T"/></x>
+				<c path="createEmptyInstance.T"/>
+			</f>
+			<haxe_doc>Creates an instance of class `cl`.
+
+		This function guarantees that the class constructor is not called.
+
+		If `cl` is null, the result is unspecified.</haxe_doc>
+		</createEmptyInstance>
+		<createEnum public="1" params="T" set="method" static="1">
+			<f a="e:constr:?params">
+				<x path="Enum"><c path="createEnum.T"/></x>
+				<c path="String"/>
+				<c path="Array"><d/></c>
+				<c path="createEnum.T"/>
+			</f>
+			<haxe_doc>Creates an instance of enum `e` by calling its constructor `constr` with
+		arguments `params`.
+
+		If `e` or `constr` is null, or if enum `e` has no constructor named
+		`constr`, or if the number of elements in `params` does not match the
+		expected number of constructor arguments, or if any argument has an
+		invalid type, the result is unspecified.</haxe_doc>
+		</createEnum>
+		<createEnumIndex public="1" params="T" set="method" static="1">
+			<f a="e:index:?params">
+				<x path="Enum"><c path="createEnumIndex.T"/></x>
+				<x path="Int"/>
+				<c path="Array"><d/></c>
+				<c path="createEnumIndex.T"/>
+			</f>
+			<haxe_doc>Creates an instance of enum `e` by calling its constructor number
+		`index` with arguments `params`.
+
+		The constructor indices are preserved from haxe syntax, so the first
+		declared is index 0, the next index 1 etc.
+
+		If `e` or `constr` is null, or if enum `e` has no constructor named
+		`constr`, or if the number of elements in `params` does not match the
+		expected number of constructor arguments, or if any argument has an
+		invalid type, the result is unspecified.</haxe_doc>
+		</createEnumIndex>
+		<getInstanceFields public="1" set="method" static="1">
+			<f a="c">
+				<x path="Class"><d/></x>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>Returns a list of the instance fields of class `c`.
+
+		This only includes fields which are known at compile-time. In
+		particular, using getInstanceFields(getClass(obj)) will not include
+		any fields which were added to obj at runtime.
+
+		The order of the fields in the returned Array is unspecified.
+
+		If `c` is null, the result is unspecified.
+
+		(As3) This method only returns instance fields that are public.</haxe_doc>
+		</getInstanceFields>
+		<getClassFields public="1" set="method" static="1">
+			<f a="c">
+				<x path="Class"><d/></x>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>Returns a list of static fields of class `c`.
+
+		This does not include static fields of parent classes.
+
+		The order of the fields in the returned Array is unspecified.
+
+		If `c` is null, the result is unspecified.
+
+		(As3) This method only returns class fields that are public.</haxe_doc>
+		</getClassFields>
+		<getEnumConstructs public="1" set="method" static="1">
+			<f a="e">
+				<x path="Enum"><d/></x>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>Returns a list of the names of all constructors of enum `e`.
+
+		The order of the constructor names in the returned Array is preserved
+		from the original syntax.
+
+		If `c` is null, the result is unspecified.</haxe_doc>
+		</getEnumConstructs>
+		<typeof public="1" set="method" static="1">
+			<f a="v">
+				<d/>
+				<e path="ValueType"/>
+			</f>
+			<haxe_doc>Returns the runtime type of value `v`.
+
+		The result corresponds to the type `v` has at runtime, which may vary
+		per platform. Assumptions regarding this should be minimized to avoid
+		surprises.</haxe_doc>
+		</typeof>
+		<enumEq public="1" params="T" set="method" static="1">
+			<f a="a:b">
+				<c path="enumEq.T"/>
+				<c path="enumEq.T"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Recursively compares two enum instances `a` and `b` by value.
+
+		Unlike `a == b`, this function performs a deep equality check on the
+		arguments of the constructors, if exists.
+
+		If `a` or `b` are null, the result is unspecified.</haxe_doc>
+		</enumEq>
+		<enumConstructor public="1" set="method" static="1">
+			<f a="e">
+				<x path="EnumValue"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the constructor name of enum instance `e`.
+
+		The result String does not contain any constructor arguments.
+
+		If `e` is null, the result is unspecified.</haxe_doc>
+		</enumConstructor>
+		<enumParameters public="1" set="method" static="1">
+			<f a="e">
+				<x path="EnumValue"/>
+				<c path="Array"><d/></c>
+			</f>
+			<haxe_doc>Returns a list of the constructor arguments of enum instance `e`.
+
+		If `e` has no arguments, the result is [].
+
+		Otherwise the result are the values that were used as arguments to `e`,
+		in the order of their declaration.
+
+		If `e` is null, the result is unspecified.</haxe_doc>
+		</enumParameters>
+		<enumIndex public="1" set="method" static="1">
+			<f a="e">
+				<x path="EnumValue"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns the index of enum instance `e`.
+
+		This corresponds to the original syntactic position of `e`. The index of
+		the first declared constructor is 0, the next one is 1 etc.
+
+		If `e` is null, the result is unspecified.</haxe_doc>
+		</enumIndex>
+		<allEnums public="1" params="T" set="method" static="1">
+			<f a="e">
+				<x path="Enum"><c path="allEnums.T"/></x>
+				<c path="Array"><c path="allEnums.T"/></c>
+			</f>
+			<haxe_doc>Returns a list of all constructors of enum `e` that require no
+		arguments.
+
+		This may return the empty Array [] if all constructors of `e` require
+		arguments.
+
+		Otherwise an instance of `e` constructed through each of its non-
+		argument constructors is returned, in the order of the constructor
+		declaration.
+
+		If `e` is null, the result is unspecified.</haxe_doc>
+		</allEnums>
+		<haxe_doc>The haxe Reflection API allows retrieval of type information at runtime.
+
+	This class complements the more lightweight Reflect class, with a focus on
+	class and enum instances.</haxe_doc>
+	</class>
+	<class path="haxe.EnumTools" params="" file="/cygdrive/c/world/prj/haxe/haxe/std/haxe/EnumTools.hx" extern="1">
+		<getName public="1" params="T" get="inline" set="null" line="41" static="1">
+			<f a="e">
+				<x path="Enum"><c path="getName.T"/></x>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the name of enum `e`, including its path.
+
+		If `e` is inside a package, the package structure is returned dot-
+		separated, with another dot separating the enum name:
+			pack1.pack2.(...).packN.EnumName
+		If `e` is a sub-type of a haxe module, that module is not part of the
+		package structure.
+
+		If `e` has no package, the enum name is returned.
+
+		If `e` is null, the result is unspecified.
+
+		The enum name does not include any type parameters.</haxe_doc>
+		</getName>
+		<createByName public="1" params="T" get="inline" set="null" line="54" static="1">
+			<f a="e:constr:?params" v="::null">
+				<x path="Enum"><c path="createByName.T"/></x>
+				<c path="String"/>
+				<c path="Array"><d/></c>
+				<c path="createByName.T"/>
+			</f>
+			<haxe_doc>Creates an instance of enum `e` by calling its constructor `constr` with
+		arguments `params`.
+
+		If `e` or `constr` is null, or if enum `e` has no constructor named
+		`constr`, or if the number of elements in `params` does not match the
+		expected number of constructor arguments, or if any argument has an
+		invalid type, the result is unspecified.</haxe_doc>
+		</createByName>
+		<createByIndex public="1" params="T" get="inline" set="null" line="70" static="1">
+			<f a="e:index:?params" v="::null">
+				<x path="Enum"><c path="createByIndex.T"/></x>
+				<x path="Int"/>
+				<c path="Array"><d/></c>
+				<c path="createByIndex.T"/>
+			</f>
+			<haxe_doc>Creates an instance of enum `e` by calling its constructor number
+		`index` with arguments `params`.
+
+		The constructor indices are preserved from haxe syntax, so the first
+		declared is index 0, the next index 1 etc.
+
+		If `e` or `constr` is null, or if enum `e` has no constructor named
+		`constr`, or if the number of elements in `params` does not match the
+		expected number of constructor arguments, or if any argument has an
+		invalid type, the result is unspecified.</haxe_doc>
+		</createByIndex>
+		<createAll public="1" params="T" get="inline" set="null" line="87" static="1">
+			<f a="e">
+				<x path="Enum"><c path="createAll.T"/></x>
+				<c path="Array"><c path="createAll.T"/></c>
+			</f>
+			<haxe_doc>Returns a list of all constructors of enum `e` that require no
+		arguments.
+
+		This may return the empty Array [] if all constructors of `e` require
+		arguments.
+
+		Otherwise an instance of `e` constructed through each of its non-
+		argument constructors is returned, in the order of the constructor
+		declaration.
+
+		If `e` is null, the result is unspecified.</haxe_doc>
+		</createAll>
+		<getConstructors public="1" params="T" get="inline" set="null" line="99" static="1">
+			<f a="e">
+				<x path="Enum"><c path="getConstructors.T"/></x>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>Returns a list of the names of all constructors of enum `e`.
+
+		The order of the constructor names in the returned Array is preserved
+		from the original syntax.
+
+		If `c` is null, the result is unspecified.</haxe_doc>
+		</getConstructors>
+	</class>
+	<class path="haxe.EnumValueTools" params="" file="/cygdrive/c/world/prj/haxe/haxe/std/haxe/EnumTools.hx" module="haxe.EnumTools" extern="1">
+		<equals public="1" params="T" get="inline" set="null" line="114" static="1">
+			<f a="a:b">
+				<c path="equals.T"/>
+				<c path="equals.T"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Recursively compares two enum instances `a` and `b` by value.
+
+		Unlike `a == b`, this function performs a deep equality check on the
+		arguments of the constructors, if exists.
+
+		If `a` or `b` are null, the result is unspecified.</haxe_doc>
+		</equals>
+		<getName public="1" get="inline" set="null" line="125" static="1">
+			<f a="e">
+				<x path="EnumValue"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the constructor name of enum instance `e`.
+
+		The result String does not contain any constructor arguments.
+
+		If `e` is null, the result is unspecified.</haxe_doc>
+		</getName>
+		<getParameters public="1" get="inline" set="null" line="139" static="1">
+			<f a="e">
+				<x path="EnumValue"/>
+				<c path="Array"><d/></c>
+			</f>
+			<haxe_doc>Returns a list of the constructor arguments of enum instance `e`.
+
+		If `e` has no arguments, the result is [].
+
+		Otherwise the result are the values that were used as arguments to `e`,
+		in the order of their declaration.
+
+		If `e` is null, the result is unspecified.</haxe_doc>
+		</getParameters>
+		<getIndex public="1" get="inline" set="null" line="151" static="1">
+			<f a="e">
+				<x path="EnumValue"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns the index of enum instance `e`.
+
+		This corresponds to the original syntactic position of `e`. The index of
+		the first declared constructor is 0, the next one is 1 etc.
+
+		If `e` is null, the result is unspecified.</haxe_doc>
+		</getIndex>
+	</class>
+	<typedef path="haxe.PosInfos" params="" file="/cygdrive/c/world/prj/haxe/haxe/std/haxe/PosInfos.hx">
+		<a>
+			<methodName><c path="String"/></methodName>
+			<lineNumber><x path="Int"/></lineNumber>
+			<fileName><c path="String"/></fileName>
+			<customParams>
+				<c path="Array"><d/></c>
+				<meta><m n=":optional"/></meta>
+			</customParams>
+			<className><c path="String"/></className>
+		</a>
+		<haxe_doc>PosInfos is a magic type which can be used to generate position information
+	into the output for debugging use.
+
+	If a function has a final optional argument of this type, i.e.
+	(..., ?pos:haxe.PosInfos), each call to that function which does not assign
+	a value to that argument has its position added as call argument.
+
+	This can be used to track positions of calls in e.g. a unit testing
+	framework.</haxe_doc>
+	</typedef>
+	<enum path="haxe.ds.Option" params="T" file="/cygdrive/c/world/prj/haxe/haxe/std/haxe/ds/Option.hx">
+		<Some a="v"><c path="haxe.ds.Option.T"/></Some>
+		<None/>
+		<haxe_doc>An Option is a wrapper type which can either have a value (Some) or not a
+	value (None).</haxe_doc>
+	</enum>
+	<class path="stx.ComposeDo" params="" file="src/main/haxe/stx/Compose.hx" module="stx.Compose"><then public="1" set="method" line="18" static="1">
+	<f a="f1:f2">
+		<f a=""><x path="Void"/></f>
+		<f a=""><x path="Void"/></f>
+		<f a=""><x path="Void"/></f>
+	</f>
+	<meta><m n="returns"><e>"The composite function."</e></m></meta>
+	<haxe_doc>Produces a function that calls `f1` and `f2` in left to right order.</haxe_doc>
+</then></class>
+	<class path="stx.ComposeDo1" params="" file="src/main/haxe/stx/Compose.hx" module="stx.Compose"><then public="1" params="P1" set="method" line="30" static="1">
+	<f a="f1:f2">
+		<f a="">
+			<c path="then.P1"/>
+			<x path="Void"/>
+		</f>
+		<f a="">
+			<c path="then.P1"/>
+			<x path="Void"/>
+		</f>
+		<f a="">
+			<c path="then.P1"/>
+			<x path="Void"/>
+		</f>
+	</f>
+	<meta><m n="returns"><e>"The composite function."</e></m></meta>
+	<haxe_doc>Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.</haxe_doc>
+</then></class>
+	<class path="stx.ComposeDo2" params="" file="src/main/haxe/stx/Compose.hx" module="stx.Compose"><then public="1" params="P1:P2" set="method" line="41" static="1">
+	<f a="f1:f2">
+		<f a=":">
+			<c path="then.P1"/>
+			<c path="then.P2"/>
+			<x path="Void"/>
+		</f>
+		<f a=":">
+			<c path="then.P1"/>
+			<c path="then.P2"/>
+			<x path="Void"/>
+		</f>
+		<f a=":">
+			<c path="then.P1"/>
+			<c path="then.P2"/>
+			<x path="Void"/>
+		</f>
+	</f>
+	<haxe_doc>Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.</haxe_doc>
+</then></class>
+	<class path="stx.ComposeDo3" params="" file="src/main/haxe/stx/Compose.hx" module="stx.Compose"><then public="1" params="P1:P2:P3" set="method" line="52" static="1">
+	<f a="f1:f2">
+		<f a="::">
+			<c path="then.P1"/>
+			<c path="then.P2"/>
+			<c path="then.P3"/>
+			<x path="Void"/>
+		</f>
+		<f a="::">
+			<c path="then.P1"/>
+			<c path="then.P2"/>
+			<c path="then.P3"/>
+			<x path="Void"/>
+		</f>
+		<f a="::">
+			<c path="then.P1"/>
+			<c path="then.P2"/>
+			<c path="then.P3"/>
+			<x path="Void"/>
+		</f>
+	</f>
+	<haxe_doc>Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.</haxe_doc>
+</then></class>
+	<class path="stx.ComposeDo4" params="" file="src/main/haxe/stx/Compose.hx" module="stx.Compose"><then public="1" params="P1:P2:P3:P4" set="method" line="63" static="1">
+	<f a="f1:f2">
+		<f a=":::">
+			<c path="then.P1"/>
+			<c path="then.P2"/>
+			<c path="then.P3"/>
+			<c path="then.P4"/>
+			<x path="Void"/>
+		</f>
+		<f a=":::">
+			<c path="then.P1"/>
+			<c path="then.P2"/>
+			<c path="then.P3"/>
+			<c path="then.P4"/>
+			<x path="Void"/>
+		</f>
+		<f a=":::">
+			<c path="then.P1"/>
+			<c path="then.P2"/>
+			<c path="then.P3"/>
+			<c path="then.P4"/>
+			<x path="Void"/>
+		</f>
+	</f>
+	<haxe_doc>Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.</haxe_doc>
+</then></class>
+	<class path="stx.ComposeDo5" params="" file="src/main/haxe/stx/Compose.hx" module="stx.Compose"><then public="1" params="P1:P2:P3:P4:P5" set="method" line="74" static="1">
+	<f a="f1:f2">
+		<f a="::::">
+			<c path="then.P1"/>
+			<c path="then.P2"/>
+			<c path="then.P3"/>
+			<c path="then.P4"/>
+			<c path="then.P5"/>
+			<x path="Void"/>
+		</f>
+		<f a="::::">
+			<c path="then.P1"/>
+			<c path="then.P2"/>
+			<c path="then.P3"/>
+			<c path="then.P4"/>
+			<c path="then.P5"/>
+			<x path="Void"/>
+		</f>
+		<f a="::::">
+			<c path="then.P1"/>
+			<c path="then.P2"/>
+			<c path="then.P3"/>
+			<c path="then.P4"/>
+			<c path="then.P5"/>
+			<x path="Void"/>
+		</f>
+	</f>
+	<haxe_doc>Produces a function that calls `f1` and `f2` in left to right order with the same input, and returns no result.</haxe_doc>
+</then></class>
+	<class path="stx.Compose0" params="" file="src/main/haxe/stx/Compose.hx" module="stx.Compose"><then public="1" params="A:B" set="method" line="82" static="1"><f a="fn0:fn1">
+	<t path="stx.types.Thunk"><c path="then.A"/></t>
+	<f a="">
+		<c path="then.A"/>
+		<c path="then.B"/>
+	</f>
+	<t path="stx.types.Thunk"><c path="then.B"/></t>
+</f></then></class>
+	<class path="stx.Compose" params="" file="src/main/haxe/stx/Compose.hx">
+		<apply public="1" params="I:O" set="method" line="92" static="1">
+			<f a="fn:v">
+				<f a="">
+					<c path="apply.I"/>
+					<c path="apply.O"/>
+				</f>
+				<c path="apply.I"/>
+				<c path="apply.O"/>
+			</f>
+			<meta><m n=":noUsing"/></meta>
+		</apply>
+		<then public="1" params="A:B:C" set="method" line="98" static="1">
+			<f a="fn1:fn2">
+				<f a="">
+					<c path="then.A"/>
+					<c path="then.B"/>
+				</f>
+				<f a="">
+					<c path="then.B"/>
+					<c path="then.C"/>
+				</f>
+				<f a="">
+					<c path="then.A"/>
+					<c path="then.C"/>
+				</f>
+			</f>
+			<haxe_doc>Returns a function that applies `fn1` then `fn2` on the input</haxe_doc>
+		</then>
+		<first public="1" params="A:B:C:D" set="method" line="107" static="1">
+			<f a="fn1">
+				<f a="">
+					<c path="first.A"/>
+					<c path="first.C"/>
+				</f>
+				<f a="">
+					<x path="tink.core.Pair">
+						<c path="first.A"/>
+						<c path="first.B"/>
+					</x>
+					<x path="tink.core.Pair">
+						<c path="first.C"/>
+						<c path="first.B"/>
+					</x>
+				</f>
+			</f>
+			<haxe_doc>Returns a function that applies `fn1` to the left hand side of a Tuple</haxe_doc>
+		</first>
+		<second public="1" params="A:B:C:D" set="method" line="116" static="1">
+			<f a="fn1">
+				<f a="">
+					<c path="second.B"/>
+					<c path="second.D"/>
+				</f>
+				<f a="">
+					<x path="tink.core.Pair">
+						<c path="second.A"/>
+						<c path="second.B"/>
+					</x>
+					<x path="tink.core.Pair">
+						<c path="second.A"/>
+						<c path="second.D"/>
+					</x>
+				</f>
+			</f>
+			<haxe_doc>Returns a function that applies `fn1` to the right hand side of a Tuple</haxe_doc>
+		</second>
+		<pair public="1" params="A:B:C:D" set="method" line="122" static="1"><f a="fn1:fn2">
+	<f a="">
+		<c path="pair.A"/>
+		<c path="pair.C"/>
+	</f>
+	<f a="">
+		<c path="pair.B"/>
+		<c path="pair.D"/>
+	</f>
+	<f a="">
+		<x path="tink.core.Pair">
+			<c path="pair.A"/>
+			<c path="pair.B"/>
+		</x>
+		<x path="tink.core.Pair">
+			<c path="pair.C"/>
+			<c path="pair.D"/>
+		</x>
+	</f>
+</f></pair>
+		<application public="1" params="A:I:O" set="method" line="131" static="1">
+			<f a="fn">
+				<f a="">
+					<c path="application.A"/>
+					<x path="tink.core.Pair">
+						<f a="">
+							<c path="application.I"/>
+							<c path="application.O"/>
+						</f>
+						<c path="application.I"/>
+					</x>
+				</f>
+				<f a="">
+					<c path="application.A"/>
+					<c path="application.O"/>
+				</f>
+			</f>
+			<haxe_doc>Returns a function that applies a function on the lhs of a tuple to the value on the rhs.</haxe_doc>
+		</application>
+		<left public="1" params="A:B:C" set="method" line="141" static="1">
+			<f a="fn">
+				<f a="">
+					<c path="left.A"/>
+					<c path="left.C"/>
+				</f>
+				<f a="">
+					<e path="tink.core.Either">
+						<c path="left.A"/>
+						<c path="left.B"/>
+					</e>
+					<e path="tink.core.Either">
+						<c path="left.C"/>
+						<c path="left.B"/>
+					</e>
+				</f>
+			</f>
+			<haxe_doc>Returns a function that applies a function to the Left value of an Either.</haxe_doc>
+		</left>
+		<right public="1" params="A:B:D" set="method" line="154" static="1">
+			<f a="fn">
+				<f a="">
+					<c path="right.B"/>
+					<c path="right.D"/>
+				</f>
+				<f a="">
+					<e path="tink.core.Either">
+						<c path="right.A"/>
+						<c path="right.B"/>
+					</e>
+					<e path="tink.core.Either">
+						<c path="right.A"/>
+						<c path="right.D"/>
+					</e>
+				</f>
+			</f>
+			<haxe_doc>Returns a function that applies a function to the Right value of an Either.</haxe_doc>
+		</right>
+		<fromR public="1" params="A:B:C" set="method" line="164" static="1"><f a="fn">
+	<f a="">
+		<c path="fromR.B"/>
+		<e path="tink.core.Either">
+			<c path="fromR.A"/>
+			<c path="fromR.C"/>
+		</e>
+	</f>
+	<f a="">
+		<e path="tink.core.Either">
+			<c path="fromR.A"/>
+			<c path="fromR.B"/>
+		</e>
+		<e path="tink.core.Either">
+			<c path="fromR.A"/>
+			<c path="fromR.C"/>
+		</e>
+	</f>
+</f></fromR>
+		<unit public="1" params="A:B" set="method" line="176" static="1">
+			<f a=""><f a="">
+	<c path="unit.A"/>
+	<c path="unit.A"/>
+</f></f>
+			<meta><m n=":noUsing"/></meta>
+			<haxe_doc>Unit function.
+        [[1,2],[3,4]].flatMap( Compose.unit() );//[1,2,3,4]</haxe_doc>
+		</unit>
+		<fan public="1" params="I:O" set="method" line="182" static="1">
+			<f a="a">
+				<f a="">
+					<c path="fan.I"/>
+					<c path="fan.O"/>
+				</f>
+				<f a="">
+					<c path="fan.I"/>
+					<x path="tink.core.Pair">
+						<c path="fan.O"/>
+						<c path="fan.O"/>
+					</x>
+				</f>
+			</f>
+			<haxe_doc>Returns a function that produces a `Pair` from a value.</haxe_doc>
+		</fan>
+		<pure public="1" params="A:B" set="method" line="192" static="1">
+			<f a="v">
+				<c path="pure.B"/>
+				<f a="">
+					<c path="pure.A"/>
+					<c path="pure.B"/>
+				</f>
+			</f>
+			<meta><m n=":noUsing"/></meta>
+			<haxe_doc>Returns a function that produces `v`.</haxe_doc>
+		</pure>
+		<split public="1" params="A:B:C" set="method" line="195" static="1"><f a="split_:_split">
+	<f a="">
+		<c path="split.A"/>
+		<c path="split.B"/>
+	</f>
+	<f a="">
+		<c path="split.A"/>
+		<c path="split.C"/>
+	</f>
+	<f a="">
+		<c path="split.A"/>
+		<x path="tink.core.Pair">
+			<c path="split.B"/>
+			<c path="split.C"/>
+		</x>
+	</f>
+</f></split>
+		<tie public="1" params="A:B:C" set="method" line="200" static="1"><f a="bindl:bindr">
+	<f a="">
+		<c path="tie.A"/>
+		<c path="tie.C"/>
+	</f>
+	<f a="">
+		<x path="tink.core.Pair">
+			<c path="tie.A"/>
+			<c path="tie.C"/>
+		</x>
+		<c path="tie.B"/>
+	</f>
+	<f a="">
+		<c path="tie.A"/>
+		<c path="tie.B"/>
+	</f>
+</f></tie>
+		<pinch public="1" params="A:B:C" set="method" line="203" static="1"><f a="fn0">
+	<f a="">
+		<x path="tink.core.Pair">
+			<c path="pinch.A"/>
+			<c path="pinch.A"/>
+		</x>
+		<x path="tink.core.Pair">
+			<c path="pinch.B"/>
+			<c path="pinch.C"/>
+		</x>
+	</f>
+	<f a="">
+		<c path="pinch.A"/>
+		<x path="tink.core.Pair">
+			<c path="pinch.B"/>
+			<c path="pinch.C"/>
+		</x>
+	</f>
+</f></pinch>
+		<both public="1" params="A:B" set="method" line="208" static="1"><f a="fn">
+	<f a="">
+		<c path="both.A"/>
+		<c path="both.B"/>
+	</f>
+	<f a="">
+		<x path="tink.core.Pair">
+			<c path="both.A"/>
+			<c path="both.A"/>
+		</x>
+		<x path="tink.core.Pair">
+			<c path="both.B"/>
+			<c path="both.B"/>
+		</x>
+	</f>
+</f></both>
+		<compose public="1" params="U:V:W" set="method" line="216" static="1">
+			<f a="f1:f2">
+				<f a="">
+					<c path="compose.V"/>
+					<c path="compose.W"/>
+				</f>
+				<f a="">
+					<c path="compose.U"/>
+					<c path="compose.V"/>
+				</f>
+				<f a="">
+					<c path="compose.U"/>
+					<c path="compose.W"/>
+				</f>
+			</f>
+			<haxe_doc>Returns a function that calls `f1` with the output of `f2`.</haxe_doc>
+		</compose>
+		<option public="1" params="A:B" set="method" line="221" static="1"><f a="fn">
+	<f a="">
+		<c path="option.A"/>
+		<c path="option.B"/>
+	</f>
+	<f a="">
+		<e path="haxe.ds.Option"><c path="option.A"/></e>
+		<e path="haxe.ds.Option"><c path="option.B"/></e>
+	</f>
+</f></option>
+		<fromOption public="1" params="A:B" set="method" line="229" static="1"><f a="fn">
+	<f a="">
+		<c path="fromOption.A"/>
+		<e path="haxe.ds.Option"><c path="fromOption.B"/></e>
+	</f>
+	<f a="">
+		<e path="haxe.ds.Option"><c path="fromOption.A"/></e>
+		<e path="haxe.ds.Option"><c path="fromOption.B"/></e>
+	</f>
+</f></fromOption>
+		<repeat public="1" params="I:O" set="method" line="243" static="1"><f a="fn">
+	<f a="">
+		<c path="repeat.I"/>
+		<e path="tink.core.Either">
+			<c path="repeat.I"/>
+			<c path="repeat.O"/>
+		</e>
+	</f>
+	<f a="">
+		<c path="repeat.I"/>
+		<c path="repeat.O"/>
+	</f>
+</f></repeat>
+		<haxe_doc>Arrowlet class for Functions.</haxe_doc>
+	</class>
+	<class path="stx.Compose2" params="" file="src/main/haxe/stx/Compose.hx" module="stx.Compose"><then public="1" params="U:V:W:X" set="method" line="261" static="1">
+	<f a="f1:f2">
+		<f a=":">
+			<c path="then.U"/>
+			<c path="then.V"/>
+			<c path="then.W"/>
+		</f>
+		<f a="">
+			<c path="then.W"/>
+			<c path="then.X"/>
+		</f>
+		<f a=":">
+			<c path="then.U"/>
+			<c path="then.V"/>
+			<c path="then.X"/>
+		</f>
+	</f>
+	<haxe_doc>Returns a function that calls `f2` with the output of `f1`.</haxe_doc>
+</then></class>
+	<class path="stx.Functions" params="" file="src/main/haxe/stx/Functions.hx"><thunk public="1" params="T" get="inline" set="null" line="12" static="1">
+	<f a="v">
+		<c path="thunk.T"/>
+		<f a=""><c path="thunk.T"/></f>
+	</f>
+	<meta><m n=":noUsing"/></meta>
+</thunk></class>
+	<class path="stx.Codeblocks" params="" file="src/main/haxe/stx/Functions.hx" module="stx.Functions">
+		<equals public="1" set="method" line="23" static="1">
+			<f a="a:b">
+				<t path="stx.types.Codeblock"/>
+				<t path="stx.types.Codeblock"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Compare function identity.</haxe_doc>
+		</equals>
+		<promote public="1" params="A" set="method" line="29" static="1">
+			<f a="f">
+				<t path="stx.types.Codeblock"/>
+				<f a="">
+					<c path="promote.A"/>
+					<x path="Void"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that takes a parameter, ignores it, and calls `f`.</haxe_doc>
+		</promote>
+	</class>
+	<class path="stx.Functions0" params="" file="src/main/haxe/stx/Functions.hx" module="stx.Functions">
+		<catching public="1" params="A:B" set="method" line="39" static="1">
+			<f a="c">
+				<t path="stx.types.Thunk"><c path="catching.A"/></t>
+				<t path="stx.types.Thunk"><e path="tink.core.Outcome">
+	<c path="catching.A"/>
+	<c path="tink.core.Error"/>
+</e></t>
+			</f>
+			<haxe_doc>Applies a `Thunk` and returns an `Outcome`</haxe_doc>
+		</catching>
+		<suppress public="1" params="A" set="method" line="55" static="1">
+			<f a="th">
+				<t path="stx.types.Thunk"><c path="suppress.A"/></t>
+				<t path="stx.types.Thunk"><t path="Null"><c path="suppress.A"/></t></t>
+			</f>
+			<haxe_doc>Ignores error in `th` when called, instead returning a `null`</haxe_doc>
+		</suppress>
+		<memoize public="1" params="T" set="method" line="70" static="1">
+			<f a="t">
+				<t path="stx.types.Thunk"><c path="memoize.T"/></t>
+				<t path="stx.types.Thunk"><c path="memoize.T"/></t>
+			</f>
+			<meta>
+				<m n="params"><e>"The Thunk to call once"</e></m>
+				<m n="returns"><e>"A Thunk which will call the input Thunk once."</e></m>
+			</meta>
+			<haxe_doc>Returns a Thunk that applies a Thunk one time only and stores the result, 
+    after which each successive call returns the stored value.</haxe_doc>
+		</memoize>
+		<enclose public="1" params="R" set="method" line="83" static="1">
+			<f a="f">
+				<t path="stx.types.Thunk"><c path="enclose.R"/></t>
+				<t path="stx.types.Codeblock"/>
+			</f>
+			<haxe_doc>Takes a function that returns a result, and produces one that ignores that result.</haxe_doc>
+		</enclose>
+		<swallow public="1" set="method" line="91" static="1">
+			<f a="f">
+				<t path="stx.types.Codeblock"/>
+				<t path="stx.types.Codeblock"/>
+			</f>
+			<haxe_doc>Takes a function `f` and produces one that ignores any error the occurs whilst calling `f`.</haxe_doc>
+		</swallow>
+		<returning public="1" params="R1:R2" set="method" line="102" static="1">
+			<f a="f:thunk">
+				<f a=""><c path="returning.R1"/></f>
+				<t path="stx.types.Thunk"><c path="returning.R2"/></t>
+				<t path="stx.types.Thunk"><c path="returning.R2"/></t>
+			</f>
+			<haxe_doc>Produces a function that calls `f`, ignores its result, and returns the result produced by thunk.</haxe_doc>
+		</returning>
+		<promote public="1" params="A:Z" set="method" line="112" static="1">
+			<f a="f">
+				<f a=""><c path="promote.Z"/></f>
+				<f a="">
+					<c path="promote.A"/>
+					<c path="promote.Z"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that takes a parameter. ignores it, and calls `f`, returning it's result.</haxe_doc>
+		</promote>
+		<stage public="1" params="Z:T" set="method" line="121" static="1">
+			<f a="f:before:after">
+				<t path="stx.types.Thunk"><c path="stage.Z"/></t>
+				<f a=""><c path="stage.T"/></f>
+				<f a="">
+					<c path="stage.T"/>
+					<x path="Void"/>
+				</f>
+				<c path="stage.Z"/>
+			</f>
+			<haxe_doc>Produces a function that calls and stores the result of 'before', then `f`, then calls `after` with the result of 
+    `before` and finally returns the result of `f`.</haxe_doc>
+		</stage>
+		<equals public="1" params="A" set="method" line="133" static="1">
+			<f a="a:b">
+				<t path="stx.types.Thunk"><c path="equals.A"/></t>
+				<t path="stx.types.Thunk"><c path="equals.A"/></t>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Compares function identity.</haxe_doc>
+		</equals>
+	</class>
+	<class path="stx.Callbacks" params="" file="src/main/haxe/stx/Functions.hx" module="stx.Functions"><action public="1" params="T" set="method" line="138" static="1"><f a="fn">
+	<x path="tink.core.Callback"><c path="action.T"/></x>
+	<f a="">
+		<c path="action.T"/>
+		<c path="action.T"/>
+	</f>
+</f></action></class>
+	<class path="stx.Endos" params="" file="src/main/haxe/stx/Functions.hx" module="stx.Functions"/>
+	<class path="stx.Functions1" params="" file="src/main/haxe/stx/Functions.hx" module="stx.Functions">
+		<catching public="1" params="A:B" set="method" line="152" static="1">
+			<f a="fn">
+				<f a="">
+					<c path="catching.A"/>
+					<c path="catching.B"/>
+				</f>
+				<f a="">
+					<c path="catching.A"/>
+					<e path="tink.core.Outcome">
+						<c path="catching.B"/>
+						<c path="tink.core.Error"/>
+					</e>
+				</f>
+			</f>
+			<haxe_doc>Applies a Thunk and returns Either an error or it's result</haxe_doc>
+		</catching>
+		<curry public="1" params="P1:R" set="method" line="170" static="1">
+			<f a="f">
+				<f a="">
+					<c path="curry.P1"/>
+					<c path="curry.R"/>
+				</f>
+				<f a=""><f a="p1">
+	<c path="curry.P1"/>
+	<c path="curry.R"/>
+</f></f>
+			</f>
+			<haxe_doc>Produces a function that produces a function for each
+    parameter in the originating function. When these
+    functions have been called, the result of the original function is produced.</haxe_doc>
+		</curry>
+		<swallow public="1" params="A" set="method" line="181" static="1">
+			<f a="f">
+				<f a="">
+					<c path="swallow.A"/>
+					<x path="Void"/>
+				</f>
+				<f a="">
+					<c path="swallow.A"/>
+					<x path="Void"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that ignores any error the occurs whilst
+    calling the input function.</haxe_doc>
+		</swallow>
+		<swallowWith public="1" params="P1:R" set="method" line="189" static="1">
+			<f a="f:d">
+				<f a="">
+					<c path="swallowWith.P1"/>
+					<c path="swallowWith.R"/>
+				</f>
+				<c path="swallowWith.R"/>
+				<f a="">
+					<c path="swallowWith.P1"/>
+					<c path="swallowWith.R"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that ignores
+    any error the occurs whilst calling the input function, and produces `d` if
+    error occurs.</haxe_doc>
+		</swallowWith>
+		<returning public="1" params="P1:R1:R2" set="method" line="202" static="1">
+			<f a="f:thunk">
+				<f a="">
+					<c path="returning.P1"/>
+					<c path="returning.R1"/>
+				</f>
+				<t path="stx.types.Thunk"><c path="returning.R2"/></t>
+				<f a="">
+					<c path="returning.P1"/>
+					<c path="returning.R2"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that calls `f`, ignores its result, and returns the result
+    produced by thunk.</haxe_doc>
+		</returning>
+		<lazy public="1" params="P1:R" get="inline" set="null" line="213" static="1">
+			<f a="f:p1">
+				<f a="">
+					<c path="lazy.P1"/>
+					<c path="lazy.R"/>
+				</f>
+				<c path="lazy.P1"/>
+				<t path="stx.types.Thunk"><c path="lazy.R"/></t>
+			</f>
+			<meta><m n=":note"><e>"those brackets are there to fox the Java compiler"</e></m></meta>
+			<haxe_doc>Produces a function that calls `f` with the given parameters `p1....pn`.</haxe_doc>
+		</lazy>
+		<enclose public="1" params="P1:R" set="method" line="228" static="1">
+			<f a="f">
+				<f a="">
+					<c path="enclose.P1"/>
+					<c path="enclose.R"/>
+				</f>
+				<f a="">
+					<c path="enclose.P1"/>
+					<x path="Void"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that calls `f`, ignoring the result.</haxe_doc>
+		</enclose>
+		<equals public="1" params="P1:R" set="method" line="236" static="1">
+			<f a="a:b">
+				<f a="">
+					<c path="equals.P1"/>
+					<c path="equals.R"/>
+				</f>
+				<f a="">
+					<c path="equals.P1"/>
+					<c path="equals.R"/>
+				</f>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Compares function identity.</haxe_doc>
+		</equals>
+	</class>
+	<class path="stx.Functions2" params="" file="src/main/haxe/stx/Functions.hx" module="stx.Functions">
+		<ccw public="1" params="P1:P2:R" set="method" line="244" static="1">
+			<f a="f">
+				<f a=":">
+					<c path="ccw.P1"/>
+					<c path="ccw.P2"/>
+					<c path="ccw.R"/>
+				</f>
+				<f a=":">
+					<c path="ccw.P2"/>
+					<c path="ccw.P1"/>
+					<c path="ccw.R"/>
+				</f>
+			</f>
+			<haxe_doc>Places parameter 1 at the back.</haxe_doc>
+		</ccw>
+		<swallow public="1" params="P1:P2" set="method" line="252" static="1">
+			<f a="f">
+				<f a=":">
+					<c path="swallow.P1"/>
+					<c path="swallow.P2"/>
+					<x path="Void"/>
+				</f>
+				<f a=":">
+					<c path="swallow.P1"/>
+					<c path="swallow.P2"/>
+					<x path="Void"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that ignores any error the occurs whilst calling the input function.</haxe_doc>
+		</swallow>
+		<swallowWith public="1" params="P1:P2:R" set="method" line="258" static="1">
+			<f a="f:d">
+				<f a=":">
+					<c path="swallowWith.P1"/>
+					<c path="swallowWith.P2"/>
+					<c path="swallowWith.R"/>
+				</f>
+				<c path="swallowWith.R"/>
+				<f a=":">
+					<c path="swallowWith.P1"/>
+					<c path="swallowWith.P2"/>
+					<c path="swallowWith.R"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that ignores any error the occurs whilst calling the input function, and produces `d` if error occurs.</haxe_doc>
+		</swallowWith>
+		<returning public="1" params="P1:P2:R1:R2" set="method" line="270" static="1">
+			<f a="f:thunk">
+				<f a=":">
+					<c path="returning.P1"/>
+					<c path="returning.P2"/>
+					<c path="returning.R1"/>
+				</f>
+				<t path="stx.types.Thunk"><c path="returning.R2"/></t>
+				<f a=":">
+					<c path="returning.P1"/>
+					<c path="returning.P2"/>
+					<c path="returning.R2"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that calls `f`, ignores its result, and returns the result produced by thunk.</haxe_doc>
+		</returning>
+		<flip public="1" params="P1:P2:R" set="method" line="280" static="1">
+			<f a="f">
+				<f a=":">
+					<c path="flip.P1"/>
+					<c path="flip.P2"/>
+					<c path="flip.R"/>
+				</f>
+				<f a=":">
+					<c path="flip.P2"/>
+					<c path="flip.P1"/>
+					<c path="flip.R"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function which takes the parameters of `f` in a flipped order.</haxe_doc>
+		</flip>
+		<curry public="1" params="P1:P2:R" set="method" line="289" static="1">
+			<f a="f">
+				<f a=":">
+					<c path="curry.P1"/>
+					<c path="curry.P2"/>
+					<c path="curry.R"/>
+				</f>
+				<f a="">
+					<c path="curry.P1"/>
+					<f a="">
+						<c path="curry.P2"/>
+						<c path="curry.R"/>
+					</f>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that produces a function for each parameter in the originating function. When these
+    functions have been called, the result of the original function is returned.</haxe_doc>
+		</curry>
+		<uncurry public="1" params="P1:P2:R" set="method" line="300" static="1">
+			<f a="f">
+				<f a="">
+					<c path="uncurry.P1"/>
+					<f a="">
+						<c path="uncurry.P2"/>
+						<c path="uncurry.R"/>
+					</f>
+				</f>
+				<f a=":">
+					<c path="uncurry.P1"/>
+					<c path="uncurry.P2"/>
+					<c path="uncurry.R"/>
+				</f>
+			</f>
+			<haxe_doc>Takes a function with one parameter that returns a function of one parameter, and produces
+    a function that takes two parameters that calls the two functions sequentially,</haxe_doc>
+		</uncurry>
+		<lazy public="1" params="P1:P2:R" set="method" line="308" static="1">
+			<f a="f:p1:p2">
+				<f a=":">
+					<c path="lazy.P1"/>
+					<c path="lazy.P2"/>
+					<c path="lazy.R"/>
+				</f>
+				<c path="lazy.P1"/>
+				<c path="lazy.P2"/>
+				<t path="stx.types.Thunk"><c path="lazy.R"/></t>
+			</f>
+			<haxe_doc>Produdes a function that calls `f` with the given parameters `p1....pn`, and caches the result</haxe_doc>
+		</lazy>
+		<defer public="1" params="P1:P2:R" set="method" line="318" static="1">
+			<f a="f:p1:p2">
+				<f a=":">
+					<c path="defer.P1"/>
+					<c path="defer.P2"/>
+					<c path="defer.R"/>
+				</f>
+				<c path="defer.P1"/>
+				<c path="defer.P2"/>
+				<t path="stx.types.Thunk"><c path="defer.R"/></t>
+			</f>
+			<haxe_doc>As with lazy, but calls the wrapped function every time it is called.</haxe_doc>
+		</defer>
+		<enclose public="1" params="P1:P2:R" set="method" line="326" static="1">
+			<f a="f">
+				<f a=":">
+					<c path="enclose.P1"/>
+					<c path="enclose.P2"/>
+					<c path="enclose.R"/>
+				</f>
+				<f a=":">
+					<c path="enclose.P1"/>
+					<c path="enclose.P2"/>
+					<x path="Void"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that calls `f`, ignoring the result.</haxe_doc>
+		</enclose>
+		<equals public="1" params="P1:P2:R" set="method" line="334" static="1">
+			<f a="a:b">
+				<f a=":">
+					<c path="equals.P1"/>
+					<c path="equals.P2"/>
+					<c path="equals.R"/>
+				</f>
+				<f a=":">
+					<c path="equals.P1"/>
+					<c path="equals.P2"/>
+					<c path="equals.R"/>
+				</f>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Compares function identity.</haxe_doc>
+		</equals>
+	</class>
+	<class path="stx.Functions3" params="" file="src/main/haxe/stx/Functions.hx" module="stx.Functions">
+		<ccw public="1" params="P1:P2:P3:R" set="method" line="342" static="1">
+			<f a="f">
+				<f a="::">
+					<c path="ccw.P1"/>
+					<c path="ccw.P2"/>
+					<c path="ccw.P3"/>
+					<c path="ccw.R"/>
+				</f>
+				<f a="::">
+					<c path="ccw.P2"/>
+					<c path="ccw.P3"/>
+					<c path="ccw.P1"/>
+					<c path="ccw.R"/>
+				</f>
+			</f>
+			<haxe_doc>Places first parameter at the back.</haxe_doc>
+		</ccw>
+		<swallow public="1" params="A:B:C" set="method" line="350" static="1">
+			<f a="f">
+				<f a="::">
+					<c path="swallow.A"/>
+					<c path="swallow.B"/>
+					<c path="swallow.C"/>
+					<x path="Void"/>
+				</f>
+				<f a="::">
+					<c path="swallow.A"/>
+					<c path="swallow.B"/>
+					<c path="swallow.C"/>
+					<x path="Void"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that ignores any error the occurs whilst calling the input function.</haxe_doc>
+		</swallow>
+		<swallowWith public="1" params="A:B:C:R" set="method" line="356" static="1">
+			<f a="f:d">
+				<f a="::">
+					<c path="swallowWith.A"/>
+					<c path="swallowWith.B"/>
+					<c path="swallowWith.C"/>
+					<c path="swallowWith.R"/>
+				</f>
+				<c path="swallowWith.R"/>
+				<f a="::">
+					<c path="swallowWith.A"/>
+					<c path="swallowWith.B"/>
+					<c path="swallowWith.C"/>
+					<c path="swallowWith.R"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that ignores any error the occurs whilst calling the input function, and produces `d` if error occurs.</haxe_doc>
+		</swallowWith>
+		<returning public="1" params="P1:P2:P3:R1:R2" set="method" line="368" static="1">
+			<f a="f:thunk">
+				<f a="::">
+					<c path="returning.P1"/>
+					<c path="returning.P2"/>
+					<c path="returning.P3"/>
+					<c path="returning.R1"/>
+				</f>
+				<t path="stx.types.Thunk"><c path="returning.R2"/></t>
+				<f a="::">
+					<c path="returning.P1"/>
+					<c path="returning.P2"/>
+					<c path="returning.P3"/>
+					<c path="returning.R2"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that calls `f`, ignores its result, and returns the result produced by thunk.</haxe_doc>
+		</returning>
+		<curry public="1" params="P1:P2:P3:R" set="method" line="379" static="1">
+			<f a="f">
+				<f a="::">
+					<c path="curry.P1"/>
+					<c path="curry.P2"/>
+					<c path="curry.P3"/>
+					<c path="curry.R"/>
+				</f>
+				<f a="">
+					<c path="curry.P1"/>
+					<f a="">
+						<c path="curry.P2"/>
+						<f a="">
+							<c path="curry.P3"/>
+							<c path="curry.R"/>
+						</f>
+					</f>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that produces a function for each parameter in the originating function. When these
+    functions have been called, the result of the original function is produced.</haxe_doc>
+		</curry>
+		<uncurry public="1" params="P1:P2:P3:R" set="method" line="392" static="1">
+			<f a="f">
+				<f a="">
+					<c path="uncurry.P1"/>
+					<f a="">
+						<c path="uncurry.P2"/>
+						<f a="">
+							<c path="uncurry.P3"/>
+							<c path="uncurry.R"/>
+						</f>
+					</f>
+				</f>
+				<f a="::">
+					<c path="uncurry.P1"/>
+					<c path="uncurry.P2"/>
+					<c path="uncurry.P3"/>
+					<c path="uncurry.R"/>
+				</f>
+			</f>
+			<haxe_doc>Takes a function with one parameter that returns a function of one parameter, and produces
+    a function that takes two parameters that calls the two functions sequentially,</haxe_doc>
+		</uncurry>
+		<uncurry2 public="1" params="P1:P2:P3:R" set="method" line="397" static="1"><f a="f">
+	<f a="">
+		<c path="uncurry2.P1"/>
+		<f a="">
+			<c path="uncurry2.P2"/>
+			<f a="">
+				<c path="uncurry2.P3"/>
+				<c path="uncurry2.R"/>
+			</f>
+		</f>
+	</f>
+	<f a=":">
+		<c path="uncurry2.P1"/>
+		<c path="uncurry2.P2"/>
+		<f a="">
+			<c path="uncurry2.P3"/>
+			<c path="uncurry2.R"/>
+		</f>
+	</f>
+</f></uncurry2>
+		<lazy public="1" params="P1:P2:P3:R" set="method" line="407" static="1">
+			<f a="f:p1:p2:p3">
+				<f a="::">
+					<c path="lazy.P1"/>
+					<c path="lazy.P2"/>
+					<c path="lazy.P3"/>
+					<c path="lazy.R"/>
+				</f>
+				<c path="lazy.P1"/>
+				<c path="lazy.P2"/>
+				<c path="lazy.P3"/>
+				<t path="stx.types.Thunk"><c path="lazy.R"/></t>
+			</f>
+			<haxe_doc>Produdes a function that calls `f` with the given parameters `p1....pn`.</haxe_doc>
+		</lazy>
+		<enclose public="1" params="P1:P2:P3:R" set="method" line="417" static="1">
+			<f a="f">
+				<f a="::">
+					<c path="enclose.P1"/>
+					<c path="enclose.P2"/>
+					<c path="enclose.P3"/>
+					<c path="enclose.R"/>
+				</f>
+				<f a="::">
+					<c path="enclose.P1"/>
+					<c path="enclose.P2"/>
+					<c path="enclose.P3"/>
+					<x path="Void"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that calls `f`, ignoring the result.</haxe_doc>
+		</enclose>
+		<equals public="1" params="P1:P2:P3:R" set="method" line="425" static="1">
+			<f a="a:b">
+				<f a="::">
+					<c path="equals.P1"/>
+					<c path="equals.P2"/>
+					<c path="equals.P3"/>
+					<c path="equals.R"/>
+				</f>
+				<f a="::">
+					<c path="equals.P1"/>
+					<c path="equals.P2"/>
+					<c path="equals.P3"/>
+					<c path="equals.R"/>
+				</f>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Compares function identity.</haxe_doc>
+		</equals>
+	</class>
+	<class path="stx.Functions4" params="" file="src/main/haxe/stx/Functions.hx" module="stx.Functions">
+		<ccw public="1" params="P1:P2:P3:P4:R" set="method" line="433" static="1">
+			<f a="f">
+				<f a=":::">
+					<c path="ccw.P1"/>
+					<c path="ccw.P2"/>
+					<c path="ccw.P3"/>
+					<c path="ccw.P4"/>
+					<c path="ccw.R"/>
+				</f>
+				<f a=":::">
+					<c path="ccw.P2"/>
+					<c path="ccw.P3"/>
+					<c path="ccw.P4"/>
+					<c path="ccw.P1"/>
+					<c path="ccw.R"/>
+				</f>
+			</f>
+			<haxe_doc>Pushes first parameter to the last</haxe_doc>
+		</ccw>
+		<swallow public="1" params="A:B:C:D" set="method" line="441" static="1">
+			<f a="f">
+				<f a=":::">
+					<c path="swallow.A"/>
+					<c path="swallow.B"/>
+					<c path="swallow.C"/>
+					<c path="swallow.D"/>
+					<x path="Void"/>
+				</f>
+				<f a=":::">
+					<c path="swallow.A"/>
+					<c path="swallow.B"/>
+					<c path="swallow.C"/>
+					<c path="swallow.D"/>
+					<x path="Void"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that ignores any error the occurs whilst calling the input function.</haxe_doc>
+		</swallow>
+		<swallowWith public="1" params="A:B:C:D:R" set="method" line="447" static="1">
+			<f a="f:def">
+				<f a=":::">
+					<c path="swallowWith.A"/>
+					<c path="swallowWith.B"/>
+					<c path="swallowWith.C"/>
+					<c path="swallowWith.D"/>
+					<c path="swallowWith.R"/>
+				</f>
+				<c path="swallowWith.R"/>
+				<f a=":::">
+					<c path="swallowWith.A"/>
+					<c path="swallowWith.B"/>
+					<c path="swallowWith.C"/>
+					<c path="swallowWith.D"/>
+					<c path="swallowWith.R"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that ignores any error the occurs whilst calling the input function, and produces `d` if error occurs.</haxe_doc>
+		</swallowWith>
+		<returning public="1" params="P1:P2:P3:P4:R1:R2" set="method" line="459" static="1">
+			<f a="f:thunk">
+				<f a=":::">
+					<c path="returning.P1"/>
+					<c path="returning.P2"/>
+					<c path="returning.P3"/>
+					<c path="returning.P4"/>
+					<c path="returning.R1"/>
+				</f>
+				<t path="stx.types.Thunk"><c path="returning.R2"/></t>
+				<f a=":::">
+					<c path="returning.P1"/>
+					<c path="returning.P2"/>
+					<c path="returning.P3"/>
+					<c path="returning.P4"/>
+					<c path="returning.R2"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that calls `f`, ignores its result, and returns the result produced by thunk.</haxe_doc>
+		</returning>
+		<curry public="1" params="P1:P2:P3:P4:R" set="method" line="470" static="1">
+			<f a="f">
+				<f a=":::">
+					<c path="curry.P1"/>
+					<c path="curry.P2"/>
+					<c path="curry.P3"/>
+					<c path="curry.P4"/>
+					<c path="curry.R"/>
+				</f>
+				<f a="">
+					<c path="curry.P1"/>
+					<f a="">
+						<c path="curry.P2"/>
+						<f a="">
+							<c path="curry.P3"/>
+							<f a="">
+								<c path="curry.P4"/>
+								<c path="curry.R"/>
+							</f>
+						</f>
+					</f>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that produces a function for each parameter in the originating function. When these
+    functions have been called, the result of the original function is produced.</haxe_doc>
+		</curry>
+		<uncurry public="1" params="P1:P2:P3:P4:R" set="method" line="485" static="1">
+			<f a="f">
+				<f a="">
+					<c path="uncurry.P1"/>
+					<f a="">
+						<c path="uncurry.P2"/>
+						<f a="">
+							<c path="uncurry.P3"/>
+							<f a="">
+								<c path="uncurry.P4"/>
+								<c path="uncurry.R"/>
+							</f>
+						</f>
+					</f>
+				</f>
+				<f a=":::">
+					<c path="uncurry.P1"/>
+					<c path="uncurry.P2"/>
+					<c path="uncurry.P3"/>
+					<c path="uncurry.P4"/>
+					<c path="uncurry.R"/>
+				</f>
+			</f>
+			<haxe_doc>Takes a function with one parameter that returns a function of one parameter, and produces
+    a function that takes two parameters that calls the two functions sequentially,</haxe_doc>
+		</uncurry>
+		<lazy public="1" params="P1:P2:P3:P4:R" set="method" line="493" static="1">
+			<f a="f:p1:p2:p3:p4">
+				<f a=":::">
+					<c path="lazy.P1"/>
+					<c path="lazy.P2"/>
+					<c path="lazy.P3"/>
+					<c path="lazy.P4"/>
+					<c path="lazy.R"/>
+				</f>
+				<c path="lazy.P1"/>
+				<c path="lazy.P2"/>
+				<c path="lazy.P3"/>
+				<c path="lazy.P4"/>
+				<t path="stx.types.Thunk"><c path="lazy.R"/></t>
+			</f>
+			<haxe_doc>Produdes a function that calls `f` with the given parameters `p1....pn`.</haxe_doc>
+		</lazy>
+		<enclose public="1" params="P1:P2:P3:P4:R" set="method" line="503" static="1">
+			<f a="f">
+				<f a=":::">
+					<c path="enclose.P1"/>
+					<c path="enclose.P2"/>
+					<c path="enclose.P3"/>
+					<c path="enclose.P4"/>
+					<c path="enclose.R"/>
+				</f>
+				<f a=":::">
+					<c path="enclose.P1"/>
+					<c path="enclose.P2"/>
+					<c path="enclose.P3"/>
+					<c path="enclose.P4"/>
+					<x path="Void"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that calls `f`, ignoring the result.</haxe_doc>
+		</enclose>
+		<equals public="1" params="P1:P2:P3:P4:R" set="method" line="511" static="1">
+			<f a="a:b">
+				<f a=":::">
+					<c path="equals.P1"/>
+					<c path="equals.P2"/>
+					<c path="equals.P3"/>
+					<c path="equals.P4"/>
+					<c path="equals.R"/>
+				</f>
+				<f a=":::">
+					<c path="equals.P1"/>
+					<c path="equals.P2"/>
+					<c path="equals.P3"/>
+					<c path="equals.P4"/>
+					<c path="equals.R"/>
+				</f>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Compares identity of methods.</haxe_doc>
+		</equals>
+	</class>
+	<class path="stx.Functions5" params="" file="src/main/haxe/stx/Functions.hx" module="stx.Functions">
+		<ccw public="1" params="P1:P2:P3:P4:P5:R" set="method" line="516" static="1"><f a="f">
+	<f a="::::">
+		<c path="ccw.P1"/>
+		<c path="ccw.P2"/>
+		<c path="ccw.P3"/>
+		<c path="ccw.P4"/>
+		<c path="ccw.P5"/>
+		<c path="ccw.R"/>
+	</f>
+	<f a="::::">
+		<c path="ccw.P2"/>
+		<c path="ccw.P3"/>
+		<c path="ccw.P4"/>
+		<c path="ccw.P5"/>
+		<c path="ccw.P1"/>
+		<c path="ccw.R"/>
+	</f>
+</f></ccw>
+		<swallow public="1" params="A:B:C:D:E" set="method" line="524" static="1">
+			<f a="f">
+				<f a="::::">
+					<c path="swallow.A"/>
+					<c path="swallow.B"/>
+					<c path="swallow.C"/>
+					<c path="swallow.D"/>
+					<c path="swallow.E"/>
+					<x path="Void"/>
+				</f>
+				<f a="::::">
+					<c path="swallow.A"/>
+					<c path="swallow.B"/>
+					<c path="swallow.C"/>
+					<c path="swallow.D"/>
+					<c path="swallow.E"/>
+					<x path="Void"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that ignores any error the occurs whilst calling the input function.</haxe_doc>
+		</swallow>
+		<swallowWith public="1" params="A:B:C:D:E:R" set="method" line="530" static="1">
+			<f a="f:def">
+				<f a="::::">
+					<c path="swallowWith.A"/>
+					<c path="swallowWith.B"/>
+					<c path="swallowWith.C"/>
+					<c path="swallowWith.D"/>
+					<c path="swallowWith.E"/>
+					<c path="swallowWith.R"/>
+				</f>
+				<c path="swallowWith.R"/>
+				<f a="::::">
+					<c path="swallowWith.A"/>
+					<c path="swallowWith.B"/>
+					<c path="swallowWith.C"/>
+					<c path="swallowWith.D"/>
+					<c path="swallowWith.E"/>
+					<c path="swallowWith.R"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that ignores any error the occurs whilst calling the input function, and produces `d` if error occurs.</haxe_doc>
+		</swallowWith>
+		<returning public="1" params="P1:P2:P3:P4:P5:R1:R2" set="method" line="542" static="1">
+			<f a="f:thunk">
+				<f a="::::">
+					<c path="returning.P1"/>
+					<c path="returning.P2"/>
+					<c path="returning.P3"/>
+					<c path="returning.P4"/>
+					<c path="returning.P5"/>
+					<c path="returning.R1"/>
+				</f>
+				<t path="stx.types.Thunk"><c path="returning.R2"/></t>
+				<f a="::::">
+					<c path="returning.P1"/>
+					<c path="returning.P2"/>
+					<c path="returning.P3"/>
+					<c path="returning.P4"/>
+					<c path="returning.P5"/>
+					<c path="returning.R2"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that calls `f`, ignores its result, and returns the result produced by thunk.</haxe_doc>
+		</returning>
+		<curry public="1" params="P1:P2:P3:P4:P5:R" set="method" line="553" static="1">
+			<f a="f">
+				<f a="::::">
+					<c path="curry.P1"/>
+					<c path="curry.P2"/>
+					<c path="curry.P3"/>
+					<c path="curry.P4"/>
+					<c path="curry.P5"/>
+					<c path="curry.R"/>
+				</f>
+				<f a="p1">
+					<c path="curry.P1"/>
+					<f a="p2">
+						<c path="curry.P2"/>
+						<f a="p3">
+							<c path="curry.P3"/>
+							<f a="p4">
+								<c path="curry.P4"/>
+								<f a="p5">
+									<c path="curry.P5"/>
+									<c path="curry.R"/>
+								</f>
+							</f>
+						</f>
+					</f>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that produces a function for each parameter in the originating function. When these
+    functions have been called, the result of the original function is produced.</haxe_doc>
+		</curry>
+		<uncurry public="1" params="P1:P2:P3:P4:P5:R" set="method" line="571" static="1">
+			<f a="f">
+				<f a="">
+					<c path="uncurry.P1"/>
+					<f a="">
+						<c path="uncurry.P2"/>
+						<f a="">
+							<c path="uncurry.P3"/>
+							<f a="">
+								<c path="uncurry.P4"/>
+								<f a="">
+									<c path="uncurry.P5"/>
+									<c path="uncurry.R"/>
+								</f>
+							</f>
+						</f>
+					</f>
+				</f>
+				<f a="::::">
+					<c path="uncurry.P1"/>
+					<c path="uncurry.P2"/>
+					<c path="uncurry.P3"/>
+					<c path="uncurry.P4"/>
+					<c path="uncurry.P5"/>
+					<c path="uncurry.R"/>
+				</f>
+			</f>
+			<haxe_doc>Takes a function with one parameter that returns a function of one parameter, and produces
+    a function that takes two parameters that calls the two functions sequentially,</haxe_doc>
+		</uncurry>
+		<lazy public="1" params="P1:P2:P3:P4:P5:R" set="method" line="579" static="1">
+			<f a="f:p1:p2:p3:p4:p5">
+				<f a="::::">
+					<c path="lazy.P1"/>
+					<c path="lazy.P2"/>
+					<c path="lazy.P3"/>
+					<c path="lazy.P4"/>
+					<c path="lazy.P5"/>
+					<c path="lazy.R"/>
+				</f>
+				<c path="lazy.P1"/>
+				<c path="lazy.P2"/>
+				<c path="lazy.P3"/>
+				<c path="lazy.P4"/>
+				<c path="lazy.P5"/>
+				<t path="stx.types.Thunk"><c path="lazy.R"/></t>
+			</f>
+			<haxe_doc>Produdes a function that calls `f` with the given parameters `p1....pn`.</haxe_doc>
+		</lazy>
+		<enclose public="1" params="P1:P2:P3:P4:P5:R" set="method" line="589" static="1">
+			<f a="f">
+				<f a="::::">
+					<c path="enclose.P1"/>
+					<c path="enclose.P2"/>
+					<c path="enclose.P3"/>
+					<c path="enclose.P4"/>
+					<c path="enclose.P5"/>
+					<c path="enclose.R"/>
+				</f>
+				<f a="::::">
+					<c path="enclose.P1"/>
+					<c path="enclose.P2"/>
+					<c path="enclose.P3"/>
+					<c path="enclose.P4"/>
+					<c path="enclose.P5"/>
+					<x path="Void"/>
+				</f>
+			</f>
+			<haxe_doc>Produces a function that calls `f`, ignoring the result.</haxe_doc>
+		</enclose>
+		<equals public="1" params="P1:P2:P3:P4:P5:R" set="method" line="597" static="1">
+			<f a="a:b">
+				<f a="::::">
+					<c path="equals.P1"/>
+					<c path="equals.P2"/>
+					<c path="equals.P3"/>
+					<c path="equals.P4"/>
+					<c path="equals.P5"/>
+					<c path="equals.R"/>
+				</f>
+				<f a="::::">
+					<c path="equals.P1"/>
+					<c path="equals.P2"/>
+					<c path="equals.P3"/>
+					<c path="equals.P4"/>
+					<c path="equals.P5"/>
+					<c path="equals.R"/>
+				</f>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Method equals.</haxe_doc>
+		</equals>
+	</class>
+	<class path="stx.Functions6" params="" file="src/main/haxe/stx/Functions.hx" module="stx.Functions"><curry public="1" params="P1:P2:P3:P4:P5:P6:R" set="method" line="602" static="1"><f a="f">
+	<f a=":::::">
+		<c path="curry.P1"/>
+		<c path="curry.P2"/>
+		<c path="curry.P3"/>
+		<c path="curry.P4"/>
+		<c path="curry.P5"/>
+		<c path="curry.P6"/>
+		<c path="curry.R"/>
+	</f>
+	<f a="">
+		<c path="curry.P1"/>
+		<f a="">
+			<c path="curry.P2"/>
+			<f a="">
+				<c path="curry.P3"/>
+				<f a="">
+					<c path="curry.P4"/>
+					<f a="">
+						<c path="curry.P5"/>
+						<f a="">
+							<c path="curry.P6"/>
+							<c path="curry.R"/>
+						</f>
+					</f>
+				</f>
+			</f>
+		</f>
+	</f>
+</f></curry></class>
+	<typedef path="stx.types.Codeblock" params="" file="src/main/haxe/stx/types/Codeblock.hx"><f a=""><x path="Void"/></f></typedef>
+	<typedef path="stx.types.Thunk" params="T" file="src/main/haxe/stx/types/Thunk.hx"><f a=""><c path="stx.types.Thunk.T"/></f></typedef>
+	<abstract path="tink.core.Callback" params="T" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Callback.hx">
+		<from>
+			<icast><f a="">
+	<c path="tink.core.Callback.T"/>
+	<x path="Void"/>
+</f></icast>
+			<icast field="fromNiladic"><f a=""><x path="Void"/></f></icast>
+			<icast field="fromMany"><c path="Array"><x path="tink.core.Callback"><c path="fromMany.A"/></x></c></icast>
+		</from>
+		<this><t path="Null"><f a="">
+	<c path="tink.core.Callback.T"/>
+	<x path="Void"/>
+</f></t></this>
+		<impl><class path="tink.core._Callback.Callback_Impl_" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Callback.hx" private="1" module="tink.core.Callback">
+	<_new get="inline" set="null" line="7" static="1">
+		<f a="f">
+			<t path="Null"><f a="">
+	<c path="tink.core.Callback.T"/>
+	<x path="Void"/>
+</f></t>
+			<t path="Null"><f a="">
+	<c path="tink.core.Callback.T"/>
+	<x path="Void"/>
+</f></t>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</_new>
+	<invoke public="1" set="method" line="10" static="1">
+		<f a="this:data">
+			<t path="Null"><f a="">
+	<c path="tink.core.Callback.T"/>
+	<x path="Void"/>
+</f></t>
+			<c path="tink.core.Callback.T"/>
+			<x path="Void"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</invoke>
+	<fromNiladic params="A" get="inline" set="null" line="13" static="1">
+		<f a="f">
+			<f a=""><x path="Void"/></f>
+			<x path="tink.core.Callback"><c path="fromNiladic.A"/></x>
+		</f>
+		<meta><m n=":from"/></meta>
+	</fromNiladic>
+	<fromMany params="A" set="method" line="16" static="1">
+		<f a="callbacks">
+			<c path="Array"><x path="tink.core.Callback"><c path="fromMany.A"/></x></c>
+			<x path="tink.core.Callback"><c path="fromMany.A"/></x>
+		</f>
+		<meta><m n=":from"/></meta>
+	</fromMany>
+</class></impl>
+	</abstract>
+	<class path="tink.core._Callback.Callback_Impl_" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Callback.hx" private="1" module="tink.core.Callback">
+		<_new get="inline" set="null" line="7" static="1">
+			<f a="f">
+				<t path="Null"><f a="">
+	<c path="tink.core.Callback.T"/>
+	<x path="Void"/>
+</f></t>
+				<t path="Null"><f a="">
+	<c path="tink.core.Callback.T"/>
+	<x path="Void"/>
+</f></t>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</_new>
+		<invoke public="1" set="method" line="10" static="1">
+			<f a="this:data">
+				<t path="Null"><f a="">
+	<c path="tink.core.Callback.T"/>
+	<x path="Void"/>
+</f></t>
+				<c path="tink.core.Callback.T"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</invoke>
+		<fromNiladic params="A" get="inline" set="null" line="13" static="1">
+			<f a="f">
+				<f a=""><x path="Void"/></f>
+				<x path="tink.core.Callback"><c path="fromNiladic.A"/></x>
+			</f>
+			<meta><m n=":from"/></meta>
+		</fromNiladic>
+		<fromMany params="A" set="method" line="16" static="1">
+			<f a="callbacks">
+				<c path="Array"><x path="tink.core.Callback"><c path="fromMany.A"/></x></c>
+				<x path="tink.core.Callback"><c path="fromMany.A"/></x>
+			</f>
+			<meta><m n=":from"/></meta>
+		</fromMany>
+	</class>
+	<abstract path="tink.core.CallbackLink" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Callback.hx" module="tink.core.Callback">
+		<from>
+			<icast field="fromFunction"><f a=""><x path="Void"/></f></icast>
+			<icast field="fromMany"><c path="Array"><x path="tink.core.CallbackLink"/></c></icast>
+		</from>
+		<this><t path="Null"><f a=""><x path="Void"/></f></t></this>
+		<to><icast field="toCallback"><x path="tink.core.Callback"><c path="toCallback.A"/></x></icast></to>
+		<impl><class path="tink.core._Callback.CallbackLink_Impl_" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Callback.hx" private="1" module="tink.core.Callback">
+	<_new get="inline" set="null" line="25" static="1">
+		<f a="link">
+			<f a=""><x path="Void"/></f>
+			<t path="Null"><f a=""><x path="Void"/></f></t>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</_new>
+	<dissolve public="1" get="inline" set="null" line="28" static="1">
+		<f a="this">
+			<t path="Null"><f a=""><x path="Void"/></f></t>
+			<x path="Void"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</dissolve>
+	<toCallback params="A" set="method" line="31" static="1">
+		<f a="this">
+			<t path="Null"><f a=""><x path="Void"/></f></t>
+			<x path="tink.core.Callback"><c path="toCallback.A"/></x>
+		</f>
+		<meta>
+			<m n=":impl"/>
+			<m n=":to"/>
+		</meta>
+	</toCallback>
+	<fromFunction get="inline" set="null" line="34" static="1">
+		<f a="f">
+			<f a=""><x path="Void"/></f>
+			<x path="tink.core.CallbackLink"/>
+		</f>
+		<meta><m n=":from"/></meta>
+	</fromFunction>
+	<fromMany set="method" line="37" static="1">
+		<f a="callbacks">
+			<c path="Array"><x path="tink.core.CallbackLink"/></c>
+			<x path="tink.core.CallbackLink"/>
+		</f>
+		<meta><m n=":from"/></meta>
+	</fromMany>
+</class></impl>
+	</abstract>
+	<class path="tink.core._Callback.CallbackLink_Impl_" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Callback.hx" private="1" module="tink.core.Callback">
+		<_new get="inline" set="null" line="25" static="1">
+			<f a="link">
+				<f a=""><x path="Void"/></f>
+				<t path="Null"><f a=""><x path="Void"/></f></t>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</_new>
+		<dissolve public="1" get="inline" set="null" line="28" static="1">
+			<f a="this">
+				<t path="Null"><f a=""><x path="Void"/></f></t>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</dissolve>
+		<toCallback params="A" set="method" line="31" static="1">
+			<f a="this">
+				<t path="Null"><f a=""><x path="Void"/></f></t>
+				<x path="tink.core.Callback"><c path="toCallback.A"/></x>
+			</f>
+			<meta>
+				<m n=":impl"/>
+				<m n=":to"/>
+			</meta>
+		</toCallback>
+		<fromFunction get="inline" set="null" line="34" static="1">
+			<f a="f">
+				<f a=""><x path="Void"/></f>
+				<x path="tink.core.CallbackLink"/>
+			</f>
+			<meta><m n=":from"/></meta>
+		</fromFunction>
+		<fromMany set="method" line="37" static="1">
+			<f a="callbacks">
+				<c path="Array"><x path="tink.core.CallbackLink"/></c>
+				<x path="tink.core.CallbackLink"/>
+			</f>
+			<meta><m n=":from"/></meta>
+		</fromMany>
+	</class>
+	<class path="tink.core._Callback.Cell" params="T" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Callback.hx" private="1" module="tink.core.Callback">
+		<pool line="52" static="1"><c path="Array"><c path="tink.core._Callback.Cell"><d/></c></c></pool>
+		<get public="1" params="A" get="inline" set="null" line="54" static="1"><f a=""><c path="tink.core._Callback.Cell"><c path="get.A"/></c></f></get>
+		<cb public="1"><x path="tink.core.Callback"><c path="tink.core._Callback.Cell.T"/></x></cb>
+		<free public="1" get="inline" set="null" line="47"><f a=""><x path="Void"/></f></free>
+		<new set="method" line="45"><f a=""><x path="Void"/></f></new>
+	</class>
+	<abstract path="tink.core.CallbackList" params="T" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Callback.hx" module="tink.core.Callback">
+		<this><c path="Array"><c path="tink.core._Callback.Cell"><c path="tink.core.CallbackList.T"/></c></c></this>
+		<impl><class path="tink.core._Callback.CallbackList_Impl_" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Callback.hx" private="1" module="tink.core.Callback">
+	<length public="1" get="accessor" set="null" static="1">
+		<x path="Int"/>
+		<meta><m n=":impl"/></meta>
+	</length>
+	<_new public="1" get="inline" set="null" line="64" static="1">
+		<f a=""><c path="Array"><c path="tink.core._Callback.Cell"><c path="tink.core.CallbackList.T"/></c></c></f>
+		<meta><m n=":impl"/></meta>
+	</_new>
+	<get_length get="inline" set="null" line="67" static="1">
+		<f a="this">
+			<c path="Array"><c path="tink.core._Callback.Cell"><c path="tink.core.CallbackList.T"/></c></c>
+			<x path="Int"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</get_length>
+	<add public="1" set="method" line="70" static="1">
+		<f a="this:cb">
+			<c path="Array"><c path="tink.core._Callback.Cell"><c path="tink.core.CallbackList.T"/></c></c>
+			<x path="tink.core.Callback"><c path="tink.core.CallbackList.T"/></x>
+			<x path="tink.core.CallbackLink"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</add>
+	<invoke public="1" set="method" line="81" static="1">
+		<f a="this:data">
+			<c path="Array"><c path="tink.core._Callback.Cell"><c path="tink.core.CallbackList.T"/></c></c>
+			<c path="tink.core.CallbackList.T"/>
+			<x path="Void"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</invoke>
+	<clear public="1" set="method" line="86" static="1">
+		<f a="this">
+			<c path="Array"><c path="tink.core._Callback.Cell"><c path="tink.core.CallbackList.T"/></c></c>
+			<x path="Void"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</clear>
+</class></impl>
+	</abstract>
+	<class path="tink.core._Callback.CallbackList_Impl_" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Callback.hx" private="1" module="tink.core.Callback">
+		<length public="1" get="accessor" set="null" static="1">
+			<x path="Int"/>
+			<meta><m n=":impl"/></meta>
+		</length>
+		<_new public="1" get="inline" set="null" line="64" static="1">
+			<f a=""><c path="Array"><c path="tink.core._Callback.Cell"><c path="tink.core.CallbackList.T"/></c></c></f>
+			<meta><m n=":impl"/></meta>
+		</_new>
+		<get_length get="inline" set="null" line="67" static="1">
+			<f a="this">
+				<c path="Array"><c path="tink.core._Callback.Cell"><c path="tink.core.CallbackList.T"/></c></c>
+				<x path="Int"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</get_length>
+		<add public="1" set="method" line="70" static="1">
+			<f a="this:cb">
+				<c path="Array"><c path="tink.core._Callback.Cell"><c path="tink.core.CallbackList.T"/></c></c>
+				<x path="tink.core.Callback"><c path="tink.core.CallbackList.T"/></x>
+				<x path="tink.core.CallbackLink"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</add>
+		<invoke public="1" set="method" line="81" static="1">
+			<f a="this:data">
+				<c path="Array"><c path="tink.core._Callback.Cell"><c path="tink.core.CallbackList.T"/></c></c>
+				<c path="tink.core.CallbackList.T"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</invoke>
+		<clear public="1" set="method" line="86" static="1">
+			<f a="this">
+				<c path="Array"><c path="tink.core._Callback.Cell"><c path="tink.core.CallbackList.T"/></c></c>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</clear>
+	</class>
+	<enum path="tink.core.Either" params="A:B" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Either.hx">
+		<Left a="a"><c path="tink.core.Either.A"/></Left>
+		<Right a="b"><c path="tink.core.Either.B"/></Right>
+	</enum>
+	<typedef path="tink.core.Pos" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Error.hx" module="tink.core.Error"><t path="haxe.PosInfos"/></typedef>
+	<class path="tink.core.Error" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Error.hx">
+		<withData public="1" set="method" line="43" static="1"><f a="message:data:?pos" v="::null">
+	<c path="String"/>
+	<d/>
+	<t path="tink.core.Pos"/>
+	<c path="tink.core.Error"/>
+</f></withData>
+		<message public="1" set="null"><c path="String"/></message>
+		<data public="1" set="null"><d/></data>
+		<pos public="1" set="null"><t path="Null"><t path="tink.core.Pos"/></t></pos>
+		<printPos set="method" line="20"><f a=""><c path="String"/></f></printPos>
+		<toString public="1" set="method" line="28">
+			<f a=""><c path="String"/></f>
+			<meta><m n=":keep"/></meta>
+		</toString>
+		<throwSelf public="1" set="method" line="35">
+			<f a=""><d/></f>
+			<meta><m n=":keep"/></meta>
+		</throwSelf>
+		<new public="1" set="method" line="16"><f a="message:?pos" v=":null">
+	<c path="String"/>
+	<t path="tink.core.Pos"/>
+	<x path="Void"/>
+</f></new>
+	</class>
+	<enum path="tink.core.Outcome" params="Data:Failure" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Outcome.hx">
+		<Success a="data"><c path="tink.core.Outcome.Data"/></Success>
+		<Failure a="failure"><c path="tink.core.Outcome.Failure"/></Failure>
+	</enum>
+	<class path="tink.core.OutcomeTools" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Outcome.hx" module="tink.core.Outcome">
+		<sure public="1" params="D:F" set="method" line="12" static="1"><f a="outcome">
+	<e path="tink.core.Outcome">
+		<c path="sure.D"/>
+		<c path="sure.F"/>
+	</e>
+	<c path="sure.D"/>
+</f></sure>
+		<toOption public="1" params="D:F" set="method" line="24" static="1"><f a="outcome">
+	<e path="tink.core.Outcome">
+		<c path="toOption.D"/>
+		<c path="toOption.F"/>
+	</e>
+	<e path="haxe.ds.Option"><c path="toOption.D"/></e>
+</f></toOption>
+		<toOutcome public="1" params="D" set="method" line="31" static="1"><f a="option:?pos" v=":null">
+	<e path="haxe.ds.Option"><c path="toOutcome.D"/></e>
+	<t path="haxe.PosInfos"/>
+	<e path="tink.core.Outcome">
+		<c path="toOutcome.D"/>
+		<c path="String"/>
+	</e>
+</f></toOutcome>
+		<orUse public="1" params="D:F" get="inline" set="null" line="41" static="1"><f a="outcome:fallback">
+	<e path="tink.core.Outcome">
+		<c path="orUse.D"/>
+		<c path="orUse.F"/>
+	</e>
+	<c path="orUse.D"/>
+	<c path="orUse.D"/>
+</f></orUse>
+		<orTry public="1" params="D:F" get="inline" set="null" line="48" static="1"><f a="outcome:fallback">
+	<e path="tink.core.Outcome">
+		<c path="orTry.D"/>
+		<c path="orTry.F"/>
+	</e>
+	<e path="tink.core.Outcome">
+		<c path="orTry.D"/>
+		<c path="orTry.F"/>
+	</e>
+	<e path="tink.core.Outcome">
+		<c path="orTry.D"/>
+		<c path="orTry.F"/>
+	</e>
+</f></orTry>
+		<equals public="1" params="D:F" get="inline" set="null" line="55" static="1"><f a="outcome:to">
+	<e path="tink.core.Outcome">
+		<c path="equals.D"/>
+		<c path="equals.F"/>
+	</e>
+	<c path="equals.D"/>
+	<x path="Bool"/>
+</f></equals>
+		<map public="1" params="A:B:F" get="inline" set="null" line="62" static="1"><f a="outcome:transform">
+	<e path="tink.core.Outcome">
+		<c path="map.A"/>
+		<c path="map.F"/>
+	</e>
+	<f a="">
+		<c path="map.A"/>
+		<c path="map.B"/>
+	</f>
+	<e path="tink.core.Outcome">
+		<c path="map.B"/>
+		<c path="map.F"/>
+	</e>
+</f></map>
+		<isSuccess public="1" params="D:F" get="inline" set="null" line="71" static="1"><f a="outcome">
+	<e path="tink.core.Outcome">
+		<c path="isSuccess.D"/>
+		<c path="isSuccess.F"/>
+	</e>
+	<x path="Bool"/>
+</f></isSuccess>
+		<flatMap public="1" params="DIn:FIn:DOut:FOut" set="method" line="78" static="1"><f a="o:mapper">
+	<e path="tink.core.Outcome">
+		<c path="flatMap.DIn"/>
+		<c path="flatMap.FIn"/>
+	</e>
+	<x path="tink.core._Outcome.OutcomeMap">
+		<c path="flatMap.DIn"/>
+		<c path="flatMap.FIn"/>
+		<c path="flatMap.DOut"/>
+		<c path="flatMap.FOut"/>
+	</x>
+	<e path="tink.core.Outcome">
+		<c path="flatMap.DOut"/>
+		<c path="flatMap.FOut"/>
+	</e>
+</f></flatMap>
+	</class>
+	<abstract path="tink.core._Outcome.OutcomeMap" params="DIn:FIn:DOut:FOut" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Outcome.hx" private="1" module="tink.core.Outcome">
+		<from>
+			<icast field="withSameError"><f a="">
+	<c path="withSameError.In"/>
+	<e path="tink.core.Outcome">
+		<c path="withSameError.Out"/>
+		<c path="withSameError.Error"/>
+	</e>
+</f></icast>
+			<icast field="withEitherError"><f a="">
+	<c path="withEitherError.DIn"/>
+	<e path="tink.core.Outcome">
+		<c path="withEitherError.DOut"/>
+		<c path="withEitherError.FOut"/>
+	</e>
+</f></icast>
+		</from>
+		<this><a><f><f a="">
+	<e path="tink.core.Outcome">
+		<c path="tink.core._Outcome.OutcomeMap.DIn"/>
+		<c path="tink.core._Outcome.OutcomeMap.FIn"/>
+	</e>
+	<e path="tink.core.Outcome">
+		<c path="tink.core._Outcome.OutcomeMap.DOut"/>
+		<c path="tink.core._Outcome.OutcomeMap.FOut"/>
+	</e>
+</f></f></a></this>
+		<impl><class path="tink.core._Outcome.OutcomeMap_Impl_" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Outcome.hx" private="1" module="tink.core.Outcome">
+	<_new set="method" line="84" static="1">
+		<f a="f">
+			<f a="">
+				<e path="tink.core.Outcome">
+					<c path="tink.core._Outcome.OutcomeMap.DIn"/>
+					<c path="tink.core._Outcome.OutcomeMap.FIn"/>
+				</e>
+				<e path="tink.core.Outcome">
+					<c path="tink.core._Outcome.OutcomeMap.DOut"/>
+					<c path="tink.core._Outcome.OutcomeMap.FOut"/>
+				</e>
+			</f>
+			<a><f><f a="">
+	<e path="tink.core.Outcome">
+		<c path="tink.core._Outcome.OutcomeMap.DIn"/>
+		<c path="tink.core._Outcome.OutcomeMap.FIn"/>
+	</e>
+	<e path="tink.core.Outcome">
+		<c path="tink.core._Outcome.OutcomeMap.DOut"/>
+		<c path="tink.core._Outcome.OutcomeMap.FOut"/>
+	</e>
+</f></f></a>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</_new>
+	<apply public="1" set="method" line="85" static="1">
+		<f a="this:o">
+			<a><f><f a="">
+	<e path="tink.core.Outcome">
+		<c path="tink.core._Outcome.OutcomeMap.DIn"/>
+		<c path="tink.core._Outcome.OutcomeMap.FIn"/>
+	</e>
+	<e path="tink.core.Outcome">
+		<c path="tink.core._Outcome.OutcomeMap.DOut"/>
+		<c path="tink.core._Outcome.OutcomeMap.FOut"/>
+	</e>
+</f></f></a>
+			<e path="tink.core.Outcome">
+				<c path="tink.core._Outcome.OutcomeMap.DIn"/>
+				<c path="tink.core._Outcome.OutcomeMap.FIn"/>
+			</e>
+			<e path="tink.core.Outcome">
+				<c path="tink.core._Outcome.OutcomeMap.DOut"/>
+				<c path="tink.core._Outcome.OutcomeMap.FOut"/>
+			</e>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</apply>
+	<withSameError params="In:Out:Error" set="method" line="88" static="1">
+		<f a="f">
+			<f a="">
+				<c path="withSameError.In"/>
+				<e path="tink.core.Outcome">
+					<c path="withSameError.Out"/>
+					<c path="withSameError.Error"/>
+				</e>
+			</f>
+			<x path="tink.core._Outcome.OutcomeMap">
+				<c path="withSameError.In"/>
+				<c path="withSameError.Error"/>
+				<c path="withSameError.Out"/>
+				<c path="withSameError.Error"/>
+			</x>
+		</f>
+		<meta><m n=":from"/></meta>
+	</withSameError>
+	<withEitherError params="DIn:FIn:DOut:FOut" set="method" line="97" static="1">
+		<f a="f">
+			<f a="">
+				<c path="withEitherError.DIn"/>
+				<e path="tink.core.Outcome">
+					<c path="withEitherError.DOut"/>
+					<c path="withEitherError.FOut"/>
+				</e>
+			</f>
+			<x path="tink.core._Outcome.OutcomeMap">
+				<c path="withEitherError.DIn"/>
+				<c path="withEitherError.FIn"/>
+				<c path="withEitherError.DOut"/>
+				<e path="tink.core.Either">
+					<c path="withEitherError.FIn"/>
+					<c path="withEitherError.FOut"/>
+				</e>
+			</x>
+		</f>
+		<meta><m n=":from"/></meta>
+	</withEitherError>
+</class></impl>
+	</abstract>
+	<class path="tink.core._Outcome.OutcomeMap_Impl_" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Outcome.hx" private="1" module="tink.core.Outcome">
+		<_new set="method" line="84" static="1">
+			<f a="f">
+				<f a="">
+					<e path="tink.core.Outcome">
+						<c path="tink.core._Outcome.OutcomeMap.DIn"/>
+						<c path="tink.core._Outcome.OutcomeMap.FIn"/>
+					</e>
+					<e path="tink.core.Outcome">
+						<c path="tink.core._Outcome.OutcomeMap.DOut"/>
+						<c path="tink.core._Outcome.OutcomeMap.FOut"/>
+					</e>
+				</f>
+				<a><f><f a="">
+	<e path="tink.core.Outcome">
+		<c path="tink.core._Outcome.OutcomeMap.DIn"/>
+		<c path="tink.core._Outcome.OutcomeMap.FIn"/>
+	</e>
+	<e path="tink.core.Outcome">
+		<c path="tink.core._Outcome.OutcomeMap.DOut"/>
+		<c path="tink.core._Outcome.OutcomeMap.FOut"/>
+	</e>
+</f></f></a>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</_new>
+		<apply public="1" set="method" line="85" static="1">
+			<f a="this:o">
+				<a><f><f a="">
+	<e path="tink.core.Outcome">
+		<c path="tink.core._Outcome.OutcomeMap.DIn"/>
+		<c path="tink.core._Outcome.OutcomeMap.FIn"/>
+	</e>
+	<e path="tink.core.Outcome">
+		<c path="tink.core._Outcome.OutcomeMap.DOut"/>
+		<c path="tink.core._Outcome.OutcomeMap.FOut"/>
+	</e>
+</f></f></a>
+				<e path="tink.core.Outcome">
+					<c path="tink.core._Outcome.OutcomeMap.DIn"/>
+					<c path="tink.core._Outcome.OutcomeMap.FIn"/>
+				</e>
+				<e path="tink.core.Outcome">
+					<c path="tink.core._Outcome.OutcomeMap.DOut"/>
+					<c path="tink.core._Outcome.OutcomeMap.FOut"/>
+				</e>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</apply>
+		<withSameError params="In:Out:Error" set="method" line="88" static="1">
+			<f a="f">
+				<f a="">
+					<c path="withSameError.In"/>
+					<e path="tink.core.Outcome">
+						<c path="withSameError.Out"/>
+						<c path="withSameError.Error"/>
+					</e>
+				</f>
+				<x path="tink.core._Outcome.OutcomeMap">
+					<c path="withSameError.In"/>
+					<c path="withSameError.Error"/>
+					<c path="withSameError.Out"/>
+					<c path="withSameError.Error"/>
+				</x>
+			</f>
+			<meta><m n=":from"/></meta>
+		</withSameError>
+		<withEitherError params="DIn:FIn:DOut:FOut" set="method" line="97" static="1">
+			<f a="f">
+				<f a="">
+					<c path="withEitherError.DIn"/>
+					<e path="tink.core.Outcome">
+						<c path="withEitherError.DOut"/>
+						<c path="withEitherError.FOut"/>
+					</e>
+				</f>
+				<x path="tink.core._Outcome.OutcomeMap">
+					<c path="withEitherError.DIn"/>
+					<c path="withEitherError.FIn"/>
+					<c path="withEitherError.DOut"/>
+					<e path="tink.core.Either">
+						<c path="withEitherError.FIn"/>
+						<c path="withEitherError.FOut"/>
+					</e>
+				</x>
+			</f>
+			<meta><m n=":from"/></meta>
+		</withEitherError>
+	</class>
+	<abstract path="tink.core.Pair" params="A:B" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Pair.hx">
+		<this><x path="tink.core.MPair">
+	<c path="tink.core.Pair.A"/>
+	<c path="tink.core.Pair.B"/>
+</x></this>
+		<to><icast field="toBool"><x path="Bool"/></icast></to>
+		<impl><class path="tink.core._Pair.Pair_Impl_" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Pair.hx" private="1" module="tink.core.Pair">
+	<a public="1" get="accessor" set="null" static="1">
+		<c path="tink.core.Pair.A"/>
+		<meta><m n=":impl"/></meta>
+	</a>
+	<b public="1" get="accessor" set="null" static="1">
+		<c path="tink.core.Pair.B"/>
+		<meta><m n=":impl"/></meta>
+	</b>
+	<_new public="1" get="inline" set="null" line="8" static="1">
+		<f a="a:b">
+			<c path="tink.core.Pair.A"/>
+			<c path="tink.core.Pair.B"/>
+			<x path="tink.core.MPair">
+				<c path="tink.core.Pair.A"/>
+				<c path="tink.core.Pair.B"/>
+			</x>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</_new>
+	<get_a get="inline" set="null" line="10" static="1">
+		<f a="this">
+			<x path="tink.core.MPair">
+				<c path="tink.core.Pair.A"/>
+				<c path="tink.core.Pair.B"/>
+			</x>
+			<c path="tink.core.Pair.A"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</get_a>
+	<get_b get="inline" set="null" line="11" static="1">
+		<f a="this">
+			<x path="tink.core.MPair">
+				<c path="tink.core.Pair.A"/>
+				<c path="tink.core.Pair.B"/>
+			</x>
+			<c path="tink.core.Pair.B"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</get_b>
+	<toBool get="inline" set="null" line="13" static="1">
+		<f a="this">
+			<x path="tink.core.MPair">
+				<c path="tink.core.Pair.A"/>
+				<c path="tink.core.Pair.B"/>
+			</x>
+			<x path="Bool"/>
+		</f>
+		<meta>
+			<m n=":impl"/>
+			<m n=":to"/>
+		</meta>
+	</toBool>
+	<isNil public="1" set="method" line="16" static="1">
+		<f a="this">
+			<x path="tink.core.MPair">
+				<c path="tink.core.Pair.A"/>
+				<c path="tink.core.Pair.B"/>
+			</x>
+			<x path="Bool"/>
+		</f>
+		<meta>
+			<m n=":impl"/>
+			<m n=":op"><e>'???'</e></m>
+		</meta>
+	</isNil>
+	<nil public="1" params="A:B" set="method" line="19" static="1"><f a=""><x path="tink.core.Pair">
+	<c path="nil.A"/>
+	<c path="nil.B"/>
+</x></f></nil>
+</class></impl>
+	</abstract>
+	<class path="tink.core._Pair.Pair_Impl_" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Pair.hx" private="1" module="tink.core.Pair">
+		<a public="1" get="accessor" set="null" static="1">
+			<c path="tink.core.Pair.A"/>
+			<meta><m n=":impl"/></meta>
+		</a>
+		<b public="1" get="accessor" set="null" static="1">
+			<c path="tink.core.Pair.B"/>
+			<meta><m n=":impl"/></meta>
+		</b>
+		<_new public="1" get="inline" set="null" line="8" static="1">
+			<f a="a:b">
+				<c path="tink.core.Pair.A"/>
+				<c path="tink.core.Pair.B"/>
+				<x path="tink.core.MPair">
+					<c path="tink.core.Pair.A"/>
+					<c path="tink.core.Pair.B"/>
+				</x>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</_new>
+		<get_a get="inline" set="null" line="10" static="1">
+			<f a="this">
+				<x path="tink.core.MPair">
+					<c path="tink.core.Pair.A"/>
+					<c path="tink.core.Pair.B"/>
+				</x>
+				<c path="tink.core.Pair.A"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</get_a>
+		<get_b get="inline" set="null" line="11" static="1">
+			<f a="this">
+				<x path="tink.core.MPair">
+					<c path="tink.core.Pair.A"/>
+					<c path="tink.core.Pair.B"/>
+				</x>
+				<c path="tink.core.Pair.B"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</get_b>
+		<toBool get="inline" set="null" line="13" static="1">
+			<f a="this">
+				<x path="tink.core.MPair">
+					<c path="tink.core.Pair.A"/>
+					<c path="tink.core.Pair.B"/>
+				</x>
+				<x path="Bool"/>
+			</f>
+			<meta>
+				<m n=":impl"/>
+				<m n=":to"/>
+			</meta>
+		</toBool>
+		<isNil public="1" set="method" line="16" static="1">
+			<f a="this">
+				<x path="tink.core.MPair">
+					<c path="tink.core.Pair.A"/>
+					<c path="tink.core.Pair.B"/>
+				</x>
+				<x path="Bool"/>
+			</f>
+			<meta>
+				<m n=":impl"/>
+				<m n=":op"><e>'???'</e></m>
+			</meta>
+		</isNil>
+		<nil public="1" params="A:B" set="method" line="19" static="1"><f a=""><x path="tink.core.Pair">
+	<c path="nil.A"/>
+	<c path="nil.B"/>
+</x></f></nil>
+	</class>
+	<class path="tink.core._Pair.Data" params="A:B" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Pair.hx" private="1" module="tink.core.Pair">
+		<a public="1"><c path="tink.core._Pair.Data.A"/></a>
+		<b public="1"><c path="tink.core._Pair.Data.B"/></b>
+		<new public="1" set="method" line="33"><f a="a:b">
+	<c path="tink.core._Pair.Data.A"/>
+	<c path="tink.core._Pair.Data.B"/>
+	<x path="Void"/>
+</f></new>
+	</class>
+	<abstract path="tink.core.MPair" params="A:B" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Pair.hx" module="tink.core.Pair">
+		<this><c path="tink.core._Pair.Data">
+	<c path="tink.core.MPair.A"/>
+	<c path="tink.core.MPair.B"/>
+</c></this>
+		<impl><class path="tink.core._Pair.MPair_Impl_" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Pair.hx" private="1" module="tink.core.Pair">
+	<a public="1" get="accessor" set="accessor" static="1">
+		<c path="tink.core.MPair.A"/>
+		<meta><m n=":impl"/></meta>
+	</a>
+	<b public="1" get="accessor" set="accessor" static="1">
+		<c path="tink.core.MPair.B"/>
+		<meta><m n=":impl"/></meta>
+	</b>
+	<_new public="1" get="inline" set="null" line="44" static="1">
+		<f a="a:b">
+			<c path="tink.core.MPair.A"/>
+			<c path="tink.core.MPair.B"/>
+			<c path="tink.core._Pair.Data">
+				<c path="tink.core.MPair.A"/>
+				<c path="tink.core.MPair.B"/>
+			</c>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</_new>
+	<get_a get="inline" set="null" line="53" static="1">
+		<f a="this">
+			<c path="tink.core._Pair.Data">
+				<c path="tink.core.MPair.A"/>
+				<c path="tink.core.MPair.B"/>
+			</c>
+			<c path="tink.core.MPair.A"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</get_a>
+	<get_b get="inline" set="null" line="56" static="1">
+		<f a="this">
+			<c path="tink.core._Pair.Data">
+				<c path="tink.core.MPair.A"/>
+				<c path="tink.core.MPair.B"/>
+			</c>
+			<c path="tink.core.MPair.B"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</get_b>
+	<set_a get="inline" set="null" line="59" static="1">
+		<f a="this:v">
+			<c path="tink.core._Pair.Data">
+				<c path="tink.core.MPair.A"/>
+				<c path="tink.core.MPair.B"/>
+			</c>
+			<c path="tink.core.MPair.A"/>
+			<c path="tink.core.MPair.A"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</set_a>
+	<set_b get="inline" set="null" line="62" static="1">
+		<f a="this:v">
+			<c path="tink.core._Pair.Data">
+				<c path="tink.core.MPair.A"/>
+				<c path="tink.core.MPair.B"/>
+			</c>
+			<c path="tink.core.MPair.B"/>
+			<c path="tink.core.MPair.B"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</set_b>
+</class></impl>
+	</abstract>
+	<class path="tink.core._Pair.MPair_Impl_" params="" file="c:\world\prj\haxe\lib/tink_core/1,0,0-rc,2/src/tink/core/Pair.hx" private="1" module="tink.core.Pair">
+		<a public="1" get="accessor" set="accessor" static="1">
+			<c path="tink.core.MPair.A"/>
+			<meta><m n=":impl"/></meta>
+		</a>
+		<b public="1" get="accessor" set="accessor" static="1">
+			<c path="tink.core.MPair.B"/>
+			<meta><m n=":impl"/></meta>
+		</b>
+		<_new public="1" get="inline" set="null" line="44" static="1">
+			<f a="a:b">
+				<c path="tink.core.MPair.A"/>
+				<c path="tink.core.MPair.B"/>
+				<c path="tink.core._Pair.Data">
+					<c path="tink.core.MPair.A"/>
+					<c path="tink.core.MPair.B"/>
+				</c>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</_new>
+		<get_a get="inline" set="null" line="53" static="1">
+			<f a="this">
+				<c path="tink.core._Pair.Data">
+					<c path="tink.core.MPair.A"/>
+					<c path="tink.core.MPair.B"/>
+				</c>
+				<c path="tink.core.MPair.A"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</get_a>
+		<get_b get="inline" set="null" line="56" static="1">
+			<f a="this">
+				<c path="tink.core._Pair.Data">
+					<c path="tink.core.MPair.A"/>
+					<c path="tink.core.MPair.B"/>
+				</c>
+				<c path="tink.core.MPair.B"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</get_b>
+		<set_a get="inline" set="null" line="59" static="1">
+			<f a="this:v">
+				<c path="tink.core._Pair.Data">
+					<c path="tink.core.MPair.A"/>
+					<c path="tink.core.MPair.B"/>
+				</c>
+				<c path="tink.core.MPair.A"/>
+				<c path="tink.core.MPair.A"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</set_a>
+		<set_b get="inline" set="null" line="62" static="1">
+			<f a="this:v">
+				<c path="tink.core._Pair.Data">
+					<c path="tink.core.MPair.A"/>
+					<c path="tink.core.MPair.B"/>
+				</c>
+				<c path="tink.core.MPair.B"/>
+				<c path="tink.core.MPair.B"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</set_b>
+	</class>
+</haxe>
