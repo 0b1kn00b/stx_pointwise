@@ -3,7 +3,7 @@ import stx.core.Binary;
 import stx.core.Blocks;
 import stx.core.Compose;
 import stx.core.Quaternary;
-import stx.core.Partial;
+//import stx.core.Partial;
 import stx.core.Quinary;
 import stx.core.Senary;
 import stx.core.Sinks;
@@ -21,6 +21,6 @@ import stx.Pointwise;
 
 class Test{
   static function main(){
-
+    trace("OK");
   }
 }

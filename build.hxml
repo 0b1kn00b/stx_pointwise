@@ -1,5 +1,8 @@
-hxml/libs.hxml
-hxml/test/neko.hxml
+-cp src/main/haxe
+-cp src/test/haxe
+-lib tink_core
+-lib stx_tuple
+-main Test
 #hxml/test/java.hxml
 #hxml/test/cs.hxml
 #hxml/test/php.hxml

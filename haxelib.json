@@ -9,11 +9,11 @@
     "contributors": [
         "0b1kn00b"
     ],
-    "releasenote": "Compose.link, to keep keys and values together in processing chains",
-    "version": "0.8.5",
+    "releasenote": "update dependencies",
+    "version": "0.8.6",
     "url": "https://github.com/0b1kn00b/stx_pointwise",
     "dependencies": {
-        "tink_core": "1.0.0-rc.11",
+        "tink_core": "1.0.0-rc.12OA",
         "stx_tuple": ""
     },
     "classPath": "src/main/haxe"
