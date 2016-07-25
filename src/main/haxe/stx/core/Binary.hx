@@ -3,6 +3,9 @@ package stx.core;
 using stx.Pointwise;
 
 class Binary {
+  public static inline function apply<A,B,C>(fn:A->B->C,v0:A,v1:B):C{
+    return fn(v0,v1);
+  }
   /**
 		Places parameter 1 at the back.
 	**/

@@ -1,5 +1,6 @@
 package stx.core;
 
+
 using stx.Pointwise;
 
 import haxe.ds.Option;
@@ -67,6 +68,16 @@ class Compose{
           }
       }
   }
+  static public function fromLeft<A,B,C>(fn:A->Either<C,B>):Either<A,B>->Either<C,B>{
+    return
+      function(e:Either<A,B>):Either<C,B>{
+        return
+          switch (e) {
+            case Left(v)  : fn(v);
+            case Right(v) : Right(v);
+          }
+      }
+  }
   /**
     Returns a function that applies a function to the Right value of an Either.
   **/
@@ -77,6 +88,16 @@ class Compose{
           switch (e) {
             case Left(v)  : Left(v);
             case Right(v) : Right(fn(v));
+          }
+      }
+  }
+  static public function fromRight<A,B,D>(fn:B->Either<A,D>){
+    return
+      function(e:Either<A,B>):Either<A,D>{
+        return
+          switch (e) {
+            case Left(v)  : Left(v);
+            case Right(v) : fn(v);
           }
       }
   }

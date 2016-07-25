@@ -9,11 +9,11 @@
     "contributors": [
         "0b1kn00b"
     ],
-    "releasenote": "update dependencies",
-    "version": "0.8.6",
+    "releasenote": "added apply to Binary",
+    "version": "0.8.8",
     "url": "https://github.com/0b1kn00b/stx_pointwise",
     "dependencies": {
-        "tink_core": "1.0.0-rc.12OA",
+        "tink_core": "",
         "stx_tuple": ""
     },
     "classPath": "src/main/haxe"

@@ -2,6 +2,7 @@ package stx;
 
 import haxe.ds.Option;
 
+typedef State<R,A>    = stx.core.State<R,A>;
 /**
   Mixins to Compose Unary Functions.
 **/
@@ -71,6 +72,8 @@ typedef Thunk<T>      = stx.data.Thunk<T>;
 * Mixins for Thunks.
 **/
 typedef Thunks        = stx.core.Thunks;
+
+
 
 class Pointwise{
   /**

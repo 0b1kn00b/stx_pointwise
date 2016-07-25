@@ -1,0 +1,39 @@
+package stx.fn;
+
+import tink.core.Either;
+
+typedef TwistT<A,D> = Either<A,A> -> Either<A,D>;
+
+@:callable @:forward abstract Twist<A,D>(TwistT<A,D>) from TwistT<A,D> to TwistT<A,D>{
+  @:from static public function fromFn<A,D>(fn:A->D):Twist<A,D>{
+    return function(e){
+      return switch (e) {
+        case Right(r) : Right(fn(r));
+        case Left(l)  : Left(l);
+      }
+    }
+  }
+  @:from static public function fromRight<A,D>(fn:A->Either<A,D>):Twist<A,D>{
+    trace("fromRight");
+    return function(e){
+      return switch(e){
+        case Left(a)  : Left(a);
+        case Right(b) : fn(b);
+      }
+    }
+  }
+  /*
+  @:from static public function fromLeft<A,D>(fn:A->Either<D,A>):Twist<A,D>{
+    trace("fromLeft");
+    return function(e){
+      return switch(e){
+        case Right(a)    : Left(a);
+        case Left(b)     :
+          switch(fn(b)){
+            case Left(v)  : Right(v);
+            case Right(v) : Left(v);
+          }
+      }
+    }
+  }*/
+}
