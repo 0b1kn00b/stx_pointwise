@@ -98,4 +98,5 @@ class Unary {
   public static function equals<P1,R>(a:P1->R,b:P1->R){
     return Reflect.compareMethods(a,b);
   }
+  //public static function spread<P1,P2>(fn:Tupl)
 }

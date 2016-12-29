@@ -41,10 +41,11 @@ class Embeds{
       }
     }
   }
+  /*
   static function main(){
     var str : String = "Hello World!";
     var embedding = new Embed();
     var key = embedding.pack(str);//Block. No type constraints here...
     var out = embedding.unpack(key);//Some("Hello World");
-  }
+  }*/
 }

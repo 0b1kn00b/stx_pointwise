@@ -1,5 +1,8 @@
 import EmbedTest;
 
+import stx.core.Y;
+import haxe.unit.TestCase;
+
 using stx.Pointwise;
 
 import tink.CoreApi;

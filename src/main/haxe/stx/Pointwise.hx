@@ -2,6 +2,10 @@ package stx;
 
 import haxe.ds.Option;
 
+/**
+  YCombinator
+**/
+typedef Y<A,B>        = stx.core.Y<A,B>;
 typedef State<R,A>    = stx.core.State<R,A>;
 /**
   Mixins to Compose Unary Functions.

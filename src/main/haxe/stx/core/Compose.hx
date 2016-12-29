@@ -221,3 +221,10 @@ class Compose{
     }
   }
 }
+class Compose2{
+  static public function then<A,B,C,D>(lhs:A->B->C,rhs:C->D):A->B->D{
+    return function(a:A,b:B){
+      return rhs(lhs(a,b));
+    }
+  }
+}
