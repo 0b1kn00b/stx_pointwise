@@ -3,11 +3,14 @@ package stx;
 import haxe.ds.Option;
 
 /**
+<<<<<<< HEAD
   YCombinator
 **/
 typedef Y<A,B>        = stx.core.Y<A,B>;
 typedef State<R,A>    = stx.core.State<R,A>;
 /**
+=======
+>>>>>>> d75ce4c54429a46867a23f32898f253d92ec65a3
   Mixins to Compose Unary Functions.
 **/
 typedef Compose       = stx.core.Compose;
@@ -77,8 +80,11 @@ typedef Thunk<T>      = stx.data.Thunk<T>;
 **/
 typedef Thunks        = stx.core.Thunks;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d75ce4c54429a46867a23f32898f253d92ec65a3
 class Pointwise{
   /**
     Takes a value and wraps it in a function.
@@ -87,6 +93,7 @@ class Pointwise{
     return Thunks.toThunk(v);
   }
   /**
+<<<<<<< HEAD
     Produces an option of `v`, None if `v` is `null`.
   **/
   static inline public function toOption<V>(v:Null<V>):Option<V>{
@@ -95,11 +102,12 @@ class Pointwise{
     }else{
       Some(v);
     }
-  /**
-  Takes a value and wraps it in a function.
+=======
+    Takes a value and wraps it in a function.
   **/
   @:noUsing static inline public function thunk<T>(v:T):Thunk<T>{
     return Thunks.toThunk(v);
+>>>>>>> d75ce4c54429a46867a23f32898f253d92ec65a3
   }
   /**
     Produces a function that is only called in the event of Some(v) being passed

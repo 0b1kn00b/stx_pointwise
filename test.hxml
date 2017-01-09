@@ -1,0 +1,11 @@
+-cp src/main/haxe
+-cp src/test/haxe
+-lib tink_core
+-lib stx_tuple
+-main Test
+-neko test.n
+-cmd neko test.n
+#hxml/test/java.hxml
+#hxml/test/cs.hxml
+#hxml/test/php.hxml
+#hxml/xtra/docs.hxml
