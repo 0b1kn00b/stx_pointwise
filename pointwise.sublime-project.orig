@@ -1,0 +1,10 @@
+{
+    "folders": [{
+        "path": "."
+    }, {
+        "path": "C:/world/prj/haxe/lib/tink_core/1,0,0-rc,6",
+        "name": "tink"
+    }, {
+        "path": "../haxe/std"
+    }]
+}

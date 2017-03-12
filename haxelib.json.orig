@@ -1,0 +1,32 @@
+{
+    "name": "pointwise",
+    "license": "MIT",
+    "tags": [
+        "cross",
+        "functional"
+    ],
+    "description": "Functional composition tools. Haxe 3.1.* required.",
+    "contributors": [
+        "0b1kn00b"
+    ],
+<<<<<<< HEAD
+    "releasenote": "Wow, can post past version. oops",
+    "version": "0.8.9",
+    "url": "https://github.com/0b1kn00b/stx_pointwise",
+    "dependencies": {
+        "tink_core": "",
+        "stx_tuple": ""
+    },
+    "classPath": "src/main/haxe"
+}
+=======
+    "releasenote": "Documented, requires only one import. Repackaged",
+    "version": "0.8.1",
+    "url": "https://github.com/0b1kn00b/stx_pointwise",
+    "dependencies": {
+        "tink_core": "1.0.0-rc.11",
+        "stx_tuple": ""
+    },
+    "classPath": "src/main/haxe"
+}
+>>>>>>> d75ce4c54429a46867a23f32898f253d92ec65a3
