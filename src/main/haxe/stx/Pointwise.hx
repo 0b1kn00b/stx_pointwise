@@ -95,6 +95,7 @@ class Pointwise{
     }else{
       Some(v);
     }
+  }
   /**
   Takes a value and wraps it in a function.
   **/
