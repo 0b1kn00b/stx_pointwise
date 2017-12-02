@@ -22,7 +22,7 @@ abstract Partial<A,Z>(PartialFunctionType<A,Z>) from PartialFunctionType<A,Z> to
   public function new(v){
     this = v;
   }
-  @:from static public function fromFunctions<A,Z>(arr:Array<Tuple2<A->Bool,A->Z>>){
+  @:from static public function fromFunctions<A,Z>(arr:Array<Tuple2<A->Bool,A->Z>>):Partial<A,Z>{
     return arr.map(
       function(x:Tuple2<A->Bool,A->Z>):Tuple2<A->Bool,A->Z>{
         var l : A->Bool = x.fst();
