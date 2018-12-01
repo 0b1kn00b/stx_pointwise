@@ -1,7 +1,7 @@
 import EmbedTest;
 
 import stx.core.Y;
-import haxe.unit.TestCase;
+
 
 using stx.Pointwise;
 
@@ -40,29 +40,30 @@ class Test{
         runner.run();
   }
 }
-class ChoiceTest extends haxe.unit.TestCase{
+/*class ChoiceTest extends haxe.unit.TestCase{
   public function testLR(){
-    var a = function(x:Int){
+    var a = (function(x:Int){
       return Right(x + 2);
-    }.fromRight();
+    }).fromRight();
 
     var o0 = a(Left(3));
     this.assertTrue(T.enumEq(Left(3),o0));
     var o1 = a(Right(3));
     this.assertTrue(T.enumEq(Right(5),o1));
 
-    var b = function(x:Int):Int{
+    var b = (function(x:Int):Int{
       return x*2;
-    }.right();
+    }).right();
 
     var o2 = b(Right(10));
     this.assertTrue(T.enumEq(Right(20),o2));
 
-    var c = function(i:Int):Either<String,Int>{
+    var c = (function(i:Int):Either<String,Int>{
       return Left('issues from $i');
-    }.fromRight();
+    }).fromRight();
 
     trace(c(Right(0)));
     trace(c(Left('ok')));
   }
 }
+*/

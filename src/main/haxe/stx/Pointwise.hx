@@ -78,6 +78,9 @@ typedef Thunk<T>      = stx.data.Thunk<T>;
 typedef Thunks        = stx.core.Thunks;
 
 
+typedef Cell<T>       = stx.pack.Cell<T>;
+
+typedef Trivalent     = stx.data.Trivalent;
 
 class Pointwise{
   /**
@@ -116,3 +119,4 @@ class Pointwise{
     return function (a:A){ return a; }
   }
 }
+

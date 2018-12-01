@@ -95,11 +95,11 @@ class States{
     }
   }
   static public function refine<S,R>(st:State<S,R>,fn:S->R->S):State<S,R>{
-    return st.then(
+    return st.then((
       function(next,memo){
         var m_next = fn(memo,next);
         return tuple2(next,m_next);
-      }.tupled()
+      }).tupled()
     );
   }
   static public function flatMap<S,R,R1>(st:State<S,R>,fn:R->State<S,R1>):State<S,R1>{
