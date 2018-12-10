@@ -1,6 +1,5 @@
 package stx.pack;
 
-import stx.data.*;
 import tink.core.Ref;
 
 @:access(tink.core.Ref) abstract Cell<T>(Ref<T>) from Ref<T> to Ref<T>{

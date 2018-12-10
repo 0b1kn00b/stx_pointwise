@@ -9,42 +9,7 @@ using tink.CoreApi;
 using stx.Tuple;
 
 class Compose{
-  @:noUsing static public function apply<I,O>(fn:I->O,v:I):O{
-    return fn(v);
-  }
-  /**
-    Returns a function that applies `fn1` then `fn2` on the input
-  **/
-  static public function then<A,B,C>(fn1:A->B,fn2:B->C):A->C{
-    return
-      function(a:A):C{
-        return fn2(fn1(a));
-      }
-  }
-  /**
-    Returns a function that applies `fn1` to the left hand side of a Tuple
-  **/
-  static public function first<A,B,C,D>(fn1:A->C):Tuple2<A,B>->Tuple2<C,B>{
-    return
-      function(t:Tuple2<A,B>){
-        return new Tup2(fn1(t.fst()),t.snd());
-      }
-  }
-  /**
-    Returns a function that applies `fn1` to the right hand side of a Tuple
-  **/
-  static public function second<A,B,C,D>(fn1:B->D):Tuple2<A,B>->Tuple2<A,D>{
-    return
-      function(t:Tuple2<A,B>){
-        return new Tup2(t.fst(),fn1(t.snd()));
-      }
-  }
-  static public function pair<A,B,C,D>(fn1:A->C,fn2:B->D):Tuple2<A,B>->Tuple2<C,D>{
-    return
-      function(t){
-        return new Tup2(fn1(t.fst()),fn2(t.snd()));
-      }
-  }
+ 
   /**
     Returns a function that applies a function on the lhs of a tuple to the value on the rhs.
   **/
@@ -55,106 +20,8 @@ class Compose{
         return t.fst()(t.snd());
       }
   }
-  /**
-    Returns a function that applies a function to the Left value of an Either.
-  **/
-  static public function left<A,B,C>(fn:A->C):Either<A,B>->Either<C,B>{
-    return
-      function(e:Either<A,B>):Either<C,B>{
-        return
-          switch (e) {
-            case Left(v)  : Left(fn(v));
-            case Right(v) : Right(v);
-          }
-      }
-  }
-  static public function fromLeft<A,B,C>(fn:A->Either<C,B>):Either<A,B>->Either<C,B>{
-    return
-      function(e:Either<A,B>):Either<C,B>{
-        return
-          switch (e) {
-            case Left(v)  : fn(v);
-            case Right(v) : Right(v);
-          }
-      }
-  }
-  /**
-    Returns a function that applies a function to the Right value of an Either.
-  **/
-  static public function right<A,B,D>(fn:B->D):Either<A,B>->Either<A,D>{
-    return
-      function(e:Either<A,B>):Either<A,D>{
-        return
-          switch (e) {
-            case Left(v)  : Left(v);
-            case Right(v) : Right(fn(v));
-          }
-      }
-  }
-  static public function fromRight<A,B,D>(fn:B->Either<A,D>){
-    return
-      function(e:Either<A,B>):Either<A,D>{
-        return
-          switch (e) {
-            case Left(v)  : Left(v);
-            case Right(v) : fn(v);
-          }
-      }
-  }
-  static public function fromR<A,B,C>(fn:B->Either<A,C>):Either<A,B>->Either<A,C>{
-    return function(e:Either<A,B>){
-      return switch (e){
-        case    Left(l)      : Left(l);
-        case    Right(r)     : fn(r);
-      }
-    }
-  }
-  /**
-    Unit function.
-        [[1,2],[3,4]].flatMap( Compose.unit() );//[1,2,3,4]
-  **/
-  @:noUsing static public function unit<A,B>():A->A{
-    return cast function(x) return x;
-  }
-  /**
-    Returns a function that produces a `Tuple2` from a value.
-  **/
-  static public function fan<I,O>(a:I->O):I->Tuple2<O,O>{
-    return a.then(
-        function(x){
-          return new Tup2(x,x);
-        }
-      );
-  }
-  /**
-    Returns a function that produces `v`.
-  **/
-  @:noUsing static public function pure<A,B>(v:B):A->B{
-    return function(x:A){ return v; }
-  }
 
-  /**
-    Combines functions such that a single input is passed to both.
-  **/
-  static public function split<A,B,C>(split_:A->B,_split:A->C):A->Tuple2<B,C>{
-    return function(x){
-        return new Tup2( split_(x), _split(x) );
-      }
-  }
-  /**
-    Applies a function to the input, passing it's original input plus output forward to `bindr`.
-  **/
-  static public function tie<A,B,C>(bindl:A->C,bindr:Tuple2<A,C>->B):A->B{
-    return unit().split(bindl).then( bindr );
-  }
 
-  /**
-    Applies a function to the input, and produces the original input plus the calculated value.
-  **/
-  static public function link<A,B,C>(bindl:A->C):A->Tuple2<A,C>{
-    return tie(bindl,function(x) return x);
-
-  }
   /**
     Creates a function that splits an input to it's inputs.
   **/
@@ -162,24 +29,6 @@ class Compose{
     return function(x:A){
         return fn0(new Tup2(x,x));
       }
-  }
-
-  /**
-    Creates a function applying the same function to both the left and right portions of
-    a Tuple2;
-  **/
-  static public function both<A,B>(fn:A->B):Tuple2<A,A>->Tuple2<B,B>{
-    return function(t){
-        return new Tup2(fn(t.fst()),fn(t.snd()));
-      }
-  }
-  /**
-    Returns a function that calls `f1` with the output of `f2`.
-  **/
-  public static function compose<U, V, W>(f1: V->W, f2: U->V): U->W {
-    return function(u: U): W {
-      return f1(f2(u));
-    }
   }
   /**
     Produces a function that is only called in the event of Some(v) being passed
@@ -218,13 +67,6 @@ class Compose{
         }
       }
       return o;
-    }
-  }
-}
-class Compose2{
-  static public function then<A,B,C,D>(lhs:A->B->C,rhs:C->D):A->B->D{
-    return function(a:A,b:B){
-      return rhs(lhs(a,b));
     }
   }
 }

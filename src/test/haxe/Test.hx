@@ -1,43 +1,15 @@
-import EmbedTest;
-
-import stx.core.Y;
-
-
-using stx.Pointwise;
-
-import tink.CoreApi;
-
-import stx.core.State;
-import stx.fn.LeftChoice;
-import stx.fn.RightChoice;
-import stx.Partial;
-import stx.core.Binary;
-import stx.core.Blocks;
-import stx.core.Compose;
-import stx.core.Quaternary;
-//import stx.core.Partial;
-import stx.core.Quinary;
-import stx.core.Senary;
-import stx.core.Sinks;
-import stx.core.Ternary;
-import stx.core.Thunks;
-import stx.core.Thunks;
-import stx.core.Unary;
-
-import stx.data.Block;
-import stx.data.Embed;
-import stx.data.Sink;
-import stx.data.Thunk;
-
-import stx.Pointwise;
-
-import Type in T;
+using stx.fn.Lift;
 
 class Test{
   static function main(){
-    var runner = new haxe.unit.TestRunner();
-        runner.add(new ChoiceTest());
-        runner.run();
+    // var runner = new haxe.unit.TestRunner();
+    //     runner.add(new ChoiceTest());
+    //     runner.run();
+
+    var a = unary.fn().then(Std.parseFloat);
+  }
+  static public function unary(v:String):String{
+    return v;
   }
 }
 /*class ChoiceTest extends haxe.unit.TestCase{
