@@ -1,17 +1,25 @@
+import utest.Runner;
+import utest.ui.Report;
+
 using stx.fn.Lift;
+using stx.core.Lift;
+
+import haxe.ds.Option;
+
+import stx.fn.Package;
+import stx.fp.Package;
+
+import stx.hkt.OptionTest;
 
 class Test{
   static function main(){
-    // var runner = new haxe.unit.TestRunner();
-    //     runner.add(new ChoiceTest());
-    //     runner.run();
-
-    var a = unary.fn().then(Std.parseFloat);
-  }
-  static public function unary(v:String):String{
-    return v;
+    var runner = new Runner();
+    Report.create(runner);
+        runner.addCase(new stx.hkt.OptionTest());
+        runner.run();
   }
 }
+
 /*class ChoiceTest extends haxe.unit.TestCase{
   public function testLR(){
     var a = (function(x:Int){

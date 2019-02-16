@@ -1,7 +1,4 @@
-package stx.core;
-
-using tink.CoreApi;
-using stx.Pointwise;
+package stx.fn.body;
 
 /**
   Functions for working with Thunks

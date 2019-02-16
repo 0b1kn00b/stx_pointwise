@@ -4,6 +4,9 @@ using stx.fn.body.Unaries;
 import stx.fn.head.data.Unary in UnaryT;
 
 @:using(Unaries) @:callable abstract Unary<PI,R>(UnaryT<PI,R>) from UnaryT<PI,R> to UnaryT<PI,R>{
+  @:noUsing static public function pure<PI,R>(r:R):Unary<PI,R>{
+    return (v:PI) -> r;
+  }
   public function new(self:UnaryT<PI,R>){
     this = self;
   }
@@ -68,5 +71,14 @@ import stx.fn.head.data.Unary in UnaryT;
     return function(t){
       return new Tup2(this(t.fst()),this(t.snd()));
     }
+  }
+  public function perhaps():Perhaps<PI,R>{
+    return (x:Option<PI>) -> switch(x){
+      case Some(v) : Some(this(v));
+      case None: None;
+    }
+  }
+  public function toFunction():PI->R{
+    return this;
   }
 }

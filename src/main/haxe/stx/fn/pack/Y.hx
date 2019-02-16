@@ -5,11 +5,11 @@ import stx.fn.head.data.Y in YT;
 
 @:callable @:forward abstract Y<A,B>(YT<A,B>) from YT<A,B> to YT<A,B>{
   public function new(){
-    this = function(f:(A->B)->(A->B)):(A->B){
+    this = function(f:FT<A,B>):Unary<A,B>{
       var r = ((function (w:Recursive<A->B>){
-      return f(function(x){ return w(w)(x); }); 
+      return f(FT.unit()); 
       }):Recursive<A->B>);
       return r(r);
     }
-  } 
+  }
 }

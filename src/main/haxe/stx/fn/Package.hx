@@ -14,7 +14,6 @@ typedef Sink<T>       =  stx.fn.pack.Sink<T>;
 typedef Thunk<T>      =  stx.fn.pack.Thunk<T>;
 
 /*********************************************
-                Functions 1-6;
 **********************************************/
 
 
@@ -48,12 +47,20 @@ typedef Quinary<PI,PII,PIII,PIV,PV,R>           = stx.fn.pack.Quinary<PI,PII,PII
 **/
 typedef Senary<PI,PII,PIII,PIV,PV,PVI,R>        = stx.fn.pack.Senary<PI,PII,PIII,PIV,PV,PVI,R>;
 
+
+typedef Api                                     = stx.fn.pack.Api;
 /**
   YCombinator
 **/
 typedef Y<A,B>                                  = stx.fn.pack.Y<A,B>;
+typedef FT<A,B>                                 = stx.fn.pack.FT<A,B>;
+typedef FTC<S,A,B>                              = stx.fn.pack.FTC<S,A,B>;
 typedef Dual<PI,PII,RI,RII>                     = stx.fn.pack.Dual<PI,PII,RI,RII>;
 typedef Switch<PI,PII,RI,RII>                   = stx.fn.pack.Switch<PI,PII,RI,RII>;
 typedef Pick<PI,RI,RII>                         = stx.fn.pack.Pick<PI,RI,RII>;
 typedef Fork<P,RI,RII>                          = stx.fn.pack.Fork<P,RI,RII>;
 typedef Join<PI,PII,R>                          = stx.fn.pack.Join<PI,PII,R>;
+typedef Perhaps<P,R>                            = stx.fn.pack.Perhaps<P,R>;
+typedef VBlock<T>                               = stx.fn.pack.VBlock<T>;
+typedef Batch<T>                                = stx.fn.pack.Batch<T>;
+typedef Product<T,U>                            = stx.fn.pack.Product<T,U>;

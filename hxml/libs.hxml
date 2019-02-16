@@ -1,1 +1,3 @@
 -lib stx_tuple
+-lib stx_core
+-lib utest

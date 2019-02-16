@@ -1,21 +1,20 @@
-package stx.core;
+package stx.fn.body;
 
-import stx.data.Block;
 /**
   Helpers for working with Blocks.
 **/
 class Blocks{
-  public static var NIL(default,never) : Block = function(){}
+  static public var NIL(default,never) : Block = function(){}
   /**
     Compare function identity.
   **/
-  public static function equals(a:Block,b:Block){
+  static public function eq(a:Block,b:Block){
     return Reflect.compareMethods(a,b);
   }
   /**
     Produces a function that takes a parameter, ignores it, and calls `f`.
   **/
-  public static function promote<A>(f: Block): A->Void {
+  static public function promote<A>(f: Block): A->Void {
     return function(a: A): Void {
       f();
     }
@@ -24,20 +23,34 @@ class Blocks{
     Produces a function that calls `f1` and `f2` in left to right order.*
   * @returns The composite function.
   **/
-  public static function then(f1:Void->Void, f2:Void->Void):Void->Void {
+  static public function then(f1:Void->Void, f2:Void->Void):Void->Void {
     return function() {
       f1();
       f2();
     }
   }
 
-  public static function upply(fn:Block){
+  static public function upply(fn:Block){
     fn();
   }
-  public static inline function and(fn0:Block,fn1:Block):Block{
+  static public inline function and(fn0:Block,fn1:Block):Block{
     return function(){
       fn0();
       fn1();
     }
+  }
+
+  static public function catching(fn:Block):Thunk<Option<stx.Error>>{
+    return function(){
+        var o = None;
+          try{
+            fn();
+          }catch(e:stx.Error){
+            o = Some(e);
+          }catch(e:Dynamic){
+            o = Some(new stx.Error(InternalError,e));
+          }
+        return o;
+      }
   }
 }
