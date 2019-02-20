@@ -1,8 +1,6 @@
-package stx.core;
+package stx.fn.body;
 
-using stx.Pointwise;
-
-class Ternary {
+class Ternaries {
   /**
 		Places first parameter at the back.
 	**/
@@ -43,7 +41,7 @@ class Ternary {
     Produces a function that produces a function for each parameter in the originating function. When these
     functions have been called, the result of the original function is produced.
   **/
-  public static function curry<P1, P2, P3, R>(f: P1->P2->P3->R): (P1->(P2->(P3->R))) {
+  public static function curry<P1, P2, P3, R>(f: P1->P2->P3->R): Unary<P1,Unary<P2,Unary<P3,R>>> {
     return function(p1: P1) {
       return function(p2: P2) {
         return function(p3: P3) {

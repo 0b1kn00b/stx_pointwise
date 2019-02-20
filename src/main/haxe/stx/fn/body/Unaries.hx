@@ -84,7 +84,7 @@ class Unaries {
   static public function first<A,B,C,D>(fn1:Unary<A,C>):Dual<A,B,C,B>{
     return
       function(t:Tuple2<A,B>){
-        return new Tup2(fn1(t.fst()),t.snd());
+        return tuple2(fn1(t.fst()),t.snd());
       }
   }
   /**
@@ -93,7 +93,7 @@ class Unaries {
   static public function second<A,B,C,D>(fn1:B->D):Dual<A,B,A,D>{
     return
       function(t:Tuple2<A,B>){
-        return new Tup2(t.fst(),fn1(t.snd()));
+        return tuple2(t.fst(),fn1(t.snd()));
       }
   }
   /**
@@ -105,7 +105,7 @@ class Unaries {
   static public inline function pair<PI,PII,RI,RII>(fn1:Unary<PI,RI>,fn2:Unary<PII,RII>):Dual<PI,PII,RI,RII>{
     return
       function(t){
-        return new Tup2(fn1(t.fst()),fn2(t.snd()));
+        return tuple2(fn1(t.fst()),fn2(t.snd()));
       }
   }
   /**
@@ -141,7 +141,7 @@ class Unaries {
   static public function fan<I,O>(a:Unary<I,O>):Fork<I,O,O>{
     return a.then(
         function(x){
-          return new Tup2(x,x);
+          return tuple2(x,x);
         }
       );
   }
@@ -150,7 +150,7 @@ class Unaries {
   **/
   static public function fork<A,B,C>(split_:Unary<A,B>,_split:Unary<A,C>):Fork<A,B,C>{
     return function(x:A){
-        return new Tup2( split_(x), _split(x) );
+        return tuple2( split_(x), _split(x) );
       }
   }
   /**

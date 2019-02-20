@@ -1,7 +1,8 @@
 package hkt;
 
 using tink.CoreApi;
-using stx.Tuple;
+
+import stx.core.head.Data;
 
 import stx.fn.Package;
 import stx.core.Package;

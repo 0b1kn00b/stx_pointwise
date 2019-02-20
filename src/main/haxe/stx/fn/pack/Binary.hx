@@ -6,4 +6,5 @@ import stx.fn.head.data.Binary in BinaryT;
   public function new(self:BinaryT<PI,PII,R>){
     this = self;
   }
+
 }

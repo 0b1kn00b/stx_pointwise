@@ -40,15 +40,15 @@ class Blocks{
     }
   }
 
-  static public function catching(fn:Block):Thunk<Option<stx.Error>>{
+  static public function catching(fn:Block):Thunk<Option<Error>>{
     return function(){
         var o = None;
           try{
             fn();
-          }catch(e:stx.Error){
+          }catch(e:Error){
             o = Some(e);
           }catch(e:Dynamic){
-            o = Some(new stx.Error(InternalError,e));
+            o = Some(new Error(InternalError,e));
           }
         return o;
       }

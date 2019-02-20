@@ -69,7 +69,7 @@ import stx.fn.head.data.Unary in UnaryT;
   **/
   public function dual():Dual<PI,PI,R,R>{
     return function(t){
-      return new Tup2(this(t.fst()),this(t.snd()));
+      return tuple2(this(t.fst()),this(t.snd()));
     }
   }
   public function perhaps():Perhaps<PI,R>{

@@ -1,7 +1,5 @@
 package stx.core;
 
-using stx.Pointwise;
-
 class Binaries {
   public static inline function apply<A,B,C>(fn:A->B->C,v0:A,v1:B):C{
     return fn(v0,v1);
@@ -117,5 +115,4 @@ class Binaries {
     var fn : P0 -> P1 -> R = m;
     return fn.bind(_,p1);
   }
-
 }

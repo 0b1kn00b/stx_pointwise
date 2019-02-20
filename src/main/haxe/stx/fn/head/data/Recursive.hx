@@ -1,3 +1,3 @@
 package stx.fn.head.data;
 
-typedef Recursive<T>      = Recursive<T> -> T; 
+typedef Recursive<T>      = Unary<Recursive<T>,T>; 

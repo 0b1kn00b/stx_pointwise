@@ -9,7 +9,7 @@ class Lift{
   **/
   static public function pinch<A,B,C>(fn0:Dual<A,A,B,C>):Fork<A,B,C>{
     return function(x:A){
-        return fn0(new Tup2(x,x));
+        return fn0(tuple2(x,x));
       }
   }
   static public function repeat<I,O>(fn:I->Either<I,O>):I->O{
@@ -62,4 +62,9 @@ class LiftPerhaps{
       case None     : None;
     }
   } 
+}
+class LiftTernary{
+  static public inline function fn<PI,PII,PIII,R>(fn:PI->PII->PIII->R):Ternary<PI,PII,PIII,R>{
+    return fn;
+  }
 }

@@ -7,6 +7,9 @@ import stx.fn.body.Blocks;
   static public function unit(){
     return function(){};
   }
+  static public function pure(fn:Void->Void):Block{
+    return fn;
+  }
   public function new(self:BlockT){
     this = self;
   }
@@ -16,7 +19,7 @@ import stx.fn.body.Blocks;
   public function upply(){
     Blocks.upply(this);
   }
-  public function catching():Thunk<stx.core.pack.Option<stx.Error>>{
+  public function catching():Thunk<Option<Error>>{
     return Blocks.catching(this);
   }
 } 

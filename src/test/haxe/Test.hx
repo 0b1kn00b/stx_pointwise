@@ -7,8 +7,6 @@ using stx.core.Lift;
 import haxe.ds.Option;
 
 import stx.fn.Package;
-import stx.fp.Package;
-
 import stx.hkt.OptionTest;
 
 class Test{

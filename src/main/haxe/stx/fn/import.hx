@@ -1,7 +1,12 @@
 package stx.fn;
 
-using stx.core.Lift;
+
 using tink.CoreApi;
-using stx.fn.Package;
-using stx.core.Package;
-using stx.Tuple;
+
+import stx.core.head.Data;
+
+import stx.fn.Package;
+import stx.core.Package;
+
+
+using stx.core.Lift;

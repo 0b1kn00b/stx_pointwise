@@ -53,8 +53,7 @@ typedef Api                                     = stx.fn.pack.Api;
   YCombinator
 **/
 typedef Y<A,B>                                  = stx.fn.pack.Y<A,B>;
-typedef FT<A,B>                                 = stx.fn.pack.FT<A,B>;
-typedef FTC<S,A,B>                              = stx.fn.pack.FTC<S,A,B>;
+typedef Y2<S,A,B>                               = stx.fn.pack.Y2<S,A,B>;
 typedef Dual<PI,PII,RI,RII>                     = stx.fn.pack.Dual<PI,PII,RI,RII>;
 typedef Switch<PI,PII,RI,RII>                   = stx.fn.pack.Switch<PI,PII,RI,RII>;
 typedef Pick<PI,RI,RII>                         = stx.fn.pack.Pick<PI,RI,RII>;
