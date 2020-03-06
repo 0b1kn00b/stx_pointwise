@@ -1,9 +1,13 @@
 package stx.fn.pack;
 
-using stx.fn.body.Unaries;
+import stx.fn.body.Unaries;
 import stx.fn.head.data.Unary in UnaryT;
+import stx.fn.head.data.Join  in JoinT;
 
-@:using(Unaries) @:callable abstract Unary<PI,R>(UnaryT<PI,R>) from UnaryT<PI,R> to UnaryT<PI,R>{
+@:callable abstract Unary<PI,R>(UnaryT<PI,R>) from UnaryT<PI,R> to UnaryT<PI,R>{
+  @:noUsing static public function lift<PI,R>(fn:PI->R):Unary<PI,R>{
+    return new Unary(fn);
+  }
   @:noUsing static public function pure<PI,R>(r:R):Unary<PI,R>{
     return (v:PI) -> r;
   }
@@ -16,14 +20,7 @@ import stx.fn.head.data.Unary in UnaryT;
    * @return R return type
    */
   public inline function apply(pi:PI):R{
-    return this.apply(pi);
-  }
-  /**
-   * Creates a function that applies the function and returns either an Error or the result
-   * @return Unary<PI,Outcome<R,Error>>
-   */
-  public inline function catching():Unary<PI,Outcome<R,Error>>{
-    return this.catching();
+    return Unaries.apply(this,pi);
   }
   /**
    * Produces a function that calls the function with the given parameters `p1....pn`, calls this function only once and memoizes the result.
@@ -31,15 +28,25 @@ import stx.fn.head.data.Unary in UnaryT;
    * @return Thunk<R>
    */
   public inline function lazy(pi:PI):Thunk<R>{
-    return this.lazy(pi);
+    return Unaries.lazy(this,pi);
+  }
+  /**
+    memoises the first call
+  **/  
+  public inline function memo():Unary<PI,R>{
+    var lazed = null;
+    return (pi:PI) -> {
+      lazed = __.option(lazed).defv(lazy(pi));
+      return lazed();
+    }
   }
   /**
    * Produces a function that calls this function with the result of `pi`.
    * @param pi 
    * @return Thunk<R>
    */
-  public inline function pipe(pi:Thunk<PI>):Thunk<R>{
-    return this.pipe(pi);
+  public inline function close(pi:Thunk<PI>):Thunk<R>{
+    return Unaries.pipe(this,pi);
   }
   /**
    * Identity equality.
@@ -47,7 +54,7 @@ import stx.fn.head.data.Unary in UnaryT;
    * @return Bool
    */
   public inline function eq(pi:Unary<PI,R>):Bool{
-    return this.eq(pi);
+    return Unaries.eq(this,pi);
   }
   
   /**
@@ -55,12 +62,20 @@ import stx.fn.head.data.Unary in UnaryT;
    * @param fn 
    * @return Unary<P,RI>
    */
-  public inline function then<RI>(fn:Unary<R,RI>):Unary<PI,RI>{
-    return this.then(fn);
+  public inline function then<RI>(fn:UnaryT<R,RI>):Unary<PI,RI>{
+    return Unaries.then(this,fn);
+  }
+  /**
+   * Produces a function that runs this after the introduced function.
+   * @param fn 
+   * @return Unary<P,RI>
+   */
+   public inline function comp<P0>(fn:UnaryT<P0,PI>):Unary<P0,R>{
+    return Unaries.then(fn,this);
   }
 
-  public inline function fork<RII>(fn:Unary<PI,RII>):Fork<PI,R,RII>{
-    return this.fork(fn);
+  public inline function fork<RII>(fn:UnaryT<PI,RII>):Fork<PI,R,RII>{
+    return Unaries.fork(this,fn);
   } 
 
    /**
@@ -79,6 +94,27 @@ import stx.fn.head.data.Unary in UnaryT;
     }
   }
   public function toFunction():PI->R{
+    return this;
+  }
+  public function bound<RI>(bindr:Join<PI,R,RI>):Unary<PI,RI>{
+    return Unaries.bound(this,bindr);
+  }
+  public function broach():Fork<PI,PI,R>{
+    return bound(tuple2);
+  }
+  public function first<X>():Dual<PI,X,R,X>{
+    return Unaries.first(this);
+  }
+  public function second<X>():Dual<X,PI,X,R>{
+    return Unaries.second(this);
+  }
+  public function enclose(){
+    return Unaries.enclose(this);
+  }
+  public function pair<PII,RII>(that:Unary<PII,RII>):Dual<PI,PII,R,RII>{
+    return Unaries.pair(this,that);
+  }
+  public function prj():PI->R{
     return this;
   }
 }

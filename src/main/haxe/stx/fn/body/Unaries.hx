@@ -15,25 +15,6 @@ class Unaries {
     return fn(v);
   }
   /**
-   * Creates a function that applies the function and returns either an Error or the result
-   * @param f  
-   * @return Unary<PI,Outcome<R,Error>>
-   */
-  static public function catching<PI,R>(fn:Unary<PI,R>):Unary<PI,Outcome<R,Error>>{
-    return function(a){
-        var o = null;
-          try{
-            o = Outcome.Success(fn(a));
-          }catch(e:Error){
-            o = Outcome.Failure(e);
-          }catch(e:Dynamic){
-            o = Outcome.Failure(new Error(InternalError,e));
-          }
-        return o;
-      }
-  }
-
-  /**
    * Produces a function that calls `f` with the given parameters `p1....pn`, calls this function only once and memoizes the result.
    * @param fn 
    * @return }
@@ -152,11 +133,11 @@ class Unaries {
     return function(x:A){
         return tuple2( split_(x), _split(x) );
       }
-  }
+  } 
   /**
     Applies a function to the input, passing it's original input plus output forward to `bindr`.
   **/
-  static public function tie<A,B,C>(bindl:Unary<A,C>,bindr:Join<A,C,B>):Unary<A,B>{
+  static public function bound<A,B,C>(bindl:Unary<A,C>,bindr:Join<A,C,B>):Unary<A,B>{
     var out = unit().fork(bindl).then(bindr);
     return out;
   }
@@ -164,6 +145,12 @@ class Unaries {
     Applies a function to the input, and produces the original input plus the calculated value.
   **/
   static public function span<A,B,C>(bindl:Unary<A,C>):Fork<A,A,C>{
-    return tie(bindl,(x) -> x);
+    return bound(bindl,(x) -> x);
+  }
+
+  static public function enclose<A,B>(self:Unary<A,B>):Sink<A>{
+    return (a:A) -> {
+      self(a);
+    }
   }
 }

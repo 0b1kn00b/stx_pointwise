@@ -16,34 +16,6 @@ class Thunks {
     return a();
   }
   /**
-		Applies a `Thunk` and returns an `Outcome`
-	**/
-  public static function catching<A,B>(c:Thunk<A>):Thunk<Outcome<A,Error>>{
-    return function(){
-        var o = null;
-          try{
-            o = Outcome.Success(c());
-          }catch(e:Error){
-            o = Outcome.Failure(e);
-          }catch(e:Dynamic){
-            o = Outcome.Failure(new Error(InternalError,e));
-          }
-        return o;
-      }
-  }
-  /**
-		Ignores error in `th` when called, instead returning a `null`
-	**/
-  public static function suppress<A>(th:Thunk<A>):Thunk<Null<A>>{
-    return function(){
-      return try{
-        th();
-      }catch(d:Dynamic){
-        null;
-      }
-    }
-  }
-  /**
     Returns a Thunk that applies a Thunk one time only and stores the result,
     after which each successive call returns the stored value.
   **/

@@ -1,6 +1,7 @@
-package stx.core;
+package stx.fn.body;
 
 class Binaries {
+
   public static inline function apply<A,B,C>(fn:A->B->C,v0:A,v1:B):C{
     return fn(v0,v1);
   }

@@ -4,11 +4,11 @@ package stx.fn.body;
   Helpers for working with Blocks.
 **/
 class Blocks{
-  static public var NIL(default,never) : Block = function(){}
+  static public var ZERO(default,never) : Block = function(){}
   /**
     Compare function identity.
   **/
-  static public function eq(a:Block,b:Block){
+  static inline public function equals(a:Block,b:Block){
     return Reflect.compareMethods(a,b);
   }
   /**
@@ -38,19 +38,5 @@ class Blocks{
       fn0();
       fn1();
     }
-  }
-
-  static public function catching(fn:Block):Thunk<Option<Error>>{
-    return function(){
-        var o = None;
-          try{
-            fn();
-          }catch(e:Error){
-            o = Some(e);
-          }catch(e:Dynamic){
-            o = Some(new Error(InternalError,e));
-          }
-        return o;
-      }
   }
 }

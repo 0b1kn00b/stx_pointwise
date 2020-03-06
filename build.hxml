@@ -1,6 +1,4 @@
-hxml/libs.hxml
-hxml/test/neko.hxml
-#hxml/test/java.hxml
-#hxml/test/cs.hxml
-#hxml/test/php.hxml
-#hxml/xtra/docs.hxml
+-main Main
+-lib tink_core
+-lib stx_core
+-cp src/main/haxe

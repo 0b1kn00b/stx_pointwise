@@ -63,3 +63,7 @@ typedef Perhaps<P,R>                            = stx.fn.pack.Perhaps<P,R>;
 typedef VBlock<T>                               = stx.fn.pack.VBlock<T>;
 typedef Batch<T>                                = stx.fn.pack.Batch<T>;
 typedef Product<T,U>                            = stx.fn.pack.Product<T,U>;
+//typedef Known                                   = stx.fn.pack.Known;
+//typedef Unknown                                 = stx.fn.pack.Unknown;
+//typedef Projectable<T>                          = stx.fn.pack.Projectable<T>;
+typedef Other<I,O>                              = stx.fn.pack.Other<I,O>;

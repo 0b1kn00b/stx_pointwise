@@ -1,2 +1,4 @@
+-lib tink_core
+
 -lib stx_core
--lib utest
+-lib stx_assert

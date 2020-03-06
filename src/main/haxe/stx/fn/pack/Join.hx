@@ -12,4 +12,7 @@ import stx.fn.head.data.Join in JoinT;
   @:to public function toFunction():Tuple2<PI,PII>->R{
     return this;
   }
+  @:from static public function fromFn2<PI,PII,R>(fn:PI->PII->R):Join<PI,PII,R>{
+    return (tp:Tuple2<PI,PII>) -> __.into2(fn)(tp);
+  }
 }

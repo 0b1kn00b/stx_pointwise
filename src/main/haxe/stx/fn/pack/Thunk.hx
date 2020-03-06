@@ -10,10 +10,10 @@ import stx.fn.head.data.Thunk in ThunkT;
   public function then<R>(fn:Unary<O,R>):Thunk<R>{
     return () -> fn(this());
   }
-  public function catching():Thunk<Outcome<O,Error>>{
-    return Thunks.catching(this);
-  }
   public function lazy():Thunk<O>{
     return Thunks.lazy(this);
+  }
+  public function prj():ThunkT<O>{
+    return this;
   }
 }

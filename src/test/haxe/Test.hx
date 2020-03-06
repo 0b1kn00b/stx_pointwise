@@ -1,22 +1,36 @@
-import utest.Runner;
-import utest.ui.Report;
-
-using stx.fn.Lift;
-using stx.core.Lift;
-
-import haxe.ds.Option;
-
 import stx.fn.Package;
-import stx.hkt.OptionTest;
 
-class Test{
-  static function main(){
-    var runner = new Runner();
-    Report.create(runner);
-        runner.addCase(new stx.hkt.OptionTest());
-        runner.run();
-  }
-}
+// class Test extends stx.test.pack.Test{
+//   static function main(){
+//     var test = new Test([
+//       //new stx.hkt.OptionTest().tests,
+//       new UncertainTest().tests
+//     ]);
+//     test.run();
+//     trace("done");
+//   }
+// }
+// class UncertainTest extends Case{
+//   public function testValid(){
+//     var a = new SomethingLearnt(new Unknown());
+//     trace(Type.typeof(a.cert));
+//     $type(a);
+//     var b = a.learn();
+//     $type(b);
+//     trace(Type.typeof(b.cert));
+//   }
+// }
+// class SomethingLearnt<T:Projectable<Certainty>>{
+//   public var cert : T;
+//   public function new(cert:T){
+//     this.cert = cert;
+//   }
+//   public function learn():SomethingLearnt<Known>{
+//     return new SomethingLearnt(new Known());
+//   }
+// }
+
+
 
 /*class ChoiceTest extends haxe.unit.TestCase{
   public function testLR(){
