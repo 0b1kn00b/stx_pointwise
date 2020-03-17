@@ -4,6 +4,9 @@ import stx.fn.body.Thunks;
 import stx.fn.head.data.Thunk in ThunkT;
 
 @:callable abstract Thunk<O>(ThunkT<O>) from ThunkT<O>{
+  static public function lift<R>(thk:ThunkT<R>):Thunk<R>{
+    return new Thunk(thk);
+  }
   public function new(self:ThunkT<O>){
     this = self;
   }

@@ -1,11 +1,21 @@
-stx_pointwise
+stx_fn
 =============
+
+```
+/*
+  FunXX              //Close
+  FunXR<R>           //Reply
+  Fun1X<P>           //Upply
+  Fun1R<P,R>         //Apply
+
+  Fun2R<Pi,Pii,R>    //Tuply
+*/
+```
 
 Haxe function composition library.
 
 Full Documentation:
 
-http://0b1kn00b.github.io/stx_pointwise/
 
 # Function Composition Library for Haxe
 

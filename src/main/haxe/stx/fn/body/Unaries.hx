@@ -25,7 +25,7 @@ class Unaries {
 
     return function() {
       return if (r == null) {
-        r = untyped (false);//<---
+        r = untyped (false);//<--- breaks live lock
         r = f(p1); r;
       }else{
         r;
