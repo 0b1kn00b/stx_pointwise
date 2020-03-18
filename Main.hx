@@ -1,4 +1,4 @@
-import stx.fn.Package;
+using stx.Fn;
 
 class Main {
   static function main() {
