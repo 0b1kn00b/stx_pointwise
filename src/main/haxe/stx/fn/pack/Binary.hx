@@ -1,20 +1,13 @@
 package stx.fn.pack;
 
-import stx.fn.body.Binaries;
-import stx.fn.head.data.Binary in BinaryT;
+import stx.fn.pack.binary.Constructor;
 
-@:callable abstract Binary<PI,PII,R>(BinaryT<PI,PII,R>) from BinaryT<PI,PII,R>{
-  public function new(self:BinaryT<PI,PII,R>){
+@:using(stx.fn.pack.binary.Implementation)
+@:callable abstract Binary<PI,PII,R>(BinaryDef<PI,PII,R>) from BinaryDef<PI,PII,R>{
+  static public inline function _() return Constructor.ZERO;
+
+  public function new(self:BinaryDef<PI,PII,R>){
     this = self;
-  }
-  public function tp():Join<PI,PII,R>{
-    return (tp) -> this(tp.fst(),tp.snd());
-  }
-  public function flip():Binary<PII,PI,R>{
-    return Binaries.flip(this);
-  }
-  public function bind1(pi:PI):Unary<PII,R>{
-    return this.bind(pi);
   }
   public function prj():PI->PII->R{
     return this;

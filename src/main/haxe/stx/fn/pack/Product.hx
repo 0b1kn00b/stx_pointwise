@@ -1,5 +1,5 @@
 package stx.fn.pack;
 
-@:forward @:callable abstract Product<T,U>(Binary<T,T,U>) from Binary<T,T,U> to Binary<T,T,U>{
+@:forward @:callable abstract Product<P,R>(ProductDef<P,R>) from ProductDef<P,R> to ProductDef<P,R>{
 
 }

@@ -1,17 +1,15 @@
 package stx.fn.pack;
 
-import stx.fn.head.data.VBlock in VBlockT;
-
-@:callable abstract VBlock<T>(VBlockT<T>) from VBlockT<T>{
+@:callable abstract VBlock<T>(VBlockDef<T>) from VBlockDef<T>{
   static public function unit<T>():VBlock<T>{
     return () -> {}
   }
-  public function new(self:VBlockT<T>){
+  public function new(self:VBlockDef<T>){
     this = self;
   }
-  @:from static public function fromBlock<T>(b:Block):VBlock<T>{
-    return b;
-  }
+  // @:from static public function fromBlock<T>(b:Block):VBlock<T>{
+  //   return new VBLokb;
+  // }
   @:to public function toBlock():Block{
     return this;
   }

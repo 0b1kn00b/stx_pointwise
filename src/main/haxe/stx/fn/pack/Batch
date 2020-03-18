@@ -1,0 +1,5 @@
+package stx.fn.pack;
+
+@:callable abstract Batch<T>(BatchDef<T>) from BatchDef<T>{
+
+}

@@ -1,8 +1,31 @@
 stx_fn
 =============
 
+//Nullary
+//Block     #enact      0 -> 0
+//Thunk     #reply      0 -> 1
+
+//Unary     #apply      1 -> 1
+//Binary    #braid      2 -> 1
+//Ternary   #scope      3 -> 1
+
+//Sink      #chuck      1 -> 0
+
+//Tuple     #tuple      2 -> 0
+//Arrow     #relay      2 -> 2 
+
 ```
+
 /*
+FPiR
+FpiTuple2
+Fun_pIrI    // 
+Fun_pIIrI   // 
+Fun_pIrII   //
+Fun_pXrX
+Fun_pXrI
+Fun_pIrX
+
   FunXX              //Close
   FunXR<R>           //Reply
   Fun1X<P>           //Upply

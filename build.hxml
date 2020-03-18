@@ -1,4 +1,4 @@
 -main Main
--lib tink_core
--lib stx_core
+-lib stx_pico
 -cp src/main/haxe
+--interp

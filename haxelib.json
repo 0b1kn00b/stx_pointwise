@@ -13,8 +13,7 @@
     "version": "0.8.9",
     "url": "https://github.com/0b1kn00b/stx_pointwise",
     "dependencies": {
-        "tink_core": "",
-        "stx_core": ""
+        "tink_core": ""
     },
     "classPath": "src/main/haxe"
 }

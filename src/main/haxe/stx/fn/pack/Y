@@ -1,9 +1,6 @@
 package stx.fn.pack;
 
-import stx.fn.head.data.Recursive;
-import stx.fn.head.data.Y in YT;
-
-@:callable abstract Y<A,B>(YT<A,B>) from YT<A,B> to YT<A,B>{
+@:callable abstract Y<A,B>(YDef<A,B>) from YDef<A,B> to YDef<A,B>{
   static public function unit<A,B>():Y<A,B>{
     return function(fn:Recursive<Unary<A,B>>):Unary<A,B> return fn(fn);
   }

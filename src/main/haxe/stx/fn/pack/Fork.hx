@@ -1,18 +1,16 @@
 package stx.fn.pack;
 
-import stx.fn.head.data.Fork in ForkT;
-
-@:forward @:callable abstract Fork<P,RI,RII>(ForkT<P,RI,RII>) from ForkT<P,RI,RII> to ForkT<P,RI,RII>{
+@:forward @:callable abstract Fork<P,Ri,Rii>(ForkDef<P,Ri,Rii>) from ForkDef<P,Ri,Rii> to ForkDef<P,Ri,Rii>{
   public function new(self){
     this = self;
   }
-  @:from static public function fromUnary<P,RI,RII>(fn:Unary<P,Tuple2<RI,RII>>){
+  @:from static public function fromUnary<P,Ri,Rii>(fn:Unary<P,Tuple<Ri,Rii>>){
     return new Fork(fn);
   }
-  @:to public function toUnary():Unary<P,Tuple2<RI,RII>>{
+  @:to public function toUnary():Unary<P,Tuple<Ri,Rii>>{
     return this;
   }
-  public function then<RIII>(fn:Join<RI,RII,RIII>):Unary<P,RIII>{
+  public function then<RiiI>(fn:Join<Ri,Rii,RiiI>):Unary<P,RiiI>{
     return this.then(fn);
   }
 }
