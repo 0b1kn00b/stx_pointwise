@@ -12,7 +12,7 @@ package stx.fn;
   }
 
   #if tink_core
-    @:to public function toTinkCallback():Callback<P>{
+    @:to public function toTinkCallback():tink.core.Callback<P>{
       return this;
     }
   #end

@@ -1,4 +1,5 @@
 -main Main
 -lib stx_pico
+-lib stx_nano
 -cp src/main/haxe
 --interp

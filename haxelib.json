@@ -1,19 +1,21 @@
 {
-    "name": "pointwise",
+    "name": "stx_fn",
     "license": "MIT",
     "tags": [
         "cross",
-        "functional"
+        "functional",
+        "pointwise"
     ],
-    "description": "Functional composition tools. Haxe 3.1.* required.",
+    "description": "Functional composition tools. Haxe 4 required.",
     "contributors": [
         "0b1kn00b"
     ],
-    "releasenote": "Wow, can post past version. oops",
-    "version": "0.8.9",
+    "releasenote": "rewrite",
+    "version": "0.9.0",
     "url": "https://github.com/0b1kn00b/stx_pointwise",
     "dependencies": {
-        "tink_core": ""
+        "stx_pico"  : "",
+        "stx_nano"  : ""
     },
     "classPath": "src/main/haxe"
 }

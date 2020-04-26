@@ -8,7 +8,7 @@ class LiftUnary{
   static public inline function fn<Pi,R>(fn:Pi->R):Unary<Pi,R>{
     return fn;
   }
-  static inline public function bind1<P,R>(fn:P->R,p:P):Thunk<R>{
+  static inline public function bindI<P,R>(fn:P->R,p:P):Thunk<R>{
     return fn.bind(p);
   }
 }

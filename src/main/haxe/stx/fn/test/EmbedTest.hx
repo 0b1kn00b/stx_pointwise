@@ -1,9 +1,4 @@
-using stx.Pointwise;
-using Test;
-
-import stx.Embed;
-
-import haxe.ds.Option;
+package stx.fn.test;
 
 using EmbedTest;
 private enum Lego{

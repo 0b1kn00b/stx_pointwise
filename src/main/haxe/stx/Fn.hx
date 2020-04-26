@@ -6,26 +6,40 @@ class Fn{
 typedef BlockDef                                = Void->Void;
 typedef Block                                   = stx.fn.Block;
 
+typedef FunXXDef                                = BlockDef;
+typedef FunXX                                   = Block;
+typedef AppXX                                   = stx.fn.type.AppXX;
+
 /**
 * Function that takes one input and produces no result.
 **/
-typedef SinkDef<R>                              = R -> Void;
+typedef SinkDef<P>                              = P -> Void;
 typedef Sink<P>                                 = stx.fn.Sink<P>;
+typedef FunXRDef<P>                             = SinkDef<P>;
+typedef Fun1X<P>                                = Sink<P>;
+
 
 typedef ThunkDef<R>                             = Void -> R;
 typedef Thunk<R>                                = stx.fn.Thunk<R>;
+typedef Fun1XDef<R>                             = ThunkDef<R>;
+typedef FunXR<R>                                = Thunk<R>;
 
-typedef UnaryDef<Pi,R>                          = Pi -> R;
-typedef Unary<Pi,R>                             = stx.fn.Unary<Pi,R>;
+typedef UnaryDef<P,R>                           = P -> R;
+typedef Unary<P,R>                              = stx.fn.Unary<P,R>;
+typedef Fun1RDef<P,R>                           = UnaryDef<P,R>;
+typedef Fun1R<P,R>                              = Unary<P,R>;
 
 typedef BinaryDef<Pi,Pii,R>                     = Pi -> Pii -> R; 
 typedef Binary<Pi,Pii,R>                        = stx.fn.Binary<Pi,Pii,R>;
+typedef Fun2RDef<Pi,Pii,R>                      = BinaryDef<Pi,Pii,R>;
+typedef Fun2R<Pi,Pii,R>                         = Binary<Pi,Pii,R>;
+
 
 typedef TernaryDef<Pi,Pii,Piii,R>               = Pi -> Pii -> Piii -> R;
 typedef Ternary<Pi,Pii,Piii,R>                  = stx.fn.Ternary<Pi,Pii,Piii,R>;
 
 
-typedef DualDef<Pi,Pii,Ri,Rii>                  = Tuple<Pi,Pii> -> Tuple<Ri,Rii>;
+typedef DualDef<Pi,Pii,Ri,Rii>                  = Couple<Pi,Pii> -> Couple<Ri,Rii>;
 typedef Dual<Pi,Pii,Ri,Rii>                     = stx.fn.Dual<Pi,Pii,Ri,Rii>;
 
 typedef SwitchDef<Pi,Pii,Ri,Rii>                = Either<Pi,Pii> -> Either<Ri,Rii>;
@@ -34,33 +48,10 @@ typedef Switch<Pi,Pii,Ri,Rii>                   = stx.fn.Switch<Pi,Pii,Ri,Rii>;
 typedef PickDef<Pi,Ri,Rii>                      = Pi -> Either<Ri,Rii>;
 typedef Pick<Pi,Ri,Rii>                         = stx.fn.Pick<Pi,Ri,Rii>;
 
-
 typedef PerhapsDef<P,R>                         = Option<P> -> Option<R>;
 typedef Perhaps<P,R>                            = stx.fn.Perhaps<P,R>;
 
-
-//typedef BatchDef<T>                             = T -> T -> T;
-//typedef Batch<T>                                = stx.fn.Batch<T>;
-
-typedef ProductDef<P,R>                         = P -> P -> R;
-typedef Product<P,R>                            = stx.fn.Product<P,R>;
-
-
-typedef OtherDef<P,R>                           = Option<P> -> R;
-typedef Other<P,R>                              = stx.fn.Other<P,R>;
-
-typedef CullDef<Pi,Pii,R>                       = Either<Pi,Pii> -> R;
-
-typedef ForkDef<Pi,Ri,Rii>                      = Pi -> Tuple<Ri,Rii>;
-typedef Fork<P,Ri,Rii>                          = stx.fn.Fork<P,Ri,Rii>;
-
-typedef JoinDef<Pi,Pii,R>                       = Tuple<Pi,Pii> -> R; 
-typedef Join<Pi,Pii,R>                          = stx.fn.Join<Pi,Pii,R>;
-
-
-typedef FoldDef<P,R>                            = P -> R -> R;
-
-class LiftSomethingNMotSureYet{
+class LiftCurriedBinary{
   /**
     Takes a function with one parameter that returns a function of one parameter, and produces
     a function that takes two parameters that calls the two functions sequentially,
@@ -71,7 +62,7 @@ class LiftSomethingNMotSureYet{
     }
   }
 }
-class LiftUncurryTernary{
+class LiftCurriedTernary{
     /**
     Takes a function with one parameter that returns a function of one parameter, and produces
     a function that takes two parameters that calls the two functions sequentially,
@@ -82,31 +73,13 @@ class LiftUncurryTernary{
       }
     }
 }
-class LiftSomethingElse{
-   /**
-   * Binds two functions together to run with bound inputs. 
-   * @param fn1 
-   * @param fn2 
-   * @return Tuple<A,B>->Tuple<C,D>
-   */
-   static public inline function pair<Pi,Pii,Ri,Rii>(fn1:Unary<Pi,Ri>,fn2:Unary<Pii,Rii>):Dual<Pi,Pii,Ri,Rii>{
-    return
-      function(t){
-        return __.tuple(fn1(t.fst()),fn2(t.snd()));
-      }
-  }
-}
-
 class LiftFn{
-  // static public function fn(stx:Wildcard):Api{
-  //   return new Api();
-  // }
   /**
     Creates a function that splits an input to it's inputs.
   **/
-  static public function pinch<A,B,C>(fn0:Dual<A,A,B,C>):Fork<A,B,C>{
+  static public function pinch<A,B,C>(fn0:Dual<A,A,B,C>):Unary<A,B,Couple<C,C>>{
     return function(x:A){
-        return fn0(__.tuple(x,x));
+        return fn0(__.couple(x,x));
       }
   }
   static public function repeat<I,O>(fn:I->Either<I,O>):I->O{
@@ -125,15 +98,11 @@ class LiftFn{
 }
 
 typedef LiftBroker = stx.fn.lift.LiftBroker;
+
 class LiftUnary{
   static public inline function fn<P,R>(f:P->R):Unary<P,R>{
     return f;
   }
-}
-class LiftSink{
-  // static public inline function fn<T>(f:T->Void):Sink<T>{
-  //    return f;
-  // }
 }
 class LiftBlock{
   static public inline function fn(f:Void->Void):Block{
@@ -146,8 +115,6 @@ class LiftThunk{
   }
 }
 typedef LiftDual    = stx.fn.lift.LiftDual;
-
-typedef LiftUnaryImplementation = stx.fn.unary.Implementation;
 
 
 class LiftBinary{
@@ -179,11 +146,6 @@ class LiftTernary{
     return fn;
   }
 }
-// class LiftAppliableToUnary{
-//   static public function fn<P,R>(apply:AppliableApi<P,R>):Unary<P,R>{
-//     return apply.apply;
-//   }
-// }
 class LiftIf{
   static public function if_else<T>(b:Bool,yes:Thunk<T>,no:Thunk<T>){
     return switch(b){
