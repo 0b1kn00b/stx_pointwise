@@ -69,7 +69,7 @@ class UnaryLift{
   static public function then<Pi,Pii,R>(self:Unary<Pi,Pii>,that:Unary<Pii,R>):Unary<Pi,R>{
     return
       function(a:Pi):R{
-        return that(fn1(a));
+        return that(self(a));
       }
   }
   /**
@@ -108,7 +108,7 @@ class UnaryLift{
     Applies a function to the input, passing it's original input plus output forward to `bindr`.
   **/
   static public function bound<P,Ri,Rii>(bindl:Unary<P,Ri>,bindr:Unary<Couple<P,Ri>,Rii>):Unary<P,Rii>{
-      var out = Unary.unit().fork(bindl).then(bindr);
+      var out = Unary.unit().split(bindl).then(bindr);
     return out;
   }
   /**

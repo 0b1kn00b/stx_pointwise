@@ -24,7 +24,7 @@ class BinaryLift extends Clazz{
 	**/
   static public function rotate<Pi, Pii, R>(self:Pi->Pii->R): Binary<Pii,Pi,R>{
     return function(pII:Pii, pI:Pi){
-        return f(pI,pII);
+        return self(pI,pII);
       }
   }
   /**
@@ -32,7 +32,7 @@ class BinaryLift extends Clazz{
 	**/
   static public function swap<Pi, Pii, R>(self: Pi->Pii->R): Binary<Pii,Pi,R>{
     return function(pII, pI) {
-      return f(pI, pII);
+      return self(pI, pII);
     }
   }
   /**
@@ -42,7 +42,7 @@ class BinaryLift extends Clazz{
   static public function curry<Pi, Pii, R>(self: Pi->Pii->R): (Pi->(Pii->R)){
     return function(pI: Pi) {
       return function(pII: Pii) {
-        return f(pI, pII);
+        return self(pI, pII);
       }
     }
   }
@@ -56,7 +56,7 @@ class BinaryLift extends Clazz{
   /**
     Calls only first parameter, returning Unary function
   **/
-  static public function bindPii<Pi,Pii,R>(self:Pi->Pii->R,pII:Pii):Pi->R{
+  static public function bindPi<Pi,Pii,R>(self:Pi->Pii->R,pI:Pi):Pii->R{
     var fn : Pi -> Pii -> R = self;
     return fn.bind(pI);
   }

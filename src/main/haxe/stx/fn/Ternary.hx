@@ -2,8 +2,7 @@ package stx.fn;
 
 @:using(stx.fn.Ternary.TernaryLift)
 @:callable abstract Ternary<Pi,Pii,Piii,R>(TernaryDef<Pi,Pii,Piii,R>) from TernaryDef<Pi,Pii,Piii,R>{
-  
-  static public inline function _() return Constructor.ZERO;
+  static public var _(default,never) = TernaryLift;
 
   public function new(self:TernaryDef<Pi,Pii,Piii,R>){
     this = self;

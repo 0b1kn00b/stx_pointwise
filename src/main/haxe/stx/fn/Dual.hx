@@ -19,16 +19,19 @@ package stx.fn;
   }
 }
 class DualLift{
-  static public function into<Pi,Pii,Ri,RiiI>(fn:Ri->Rii->RiiI){
-    return this.then(__.decouple(fn));
+  static public function then<Pi,Pii,Ri,Rii,Riii>(self:Dual<Pi,Pii,Ri,Rii>,then:Couple<Ri,Rii>->Riii):Unary<Couple<Pi,Pii>,Riii>{
+    return Unary._.then(self,then);
   }
-  static public function pass<Pi,Pii,Ri,Ri0,Rii0>(fn:Ri->Rii->Couple<Ri0,Rii0>):Dual<Pi,Pii,Ri0,Rii0>{
-    return this.then(__.decouple(fn));
+  static public function into<Pi,Pii,Ri,Rii>(self:Dual<Pi,Pii,Ri,Rii>,fn:Ri->Rii->Rii){
+    return self.then(__.decouple(fn));
   }
-  static public function first<Pi,Pii,Ri,Rii>(fn:Ri->Rii):Dual<Pi,Pii,Rii,Rii>{
-    return this.then(fn.fn().first());
+  static public function pass<Pi,Pii,Ri,Ri0,Rii0>(self:Dual<Pi,Pii,Ri0,Rii0>,fn:Ri0->Rii0->Couple<Ri0,Rii0>):Dual<Pi,Pii,Ri0,Rii0>{
+    return self.then(__.decouple(fn));
   }
-  static public function second<Pi,Pii,Ri,Rii>(fn:Rii->Rii):Dual<Pi,Pii,Ri,Rii>{
-    return this.then(fn.fn().second());
+  static public function first<Pi,Pii,Ri,Rii>(self:Dual<Pi,Pii,Ri,Rii>,fn:Ri->Rii):Dual<Pi,Pii,Rii,Rii>{
+    return self.then(fn.fn().first());
+  }
+  static public function second<Pi,Pii,Ri,Rii>(self:Dual<Pi,Pii,Ri,Rii>,fn:Rii->Rii):Dual<Pi,Pii,Ri,Rii>{
+    return self.then(fn.fn().second());
   }
 }

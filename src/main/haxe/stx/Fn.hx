@@ -8,7 +8,6 @@ typedef Block                                   = stx.fn.Block;
 
 typedef FunXXDef                                = BlockDef;
 typedef FunXX                                   = Block;
-typedef AppXX                                   = stx.fn.type.AppXX;
 
 /**
 * Function that takes one input and produces no result.
@@ -77,10 +76,10 @@ class LiftFn{
   /**
     Creates a function that splits an input to it's inputs.
   **/
-  static public function pinch<A,B,C>(fn0:Dual<A,A,B,C>):Unary<A,B,Couple<C,C>>{
+  static public function pinch<A,B,C>(fn0:Dual<A,A,B,C>):Unary<A,Couple<B,C>>{
     return function(x:A){
-        return fn0(__.couple(x,x));
-      }
+      return fn0(__.couple(x,x));
+    }
   }
   static public function repeat<I,O>(fn:I->Either<I,O>):I->O{
     return function(v:I){
@@ -114,7 +113,6 @@ class LiftThunk{
     return fn;
   }
 }
-typedef LiftDual    = stx.fn.lift.LiftDual;
 
 
 class LiftBinary{
