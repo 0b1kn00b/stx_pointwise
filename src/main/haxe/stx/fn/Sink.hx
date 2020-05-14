@@ -7,7 +7,7 @@ package stx.fn;
   static public function unit<P>():Sink<P>{
     return lift((p:P) -> {});
   }
-  static public function lift<P>(fn:P->Void):Sink<P>{
+  @:noUsing static public function lift<P>(fn:P->Void):Sink<P>{
     return new Sink(fn);
   }
 
