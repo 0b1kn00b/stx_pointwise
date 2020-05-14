@@ -1,7 +1,7 @@
 package stx.fn;
 
 @:using(stx.fn.Ternary.TernaryLift)
-@:callable abstract Ternary<Pi,Pii,Piii,R>(TernaryDef<Pi,Pii,Piii,R>) from TernaryDef<Pi,Pii,Piii,R>{
+@:callable abstract Ternary<Pi,Pii,Piii,R>(TernaryDef<Pi,Pii,Piii,R>) from TernaryDef<Pi,Pii,Piii,R> to TernaryDef<Pi,Pii,Piii,R>{
   static public var _(default,never) = TernaryLift;
 
   public function new(self:TernaryDef<Pi,Pii,Piii,R>){

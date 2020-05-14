@@ -67,10 +67,9 @@ class UnaryLift{
    * @return Pi->R
    */
   static public function then<Pi,Pii,R>(self:Unary<Pi,Pii>,that:Unary<Pii,R>):Unary<Pi,R>{
-    return
-      function(a:Pi):R{
-        return that(self(a));
-      }
+    return function(a:Pi):R{
+      return that(self(a));
+    }
   }
   /**
    * Returns a function that calls the original function both on the left and the right of a Couple.
