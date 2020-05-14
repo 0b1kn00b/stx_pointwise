@@ -89,5 +89,11 @@ class BinaryLift extends Clazz{
     return function(){
       return tp().decouple(self);
     }
-  }  
+  }
+  /**
+    Utilify method to help with composition
+  **/
+  static public function encouple<Pi,Pii,R>(self:Pi->Pii->R):Unary<Couple<Pi,Pii>,R>{
+    return (tp) -> tp.decouple(self);
+  }
 }
