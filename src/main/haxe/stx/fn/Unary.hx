@@ -146,4 +146,7 @@ class UnaryLift{
         return __.couple(fn1(t.fst()),fn2(t.snd()));
       }
   }  
+  static public function bindI<P,R>(fn:Unary<P,R>,p:P):Thunk<R>{
+    return fn.prj().bind(p);
+  }
 }
